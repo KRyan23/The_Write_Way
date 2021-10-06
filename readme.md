@@ -91,23 +91,23 @@
 # README DONE TO HERE !
 ### Frameworks, Libraries & Programs Used
 
-1. [Bootstrap 4.2.1:](https://getbootstrap.com/docs/4.2/getting-started/introduction/)
-    - Bootstrap was used to assist with the responsiveness and styling of the website.
-1. [JQuery:](https://code.jquery.com/)
-    - JQuery was used on all 3 game.js files.
-1. [Google Fonts:](https://fonts.google.com/)
+1. [Materialize:](https://materializecss.com/)
+    - Materialize instead of Bottstrap was used on this project to assist with the responsiveness and styling of the website.
+2. [JQuery:](https://code.jquery.com/)
+    - 
+3. [Google Fonts:](https://fonts.google.com/)
     - Google fonts were used to import the "Saria Stencil One" font into the style.css file which is used on all pages throughout the site.
-1. [Font Awesome v5.15.2:](https://fontawesome.com/)
+4. [Font Awesome v5.15.2:](https://fontawesome.com/)
     - Font Awesome was used on all pages throughout the website to add icons for aesthetic and UX purposes.
-1. [Git](https://git-scm.com/)
-    - Git was used for version control by utilizing the Atom editor to commit to Git and Push to GitHub.
-1. [GitHub:](https://github.com/)
+5. [Git](https://git-scm.com/)
+    - Git was used for version control to push to GitHub.
+6. [GitHub:](https://github.com/)
     - GitHub is used to store the projects code after being pushed from Git.
-1. [OneDrive](https://onedrive.live.com/)
-    - OneDrive was used to provide an additional layer of backup for the projects contents.
-1. [Paint.net:](https://www.getpaint.net/doc/latest/index.html)
+7. [GitPod](https://www.gitpod.io/)
+    - GitPod was used as the main development platform, this was linked to my GitHub repository.
+8. [Paint.net:](https://www.getpaint.net/doc/latest/index.html)
     - Paint.net was used for resizing images and editing photos for the website.
-1. [Balsamiq:](https://balsamiq.com/)
+9. [Balsamiq:](https://balsamiq.com/)
     - Balsamiq 4.2.1 was used to create the WireFraming during the design process.
 
 
@@ -125,43 +125,47 @@ The W3C Mark-up Validator and W3C CSS Jigsaw Validator Services were used to val
 ### Users Stories
 -   #### First Time Visitor Goals
 
-    1. As a First Time Visitor, I want to easily understand what the main purpose of the site is.
+    1. As a First Time Visitor, I want to easily understand the main purpose of the site.
 
-        1. Upon landing on the main page users are greeted with a clean site which conveys the message that you are entering a game.
-        2. On clicking the 'Enter Game' button the site further reinforces the message of its purpose by describing the purpose of the site and reinforcing the point using the '3' Spy Badge Imagery that appears throughout the game.
+        1. Upon landing on the main page users are greeted with a clean site whose imagery and text convey a message that the sites primary goal revolves around writing and storytelling.
+        
 
-    2. As a First Time Visitor, I would like to try out the games easily to see if I am interested.
+    2. As a First Time Visitor, I would like to browse the sites content without signing up or logging in.
 
         1. The site has been designed to give a good and unimpeded flow from start to end.
-        2. The user must prgress throught the 'Academy' passing each challenge to be able to go to the next, after finishing all 3 succesfully, the have the option to go back to             the start of Spy Academy and try them out again.
+        2. The sites categories and most of its content are freely availible to unregistered users. 
 
-
-    3. As a First Time Visitor, I would like to try out the game as a parent to see if it is appropriate for my child.
-
-        1. Any Adult can play the game at each of the difficulty levels, but if you want to choose the hardest level then they can choose age 16.
-        2. The site does not require you to 'sign up' or login to use the games so a parent can quickly try out the site and decide if its suitible with minimal effort.
-
--   #### Returning Visitor Goals
-
-    1. As a Returning Visitor, I would like an easy way to get in touch since I would like more information about the sites content.
-
-        1. Since the layout of the game is not a traditional webpage there is no contact information, so the user is directed to the social media links in order to get in touch.
 
     
-    2. As a Returning Visitor, I would like to share my best times and scores with other users of the game while also picking up any tips on passing a difficult level.
+-   #### Returning Visitor Goals
 
-        1. The best way for the user got about this is by tweeting to a dedicated channel, or joining one of the many Facebook groups setup for this game.
-        They can use the social media links at the bottom of the page to acheive this.
+    1. As a Returning Visitor, I would like create my own login profile to allow me create content.
+
+        1. A returning visitor to the site can choose the 'Signup' button or 'Login' from the main navigation menu. From here they are invited to complete the signup process.
+
+    
+    2. As a Returning Visitor, I would like to easily connect with the sites social media channels.
+
+        1. A returning visitor can use the social media links at the bottom of the page to connect with a larger audience.
 
 -   #### Frequent User Goals
 
-    1. As a Frequent User, I would like to check their social media pages for any updates to the game.
+    1. As a Frequent Visitor, I would like create another short story.
 
-        1. As with any new service or product and prior to launch there would be dedicated social media channels setup specifically to allow their users to easily interact.
-        2. Users can just launch the dedicatted social media channels from the links provided.
-    2. As a Frequent younger user, I don't have a social media account and would just like to play the games without any restrictions.
-        1. The site itself does not hold a database of users or require login to use its services so there is unrestricted access at all times.
+        1. The user first needs a valid logon. Once logged in they can go to their profile page and choose the 'Create New' button. They then shoose a category for their story along with a public or private setting, lastly when they are finshed writing, they can submit the short story by clicking the 'Submit' button. 
+        
+    2. As a Frequent Visitor, I would like read back over one of my recently added short stories.
 
+        1. The user in this case can be either logged in or not. From here they can browse the caterogries and find their story, or if they do login they cna view their work from within the profile.
+
+    3. As a Frequent Visitor, I would like edit one of my recently added short stories.
+
+        1. The user will need to be logged in for this task also, once logged in they can go to their profile page, locate the peice of work that there interested in changing and choose the edit function, once happy with the changes they can click the 'Submit' button.
+    
+    4. As a Frequent Visitor, I would like remove one of my recently added short stories.
+
+        1. The user again will need to be logged in for this task. From here they can go to their profile page, locate the peice of work that there interested in and choose the delete button to remove it.
+        
 ### Further Testing
 
 -   The Website was tested on Google Chrome, Opera, Internet Explorer 11, Microsoft Edge and Firefox browsers.
