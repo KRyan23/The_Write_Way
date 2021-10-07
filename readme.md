@@ -87,8 +87,7 @@
 -   [MongoDb](https://en.wikipedia.org/wiki/MongoDB)
 -   [Heroku](https://en.wikipedia.org/wiki/Heroku)
 
-&nbsp;
-# README DONE TO HERE !
+
 ### Frameworks, Libraries & Programs Used
 
 1. [Materialize:](https://materializecss.com/)
@@ -179,56 +178,45 @@ The W3C Mark-up Validator and W3C CSS Jigsaw Validator Services were used to val
 
 ## Deployment
 
-### GitHub Pages
+The project was deployed using the steps below.
 
-The project was deployed to GitHub Pages using the following steps...
+### GitHub
 
-1. Log in to GitHub and locate the [GitHub Repository] (https://github.com/)
-2. At the top of the Repository (not top of page), locate the "Settings" Button on the menu.
-    - Alternatively Click [Here](https://raw.githubusercontent.com/) for a GIF demonstrating the process starting from Step 2.
-3. Scroll down the Settings page until you locate the "GitHub Pages" Section.
-4. Under "Source", click the dropdown called "None" and select "Master Branch".
-5. The page will automatically refresh.
-6. Scroll back down through the page to locate the now published site [link](https://github.com) in the "GitHub Pages" section.
+1. Firstly we log on to [GitHub](https://github.com/) and choose 'new' in the top left corner to create a public repository using the 'Code Institute' template.
+2. From there we choose the The_Write_Way repository and main screen clcik the 'GitPod' to launch it.
 
-### Forking the GitHub Repository
+### GitPod
 
-By forking the GitHub Repository, we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps...
+1. The Gitpod workspace takes a few minutes to build and once it launches. Its best to go to [GitPod Workspaces](https://gitpod.io/workspaces/) and select the 3 vertical dots next to the workspace. These are the settings for the workspace, we just need to choose 'Pin' so that the workspace is not automatically removed after 14 days.
+2. After we have made an inital change to the new workspace we can go ahead and make an intial commit to our GitHub repository to test that its working.
+- git add .
+- git commit -m "initial commit"
+- git push
+3. Next we needed to setup the environment, and we do this by installing the components below at the terminal.
+- Sets up Flask > pip3 install Flask
+- Create my main python file > touch run.py
+- Creates the environmental variables file > touch env.py
+- Inside the env.py we need to add the following values, in order to successfull connect to MongoDb created earlier 
+    import os                                                               (Imports the os module)
 
-1. Log in to GitHub and locate the [GitHub Repository] (https://github.com/)
-2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
-3. You should now have a copy of the original repository in your GitHub account.
+    os.environ.setdefault("IP", "0.0.0.0")                                  (Configure the Ip range)
+    os.environ.setdefault("PORT", "5000")                                   (Use the default flask Port)
+    os.environ.setdefault("SECRET_KEY", "AA22CA3FA237B79E36635A42EA818")    (generated my own unique key from https://randomkeygen.com/)
+    os.environ.setdefault("MONGO_URI", "mongodb+srv://admin:r00tUser@cluster0.dhqoa.mongodb.net/theWriteWay?retryWrites=true&w=majority")                                           (put in our mongo uri that we configured earlier for secure authentication)
+    os.environ.setdefault("MONGO_DBNAME", "theWriteWay")                    (sets up the database name tha was created earlier)
+- Then we need to call the import from the top of our python file by saying if the if the env.py path exists import it.
+4.
+5.Gitpod was used to write the reminder of the project.
 
-### Making a Local Clone
-
-1. Log in to GitHub and locate the [GitHub Repository] (https://github.com/)
-2. Under the repository name, click "Clone or download".
-3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
-4. Open Git Bash
-5. Change the current working directory to the location where you want the cloned directory to be made.
-6. Type `git clone`, and then paste the URL you copied in Step 3.
-
-```
-$ git clone https://kryan23.github.io/SpyAcademy/
-```
-
-7. Press Enter. Your local clone will be created.
-
-```
-$ git clone https://kryan23.github.io/SpyAcademy/
-> Cloning into `CI-Clone`...
-> remote: Counting objects: 10, done.
-> remote: Compressing objects: 100% (8/8), done.
-> remove: Total 10 (delta 1), reused 10 (delta 1)
-> Unpacking objects: 100% (10/10), done.
-```
+&nbsp;
+# README DONE TO HERE !
 
 ## Credits
 
 ### Code
 
-- All code written by myself except for the Fisher Yates function in game3.js line 143
-(https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
+- All code written by myself except for .....
+
 
 ### Content
 
