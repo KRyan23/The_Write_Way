@@ -1,7 +1,7 @@
 <h1 align="center">The Write Way</h1>
 
 - [View the live project here ](https://kryan23.github.io/SpyAcademy/) <!--This will be Heroku -->
-<p align="center">The Write Way is a service that allows budding authors to submit and share short stories with others.</p>
+<p align="center">The Write Way is a service that allows budding authors to submit and share short stories.</p>
 
 <p align="center">The stories are accessible to casual readers as well as other writers.</p>
 
@@ -177,36 +177,26 @@ The W3C Mark-up Validator and W3C CSS Jigsaw Validator Services were used to val
 -  [Results](/assets/docs/known-bugs.pdf)
 
 ## Deployment
+&nbsp;
 
 The project was deployed using the steps below.
 
+
+### MongoDb
+
+[Steps to setup MongoDb](assets/docs/setting_up_mongo_db.pdf)
+
 ### GitHub
 
-1. Firstly we log on to [GitHub](https://github.com/) and choose 'new' in the top left corner to create a public repository using the 'Code Institute' template.
-2. From there we choose the The_Write_Way repository and main screen clcik the 'GitPod' to launch it.
+[Steps to setup GitHub](assets/docs/github-setup-and-instructions.pdf)
 
 ### GitPod
 
-1. The Gitpod workspace takes a few minutes to build and once it launches. Its best to go to [GitPod Workspaces](https://gitpod.io/workspaces/) and select the 3 vertical dots next to the workspace. These are the settings for the workspace, we just need to choose 'Pin' so that the workspace is not automatically removed after 14 days.
-2. After we have made an inital change to the new workspace we can go ahead and make an intial commit to our GitHub repository to test that its working.
-- git add .
-- git commit -m "initial commit"
-- git push
-3. Next we needed to setup the environment, and we do this by installing the components below at the terminal.
-- Sets up Flask > pip3 install Flask
-- Create my main python file > touch run.py
-- Creates the environmental variables file > touch env.py
-- Inside the env.py we need to add the following values, in order to successfull connect to MongoDb created earlier 
-    import os                                                               (Imports the os module)
+[Steps to setup GitPod](assets/docs/setting_up_gitpod.pdf)
 
-    os.environ.setdefault("IP", "0.0.0.0")                                  (Configure the Ip range)
-    os.environ.setdefault("PORT", "5000")                                   (Use the default flask Port)
-    os.environ.setdefault("SECRET_KEY", "AA22CA3FA237B79E36635A42EA818")    (generated my own unique key from https://randomkeygen.com/)
-    os.environ.setdefault("MONGO_URI", "mongodb+srv://admin:r00tUser@cluster0.dhqoa.mongodb.net/theWriteWay?retryWrites=true&w=majority")                                           (put in our mongo uri that we configured earlier for secure authentication)
-    os.environ.setdefault("MONGO_DBNAME", "theWriteWay")                    (sets up the database name tha was created earlier)
-- Then we need to call the import from the top of our python file by saying if the if the env.py path exists import it.
-4.
-5.Gitpod was used to write the reminder of the project.
+### Heroku
+
+[Steps to deploy to Heroku](assets/docs/deploying_to_heroku.pdf)
 
 &nbsp;
 # README DONE TO HERE !
