@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>This heading is actual content in the child template "genre.html"</h3>
+    {% for genre in genre %}
+        {{ genre.genre_name }}<br>
+    {% endfor %}
+
+{% endblock %}
