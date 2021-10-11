@@ -1,6 +1,6 @@
 <h1 align="center">The Write Way</h1>
 
-- [View the live project here ](https://kryan23.github.io/SpyAcademy/) <!--This will be Heroku -->
+- [View the live project here ](https://the-write-way.herokuapp.com/)
 <p align="center">The Write Way is a service that allows budding authors to submit and share short stories.</p>
 
 <p align="center">The stories are accessible to casual readers as well as other writers.</p>
