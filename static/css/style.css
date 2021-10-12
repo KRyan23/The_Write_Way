@@ -1,1 +1,38 @@
-body {background-color:#fafafa;}
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/*body {
+        height: 2024px;
+        width: auto;
+        background:url(../images/background.png) no-repeat;
+        background-blend-mode: multiply;
+        background-size: cover;
+        text-align: center;
+      }
+*/
+
+body {
+    font-family: 'Roboto', 'san-serif';
+    
+}
+.big-image {
+height: 100vh;
+width: 100vw;
+position: relative;
+background-size: cover;
+background-position: 50% 50%;
+background:url(../images/background3.jpg) no-repeat;
+}
+
+.overlay {
+  height: 50vh;
+  width: 50vw;
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

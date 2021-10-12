@@ -10,12 +10,43 @@
     {% block cssstyles %}
     {% endblock %}
     <title>Base Template</title>
-    {% block content %}
-    {% endblock%}
-</head>
+   </head>
 <body>
+  
+    <header>
+        <!-- This is for the Desktop view -->
+        <nav>
+            <div class="nav-wrapper blue-grey lighten-2">
+              <a href="#!" class="brand-logo">Logo</a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">Javascript</a></li>
+                <li><a href="mobile.html">Mobile</a></li>
+              </ul>
+            </div>
+          </nav>
+        <!-- This is for the Mobile view -->
+          <ul class="sidenav" id="mobile-demo">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">Javascript</a></li>
+            <li><a href="mobile.html">Mobile</a></li>
+          </ul>
+          
+    </header>
     
-
+    <div class="big-image">
+    <div class="overlay">
+      <h1>Share Your Story</h1>
+      <p>Dive right in get writing today</p>
+    </div>
+  </div>
+   
+   <!--   {% block content %}
+    {% endblock%}--> 
+    
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     {% block customscripts %}

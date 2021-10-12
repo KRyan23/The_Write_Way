@@ -91,12 +91,12 @@
 ### Frameworks, Libraries & Programs Used
 
 1. [Materialize:](https://materializecss.com/)
-    - Materialize instead of Bottstrap was used on this project to assist with the responsiveness and styling of the website.
+    - Materialize instead of Bootstrap was used on this project to assist with the responsiveness and styling of the website.
 2. [JQuery:](https://code.jquery.com/)
-    - 
+    - Some JQuery was used to simplify frontend deployment.  
 3. [Google Fonts:](https://fonts.google.com/)
     - Google fonts were used to import the "Saria Stencil One" font into the style.css file which is used on all pages throughout the site.
-4. [Font Awesome v5.15.2:](https://fontawesome.com/)
+4. [Font Awesome v5.15.4:](https://fontawesome.com/)
     - Font Awesome was used on all pages throughout the website to add icons for aesthetic and UX purposes.
 5. [Git](https://git-scm.com/)
     - Git was used for version control to push to GitHub.
