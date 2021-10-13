@@ -17,22 +17,22 @@
         <!-- This is for the Desktop view -->
         <nav>
             <div class="nav-wrapper blue-grey lighten-2">
-              <a href="#!" class="brand-logo">Logo</a>
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+              <a href="#!" class="brand-logo"><img src="static/images/Logo7.png"></a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
               <ul class="right hide-on-med-and-down">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">Javascript</a></li>
-                <li><a href="mobile.html">Mobile</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Join</a></li>
+                <li><a href="#">About</a></li>
               </ul>
             </div>
           </nav>
         <!-- This is for the Mobile view -->
-          <ul class="sidenav" id="mobile-demo">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">Javascript</a></li>
-            <li><a href="mobile.html">Mobile</a></li>
+          <ul class="sidenav blue-grey lighten-2" id="mobile-demo">
+            <li><a href="#" class="white-text">Home</a></li>
+                <li><a href="#" class="white-text">Login</a></li>
+                <li><a href="#" class="white-text">Join</a></li>
+                <li><a href="#" class="white-text">About</a></li>
           </ul>
           
     </header>
@@ -47,6 +47,38 @@
    <!--   {% block content %}
     {% endblock%}--> 
     
+    <footer class="page-footer  blue-grey lighten-2">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            
+            <p class="grey-text text-lighten-4">The Write Way is a free online writing site that provides the tools for writers to publish their short stories and connect with readers from across the world. Join The Write Way and tell your story today.</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Social Media</h5>
+            <ul>
+               <div class="social-media ">
+                <li> <a href="https://www.facebook.com/" class="grey-text text-lighten-3 flow-text" target="_blank" rel="noopener" aria-label="facebook" title="facebook"><i class="fab fa-facebook social-media fa-lg "></i></a>
+                  <a href="https://www.youtube.com/" class="grey-text text-lighten-3 flow-text" target="_blank" rel="noopener" aria-label="youtube" title="youtube"><i class="fab fa-youtube-square social-media fa-lg"></i></a>
+                  <a href="https://instagram.com/?lang=en/" class="grey-text text-lighten-3 flow-text" target="_blank" rel="noopener" aria-label="instagram" title="instagram"><i class="fab fa-instagram social-media fa-lg"></i>
+                     <a href="https://twitter.com/?lang=en/" class="grey-text text-lighten-3 flow-text scale-transition scale-out" target="_blank" rel="noopener" aria-label="twitter" title="twitter"><i class="fab fa-twitter social-media fa-lg"></i></a></li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+            
+      <div class="footer-copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col s12">
+        <p >The Write Way © 2021 | All rights reserved. The terms under which this service is provided to you is outlined in the<a href="policy.html" class="private-policy black-text"> Privacy Policy.</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+      
+      </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     {% block customscripts %}

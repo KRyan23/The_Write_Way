@@ -12,15 +12,21 @@
 
 body {
     font-family: 'Roboto', 'san-serif';
-    
 }
+
+  h1 {
+    font-size: 2.2em ;
+}
+
+
 .big-image {
 height: 100vh;
 width: 100vw;
 position: relative;
 background-size: cover;
 background-position: 50% 50%;
-background:url(../images/background3.jpg) no-repeat;
+background:url(../images/background1.jpg) no-repeat;
+margin:0;
 }
 
 .overlay {
@@ -35,4 +41,23 @@ background:url(../images/background3.jpg) no-repeat;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.social-media {
+  padding: 0.15em 0.15em 0.15em 0.15em;
+  text-align: center;
+}
+
+h5 {
+  text-align: center;
+}
+
+.privacy-policy {
+  text-decoration: none;
+  decoration: none; 
+ 
+}
+
+p {
+  font-size: 1em;
 }
