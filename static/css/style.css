@@ -27,6 +27,8 @@ background-size: cover;
 background-position: 50% 50%;
 background:url(../images/background1.jpg) no-repeat;
 margin:0;
+color: #fafafa;
+text-align: center;
 }
 
 .overlay {
