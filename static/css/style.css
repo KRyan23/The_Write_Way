@@ -24,6 +24,11 @@ input {
     font-size: 2em ;
 }
 
+.header-background {
+  background-color: #90a4ae;
+  
+}
+
 
 .big-image {
 height: 100vh;
@@ -38,7 +43,7 @@ text-align: center;
 }
 
 .overlay {
-  height: 50vh;
+  height: 20vh;
   width: 50vw;
   position: absolute;
   top: 30%;
@@ -71,9 +76,12 @@ p {
 }
 
 .site-name {
-  font-size: 2.2em;
+  font-size: 2.3em;
   font-family: 'Pacifico', 'san-serif';
   font-weight: 400;
+  text-align: center;
+  padding-left: 5%;
+  
 }
 
 .read-buttons {
