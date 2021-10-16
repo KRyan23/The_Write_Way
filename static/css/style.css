@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 
 /*body {
         height: 2024px;
@@ -11,11 +13,15 @@
 */
 
 body {
-    font-family: 'Roboto', 'san-serif';
+    font-family: 'Pacifico', 'san-serif';
+    font-weight: 100;
 }
 
+input {
+  font-family: 'Pacifico', 'san-serif';
+}
   h1 {
-    font-size: 2.2em ;
+    font-size: 2em ;
 }
 
 
@@ -35,7 +41,7 @@ text-align: center;
   height: 50vh;
   width: 50vw;
   position: absolute;
-  top: 20%;
+  top: 30%;
   left: 25%;
   background: rgba(0,0,0,0.5);
   color: white;
@@ -65,5 +71,22 @@ p {
 }
 
 .site-name {
-  font-size: 2.2em
+  font-size: 2.2em;
+  font-family: 'Pacifico', 'san-serif';
+  font-weight: 400;
 }
+
+.read-buttons {
+  margin-bottom: 0.5em;
+  padding:0 2em 0 2em;
+}
+
+.write-buttons {
+  
+  padding:0 1em 0 1em;
+}
+
+.text-spacing {
+  margin: 0 0 0 0;
+  padding-left: 0.5em;
+ }
