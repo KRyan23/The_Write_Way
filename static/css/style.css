@@ -7,11 +7,32 @@
 }
 
 .main-heading {
-    font-size: 2em;
+    font-size: 2.5em;
     font-family:Pacifico;
     padding: 0 2em 0 2em;
 }
 
+.navigation-styling {
+    border: 1px solid #198754;
+    border-radius: 5px;
+    padding: 0 2em 0 2em;
+    margin:  0 0 0 0;
+}
+
+.home-page:hover, .join-page:hover, .signup-page:hover, .search-box:hover {
+    background-color: #198754;
+    font-family:Pacifico;
+}
+
+.input-box:focus {
+    border-color: #198754;  
+    box-shadow: none; 
+    font-weight: 300;
+}
+
+.text-menu-style:hover {
+    color:white;
+}
 
 /* ------------------------- Media queries ----------------------------- */
 /*- < 250px-*/
@@ -55,6 +76,14 @@
     }
   }
   
+  /*- 500px - 767px -*/
+  @media only screen and (min-width: 500px) and (max-width: 767px) {
+    .main-heading {
+        font-size: 2em;
+        padding: 0 0 0 0;
+    }
+    
+}
   /*- 768px - 991px -*/
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     
@@ -62,10 +91,16 @@
   
   /*- 992px - 1023px -*/
   @media only screen and (min-width: 992px) and (max-width: 1023px) {
-    
+    .main-heading {
+        font-size: 2.2em;
+        padding: 0 0 0 0;
+    }
   }
   
   /*- 1201px > -*/
-  @media only screen and (min-width: 1201px) and (max-width: 3000px) {
-    
+  @media only screen and (min-width: 1024px) and (max-width: 1200px) {
+    .main-heading {
+        font-size: 2.4em;
+        padding: 0 2em 0 2em;
+    }
   }
