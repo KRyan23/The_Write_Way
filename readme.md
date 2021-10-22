@@ -1,6 +1,6 @@
 <h1 align="center">The Write Way</h1>
 
-- [View the live project here ](https://kryan23.github.io/SpyAcademy/) <!--This will be Heroku -->
+- [View the live project here ](https://the-write-way.herokuapp.com/)
 <p align="center">The Write Way is a service that allows budding authors to submit and share short stories.</p>
 
 <p align="center">The stories are accessible to casual readers as well as other writers.</p>
@@ -91,12 +91,12 @@
 ### Frameworks, Libraries & Programs Used
 
 1. [Materialize:](https://materializecss.com/)
-    - Materialize instead of Bottstrap was used on this project to assist with the responsiveness and styling of the website.
+    - Materialize instead of Bootstrap was used on this project to assist with the responsiveness and styling of the website.
 2. [JQuery:](https://code.jquery.com/)
-    - 
+    - Some JQuery was used to simplify frontend deployment.  
 3. [Google Fonts:](https://fonts.google.com/)
     - Google fonts were used to import the "Saria Stencil One" font into the style.css file which is used on all pages throughout the site.
-4. [Font Awesome v5.15.2:](https://fontawesome.com/)
+4. [Font Awesome v5.15.4:](https://fontawesome.com/)
     - Font Awesome was used on all pages throughout the website to add icons for aesthetic and UX purposes.
 5. [Git](https://git-scm.com/)
     - Git was used for version control to push to GitHub.
@@ -198,8 +198,7 @@ The project was deployed using the steps below.
 
 [Steps to deploy to Heroku](assets/docs/deploying_to_heroku.pdf)
 
-&nbsp;
-# README DONE TO HERE !
+
 
 ## Credits
 
@@ -212,7 +211,8 @@ The project was deployed using the steps below.
 
 -   All content was written by myself with some minor contributions by family and friends.
 
-
+&nbsp;
+# README DONE TO HERE !
 Media
 
 Images
@@ -221,39 +221,50 @@ The images on the index page were chosen from the following sources.
 
 [1 - Big Red Button A](https://pixabay.com/photos/button-light-bright-symbol-icon-2816448/)
 
-[2 - Main Page Spy Face Image](https://images.app.goo.gl/zXfs831NsdFR2UqF7)
+[2 - ]()
 
-[3 - Facebook Icon ](https://fontawesome.com/v5.15/icons/facebook-messenger?style=brands)
+[3 -  ]()
 
-[4 - Twitter Icon](https://fontawesome.com/v5.15/icons/hashtag?style=solid)
+[4 - ]()
 
-[5 - Youtube Icon](https://fontawesome.com/v5.15/icons/youtube-square?style=brands)
+[5 - ]()
 
-The images on the first page for challenge 1 "Combination Lock" were chosen from the following sources.
-
-[1 - Big Red Button A](https://pixabay.com/photos/button-light-bright-symbol-icon-2816448/)
-
-[2 - Main Page Spy Face Image](https://images.app.goo.gl/zXfs831NsdFR2UqF7)
-
-[3 - Font Awesome Lock Icon](https://fontawesome.com/v5.15/icons/lock?style=solid)
-
-[4 - Font Awesome User Secret Icon](https://fontawesome.com/v5.15/icons/user-secret?style=solid)
-
-[5 - Font Awesome User Clock Icon](https://fontawesome.com/v5.15/icons/user-clock?style=solid)
-
-The images on the second page for challenge 2 "Break the Password" were chosen from the following sources.
+The images on the 'X' page were chosen from the following sources.
 
 [1 - Big Red Button A](https://pixabay.com/photos/button-light-bright-symbol-icon-2816448/)
 
-[2 - Main Page Spy Face Image](https://images.app.goo.gl/zXfs831NsdFR2UqF7)
+[2 - ]()
 
-The images on the third page for challenge 3 "Defuse the Bomb" were chosen from the following sources.
+[3 - ]()
+
+[4 - ]()
+
+[5 - ]()
+
+The images on the 'X' page were chosen from the following sources.
 
 [1 - Big Red Button A](https://pixabay.com/photos/button-light-bright-symbol-icon-2816448/)
 
-[2 - Main Page Spy Face Image](https://images.app.goo.gl/zXfs831NsdFR2UqF7)
+[2 - ]()
+
+[3 - ]()
+
+[4 - ]()
+
+[5 - ]()
+
+The images on the 'X' page were chosen from the following sources.
+
+[1 - Big Red Button A](https://pixabay.com/photos/button-light-bright-symbol-icon-2816448/)
+
+[2 - ]()
+
+[3 - ]()
+
+[4 - ]()
+
+[5 - ]()
 
 ### Acknowledgements
 - My Mentor
-- Friends and family for input and game testing.
-- This readme.md was written using Atoms Markdown Preview Enhanced package.
+- Friends and family for input and site testing.

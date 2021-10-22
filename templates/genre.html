@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% for genre in genre %}
+        {{ genre.genre_name }}<br>
+    {% endfor %}
+
+{% endblock %}

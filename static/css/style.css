@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.logo {
+    height:70px;
+    width: 70px;
+}
+
+.main-heading {
+    font-size: 2.5em;
+    font-family:Pacifico;
+    padding: 0 2em 0 2em;
+}
+
+.navigation-styling {
+    border: 1px solid #198754;
+    border-radius: 5px;
+    padding: 0 2em 0 2em;
+    margin:  0 0 0 0;
+}
+
+.home-page:hover, .join-page:hover, .signup-page:hover, .search-box:hover {
+    background-color: #198754;
+    font-family:Pacifico;
+}
+
+.input-box:focus {
+    border-color: #198754;  
+    box-shadow: none; 
+    font-weight: 300;
+}
+
+.text-menu-style:hover {
+    color:white;
+}
+
+.btn:focus { 
+    border-color: #198754;
+    box-shadow: 3px 3px grey
+     }
+
+.copyright-styling {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.copyright-styling p{
+    padding: 2em 0 1em 0;
+}
+
+/* ------------------------- Media queries ----------------------------- */
+/*- < 250px-*/
+    @media only screen and (max-width: 249px) {
+        .logo {
+            height:35px;
+            width: 35px;
+        }
+    
+        .main-heading {
+            font-size: 0.8em;
+            padding: 0 0 0 0;
+        }
+
+        .fab {
+            font-size: 0.5em;
+        }
+  }
+  
+  /*- 250px - 320px -*/
+  @media only screen and (min-width: 250px) and (max-width: 320px) {
+    
+    .logo {
+        height:35px;
+        width: 35px;
+    }
+
+    .main-heading {
+        font-size: 1.15em;
+        padding: 0 0 0 0;
+    }
+
+    .fab {
+        font-size: 0.8em;
+    }
+  }
+  
+  /*- 321px - 499px -*/
+  @media only screen and (min-width: 321px) and (max-width: 499px) {
+    
+    .logo {
+        height:50px;
+        width: 50px;
+    }
+
+    .main-heading {
+        font-size: 1.6em;
+        padding: 0 0 0 0;
+    }
+  }
+  
+  /*- 500px - 767px -*/
+  @media only screen and (min-width: 500px) and (max-width: 767px) {
+    .main-heading {
+        font-size: 2em;
+        padding: 0 0 0 0;
+    }
+    
+}
+  /*- 768px - 991px -*/
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    
+  }
+  
+  /*- 992px - 1023px -*/
+  @media only screen and (min-width: 992px) and (max-width: 1023px) {
+    .main-heading {
+        font-size: 2.2em;
+        padding: 0 0 0 0;
+    }
+  }
+  
+  /*- 1024px - 1200px -*/
+  @media only screen and (min-width: 1024px) and (max-width: 1200px) {
+    .main-heading {
+        font-size: 2.4em;
+        padding: 0 1em 0 0;
+    }
+    .navigation-styling {
+        padding: 0 2em 0 2em;
+        
+    }
+  }

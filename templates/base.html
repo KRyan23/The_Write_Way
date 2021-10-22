@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+  {% block cssstyles %}
+  {% endblock %}
+  <title>Base Template</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="static/images/pen.png" class="logo"></a>
+        <h1 class="main-heading" aria-label="Site Heading">The Write Way</h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Mobile Nfromavigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 navigation-styling">
+            <li class="nav-item">
+              <a class="nav-link active home-page" aria-current="Home Page" href="#"><span
+                  class="text-menu-style">Home</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active join-page" aria-label="Join Us" href="#"><span class="text-menu-style">Join
+                  Us</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active signup-page" aria-label="Sign Up" href="#"><span class="text-menu-style">Sign
+                  Up</span></a>
+            </li>
+
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2 input-box" type="search" placeholder="Search Stories.."
+              aria-label="Search Box">
+            <button class="btn btn-outline-success search-box" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <span class="material-icons md-48 md-dark orange400">testface</span>
+  Test Google image
+
+  <footer class="text-center bg-light">
+    <div class="container pt-4">
+      <section class="mb-4">
+
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://www.facebook.com/" target="_blank"
+          rel="noopener" aria-label="facebook" title="facebook" role="button">
+          <i class="fab fa-facebook social-media fa-lg"></i></a>
+
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://www.youtube.com/" target="_blank"
+          rel="noopener" aria-label="youtube" title="youtube" role="button">
+          <i class="fab fa-youtube-square social-media fa-lg"></i></a>
+
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://twitter.com/?lang=en/" target="_blank"
+          rel="noopener" aria-label="twitter" title="twitter" role="button">
+          <i class="fab fa-twitter social-media fa-lg"></i></a>
+
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://instagram.com/?lang=en/" target="_blank"
+          rel="noopener" aria-label="instagram" title="instagram" role="button">
+          <i class="fab fa-instagram social-media fa-lg"></i></a>
+
+    </div>
+
+    <div class="text-center text-dark p-1 copyright-styling">
+      <p>The Write Way © 2021 | All rights reserved. The terms under which this service is provided to you is outlined
+        in the <a href="policy.html" class="text-dark">Privacy Policy.</a></p>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  {% block customscripts %}
+  {% endblock %}
+</body>
+
+</html>
