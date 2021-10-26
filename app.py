@@ -15,21 +15,21 @@ myvar.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(myvar)
 
-
 @myvar.route("/")
 @myvar.route("/get_genre")
+
+
 def get_genre():
     genre = mongo.db.genre.find()
     return render_template("genre.html", genre=genre)
-
 
 if __name__ == "__main__":
     myvar.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
+      
 
-
-@myvar.route("/get_genre")
-def get_genre():
-    genre = mongo.db.genre.find()
-    return render_template("genre.html", genre=genre)
+#@myvar.route("/get_genre")
+#def get_genre():
+#    genre = mongo.db.genre.find()
+#    return render_template("genre.html", genre=genre)

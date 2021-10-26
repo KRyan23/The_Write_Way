@@ -2,8 +2,10 @@
 
 {% block content %}
 
-    {% for genre in genre %}
-        {{ genre.genre_name }}<br>
-    {% endfor %}
+{% for gen in genre %}
+{{ gen.genre_name }}
+{{ gen.genre_description }}
+<!-- Next vid = Flask Mini-Project 20 _ 01 - Putting The Basics In Place (1e - Template Inheritance)-->
+{% endfor %}
 
 {% endblock %}
