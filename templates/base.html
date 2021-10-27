@@ -53,6 +53,7 @@
     </nav>
   </header>
 <!-- News content-->
+
   <aside class="news-content">
     <h3>Latest News</h3>
     
@@ -63,7 +64,8 @@
       <li><p>Check out our more recently added genre...</p> <!--pull some stat from the db--></li>
     </ul>
  </aside>
-  
+
+<!-- Introduction -->
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -76,54 +78,26 @@
       </div>
     </div>
   
-  <!-- Introduction -->
-  
-  
-  
-
-<!-- First row of categories -->
-<div class="container ">
-  <div class="row">
-    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-  <div class="card">
-    <img src="static/images/fiction.jpg" class="card-img-top" alt="fiction image" aria-label="fiction image">
-    <div class="card-body">
-   
-     {% block content%}
-      <h5 class="card-title"><span>{{ genre.genre_name}}</span></h5>
-      
+    <div class="container ">
+      <div class="row">
+    {% block content%}
+          
       {% endblock %}
-      <p class="card-text">Read from our large selection and imagine impossible and improbable things!</p>
-      <a href="#" class="btn btn-primary">Explore Fiction</a>
     </div>
   </div>
-</div>
+  
+  
+  <!--
 
-  <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-  <div class="card">
+Need to loop through and replace the description with each genres description.
+Need to loop through and put the correct image with each genre.
+   <img src="static/images/fiction.jpg" class="card-img-top" alt="fiction image" aria-label="fiction image">
+   
     <img src="static/images/horror.jpg" class="card-img-top" alt="horror image" aria-label="horror image">
-    <div class="card-body">
-      <h5 class="card-title">some jinja command</h5>
-      <p class="card-text">Read from our large selection and imagine impossible and improbable things!</p>
-      <a href="#" class="btn btn-primary">Explore Fiction</a>
-    </div>
-  </div>
-  </div>
-
-  <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-  <div class="card">
+   
     <img src="static/images/ufos.jpg" class="card-img-top" alt="sci-fi image" aria-label="sci-fi image">
-    <div class="card-body">
-      <h5 class="card-title">some jinja command</h5>
-      <p class="card-text">Read from our large selection and imagine impossible and improbable things!</p>
-      <a href="#" class="btn btn-primary">Explore Fiction</a>
-    </div>
-  </div>
-</div>
-</div> 
-</div> 
- 
-
+    
+ -->
 
 
   <footer class="text-center bg-light">

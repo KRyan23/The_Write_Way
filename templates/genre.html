@@ -3,8 +3,18 @@
 {% block content %}
 
 {% for gen in genre %}
-{{ gen.genre_name }}
-{{ gen.genre_description }}
+        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+          <div class="card">
+              <img src="static/images/fiction.jpg" class="card-img-top" alt="fiction image" aria-label="fiction image">
+              <div class="card-body">
+                  <h5 class="card-title">{{ gen.genre_name }}</h5>
+
+                  <p class="card-text">Read from our large selection and imagine impossible and improbable things!</p>
+                  <a href="#" class="btn btn-primary">Explore Fiction</a>
+
+              </div>
+          </div>
+      </div>
 <!-- Next vid = Flask Mini-Project 20 _ 01 - Putting The Basics In Place (1e - Template Inheritance)-->
 {% endfor %}
 

@@ -62,6 +62,7 @@
 
 .card {
     width: 18em;
+    margin-bottom: 1em;
 }
 
 .card img {
@@ -93,8 +94,9 @@ aside {
     font-style: italic;
     background-color: #f8f9fa;
     text-align: left;
-    
   }
+
+ 
 /* ------------------------- Media queries ----------------------------- */
 /*- < 250px-*/
     @media only screen and (max-width: 249px) {
@@ -114,6 +116,9 @@ aside {
         .card {
             width: 12em;
         }
+        aside {
+            display: none;
+            }
   }
   
   /*- 250px - 320px -*/
@@ -135,6 +140,9 @@ aside {
     .card {
         width: 12em;
     }
+    aside {
+        display: none;
+        }
   }
   
   /*- 321px - 499px -*/
@@ -152,6 +160,9 @@ aside {
     .card {
         width: 12em;
     }
+    aside {
+        display: none;
+        }
   }
   
   /*- 500px - 767px -*/
@@ -162,8 +173,12 @@ aside {
     }
     .card {
         width: 14em;
+        
     }
     
+    aside {
+    display: none;
+    }
 }
   /*- 768px - 991px -*/
   @media only screen and (min-width: 768px) and (max-width: 991px) {
