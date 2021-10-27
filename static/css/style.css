@@ -19,7 +19,7 @@
     margin:  0 0 0 0;
 }
 
-.home-page:hover, .join-page:hover, .signup-page:hover, .search-box:hover {
+.home-page:hover, .join-page:hover, .signup-page:hover, .search-box:hover, .genre-button:hover {
     background-color: #198754;
     font-family:Pacifico;
 }
