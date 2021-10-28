@@ -2,20 +2,55 @@
 
 {% block content %}
 
+
 {% for gen in genre %}
-        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-          <div class="card">
-              <img src="static/images/fiction.jpg" class="card-img-top" alt="fiction image" aria-label="fiction image">
-              <div class="card-body">
-                  <h5 class="card-title">{{ gen.genre_name }}</h5>
+<div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+    <div class="card">
+              <img src=static/images/{{gen.genre_name|lower}}.jpg class="card-img-top" alt=" genre image" aria-label="fiction image">
+        
+            <div class="card-body">
+            <h5 class="card-title">{{ gen.genre_name }}</h5>
 
-                  <p class="card-text">{{gen.genre_description}}</p>
-                  <a href="#" class="btn btn-outline-success genre-button">Explore {{ gen.genre_name }}</a>
+            <p class="card-text">{{gen.genre_description}}</p>
+            <a href="#" class="btn btn-outline-success genre-button">Explore {{ gen.genre_name }}</a>
 
-              </div>
-          </div>
-      </div>
-<!-- Next vid = Flask Mini-Project 20 _ 01 - Putting The Basics In Place (1e - Template Inheritance)-->
+        </div>
+    </div>
+</div>
+        
+<!-- Need to figure out why it adds an extra category onto each existing-->
+{% if os.path.exists('./static/userdata/{{gen.genre_name}.jpg') %}
+<div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+    <div class="card">
+        <img src=static/images/default.jpg class="card-img-top" alt=" default image" aria-label="default image">
+        
+        <div class="card-body">
+            <h5 class="card-title">{{ gen.genre_name }}</h5>
+
+            <p class="card-text">{{gen.genre_description}}</p>
+            <a href="#" class="btn btn-outline-success genre-button">Explore {{ gen.genre_name }}</a>
+
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+    <div class="card">
+        <img src=static/images/default.jpg class="card-img-top" alt=" default image" aria-label="default image">
+        
+        <div class="card-body">
+            <h5 class="card-title">{{ gen.genre_name }}</h5>
+
+            <p class="card-text">{{gen.genre_description}}</p>
+            <a href="#" class="btn btn-outline-success genre-button">Explore {{ gen.genre_name }}</a>
+
+        </div>
+    </div>
+</div>
+    <!-- Break out of the loop ?-->
+{% endif %}
 {% endfor %}
+
+
 
 {% endblock %}

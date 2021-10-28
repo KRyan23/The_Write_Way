@@ -1,4 +1,5 @@
 import os
+
 from flask import (Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
@@ -15,6 +16,10 @@ myvar.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(myvar)
 
+@myvar.context_processor
+def handle_context():
+    return dict(os=os)
+    
 @myvar.route("/")
 @myvar.route("/get_genre")
 
@@ -28,8 +33,4 @@ if __name__ == "__main__":
             port=int(os.environ.get("PORT")),
             debug=True)
       
-
-#@myvar.route("/get_genre")
-#def get_genre():
-#    genre = mongo.db.genre.find()
-#    return render_template("genre.html", genre=genre)
+# 
