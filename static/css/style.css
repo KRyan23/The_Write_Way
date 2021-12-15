@@ -24,6 +24,12 @@
     font-family:Pacifico;
 }
 
+.card:hover {
+    border: 1px solid #198754;
+    background-color: #e9ecef;
+}
+
+
 .input-box:focus {
     border-color: #198754;  
     box-shadow: none; 
@@ -52,11 +58,11 @@
 }
 
 .introduction {
-    padding: 2em 2em 2em 0em;
+    padding: 2em 0 0.25em 0;
 }
 
 .introduction h2 {
-    padding-top: 20px;
+    padding: 0 0 1em 0;
     font-family:Pacifico;
 }
 
