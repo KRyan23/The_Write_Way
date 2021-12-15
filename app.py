@@ -15,7 +15,7 @@ myvar.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 myvar.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(myvar)
-
+#define a function to handle checking source files
 @myvar.context_processor
 def handle_context():
     return dict(os=os)
@@ -27,6 +27,7 @@ def handle_context():
 def get_genre():
     genre = mongo.db.genre.find()
     return render_template("genre.html", genre=genre)
+
 
 if __name__ == "__main__":
     myvar.run(host=os.environ.get("IP"),

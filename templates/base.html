@@ -66,39 +66,14 @@
  </aside>
 
 <!-- Introduction -->
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <div class="introduction">
-            <p><span class="paragraph-styling">Welcome</span> to <span span class="paragraph-styling">The Write Way</span>, a site for reading enthusiasts and writers alike. Feel free to read our vast selection of stories.
-            We encourage every visitor to Join our service and contribute by adding their own story.</p>
-            <h2>Browse our categories........</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <div class="container ">
-      <div class="row">
-    {% block content%}
-          
-      {% endblock %}
-    </div>
-  </div>
+    
+  <!-- Initally From the Genre page, then every other template page there after  -->
+  <section>
+    {% block content %} 
+    {% endblock %}
+  </section> 
   
   
-  <!--
-
-    Need to loop through and put the correct image with each genre.
-   <img src="static/images/fiction.jpg" class="card-img-top" alt="fiction image" aria-label="fiction image">
-   
-    <img src="static/images/horror.jpg" class="card-img-top" alt="horror image" aria-label="horror image">
-   
-    <img src="static/images/ufos.jpg" class="card-img-top" alt="sci-fi image" aria-label="sci-fi image">
-        
- -->
-
-
   <footer class="text-center bg-light">
     <div class="container pt-4">
       <section class="mb-4">

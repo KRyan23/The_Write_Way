@@ -1,56 +1,41 @@
 {% extends "base.html" %}
 
+{% block title %}
+Genre
+{% endblock %}
+
 {% block content %}
-
-
-{% for gen in genre %}
-<div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-    <div class="card">
-              <img src=static/images/{{gen.genre_name|lower}}.jpg class="card-img-top" alt=" genre image" aria-label="fiction image">
-        
-            <div class="card-body">
-            <h5 class="card-title">{{ gen.genre_name }}</h5>
-
-            <p class="card-text">{{gen.genre_description}}</p>
-            <a href="#" class="btn btn-outline-success genre-button">Explore {{ gen.genre_name }}</a>
-
-        </div>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="introduction">
+            <h2 class="">Browse our categories........</h2>
+          </div>
+      </div>
     </div>
-</div>
-        
-<!-- Need to figure out why it adds an extra category onto each existing-->
-{% if os.path.exists('./static/userdata/{{gen.genre_name}.jpg') %}
-<div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-    <div class="card">
-        <img src=static/images/default.jpg class="card-img-top" alt=" default image" aria-label="default image">
-        
-        <div class="card-body">
-            <h5 class="card-title">{{ gen.genre_name }}</h5>
+  </div>
 
-            <p class="card-text">{{gen.genre_description}}</p>
-            <a href="#" class="btn btn-outline-success genre-button">Explore {{ gen.genre_name }}</a>
+  <div class="container genre-cards">
+    <div class="row">
 
+        {%- for gen in genre -%}
+        {% set picExtension = '.jpg' %}
+        
+        <div class="col d-flex justify-content-center col-lg-4">
+            <div class="card">
+                <img src="static/images/{{ gen.genre_name|lower+picExtension }}" onerror="this.src='static/images/default.jpg';"
+                    class="card-img-top" alt=" {{ gen.genre_name }} Image" aria-label="{{ gen.genre_name }} Image" />
+                <div class="card-body">
+                    <h5 class="card-title">{{ gen.genre_name }}</h5>
+                    <p class="card-text">{{gen.genre_description}}</p>
+                    <a href="#" class="btn btn-outline-success genre-button stretched-link">Explore {{ gen.genre_name }}</a>
+                    <!-- looks Like it giving an error here because its tryin to build urls for pages that dont exist -->
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-{% else %}
-<div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-    <div class="card">
-        <img src=static/images/default.jpg class="card-img-top" alt=" default image" aria-label="default image">
         
-        <div class="card-body">
-            <h5 class="card-title">{{ gen.genre_name }}</h5>
-
-            <p class="card-text">{{gen.genre_description}}</p>
-            <a href="#" class="btn btn-outline-success genre-button">Explore {{ gen.genre_name }}</a>
-
+        {%- endfor -%}
         </div>
-    </div>
-</div>
-    <!-- Break out of the loop ?-->
-{% endif %}
-{% endfor %}
-
-
-
+        </div>
+        
 {% endblock %}
