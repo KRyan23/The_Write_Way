@@ -1,9 +1,41 @@
 {% extends "base.html" %}
 
+{% block title %}
+Genre
+{% endblock %}
+
 {% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="introduction">
+            <h2 class="">Browse our categories........</h2>
+          </div>
+      </div>
+    </div>
+  </div>
 
-    {% for genre in genre %}
-        {{ genre.genre_name }}<br>
-    {% endfor %}
+  <div class="container genre-cards">
+    <div class="row">
 
+        {%- for gen in genre -%}
+        {% set picExtension = '.jpg' %}
+        
+        <div class="col d-flex justify-content-center col-lg-4">
+            <div class="card">
+                <img src="static/images/{{ gen.genre_name|lower+picExtension }}" onerror="this.src='static/images/default.jpg';"
+                    class="card-img-top" alt=" {{ gen.genre_name }} Image" aria-label="{{ gen.genre_name }} Image" />
+                <div class="card-body">
+                    <h5 class="card-title">{{ gen.genre_name }}</h5>
+                    <p class="card-text">{{gen.genre_description}}</p>
+                    <a href="#" class="btn btn-outline-success genre-button stretched-link">Explore {{ gen.genre_name }}</a>
+                    <!-- looks Like it giving an error here because its tryin to build urls for pages that dont exist -->
+                </div>
+            </div>
+        </div>
+        
+        {%- endfor -%}
+        </div>
+        </div>
+        
 {% endblock %}
