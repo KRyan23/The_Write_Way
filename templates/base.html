@@ -20,8 +20,8 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="static/images/pen.png" class="logo"></a>
-        <h1 class="main-heading" aria-label="Site Heading">The Write Way</h1>
+        <a class="navbar-brand" href="#"><img src="static/images/pen.png" title="Image of pen" aria-current="Image of pen" alt="Image of pen" class="logo"></a>
+        <h1 class="main-heading" title="Site Heading" aria-label="Site Heading">The Write Way</h1>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Mobile Nfromavigation">
           <span class="navbar-toggler-icon"></span>
@@ -30,23 +30,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 navigation-styling">
             <li class="nav-item">
-              <a class="nav-link active home-page" aria-current="Home Page" href="#"><span
+              <a class="nav-link active home-page" title="Home" aria-current="Home Page" href="#"><span
                   class="text-menu-style">Home</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active join-page" aria-label="Join Us" href="#"><span class="text-menu-style">Join
+              <a class="nav-link active join-page" title="Join Us" aria-label="Join Us" href="#"><span class="text-menu-style">Join
                   Us</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active signup-page" aria-label="Sign Up" href="#"><span class="text-menu-style">Sign
-                  Up</span></a>
+              <a class="nav-link active signup-page" title="Sign In" aria-label="Sign In" href="#"><span class="text-menu-style">Sign
+                  In</span></a>
             </li>
 
           </ul>
           <form class="d-flex">
             <input class="form-control me-2 input-box" type="search" placeholder="Search Stories.."
-              aria-label="Search Box">
-            <button class="btn btn-outline-success search-box" type="submit">Search</button>
+            title="search box" aria-label="Search">
+            <button class="btn btn-outline-success search-box" type="submit" >Search</button>
           </form>
         </div>
       </div>
@@ -55,7 +55,7 @@
 <!-- News content-->
 
   <aside class="news-content">
-    <h3>Latest News</h3>
+    <h3 title="News Content" aria-label="News content">Latest News</h3>
     
     <ul>
       <li><p>Our Top read of the week</p> <!--pull some stat from the db--></li>
@@ -66,7 +66,25 @@
  </aside>
 
 <!-- Introduction -->
-    
+<section>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="introduction">
+            <p title="introduction" aria-label="introduction"><span class="paragraph-styling">Welcome </span>to the <span class="paragraph-styling">Write Way,</span>
+              a site for reading enthusiasts and writers alike. Feel free to read our vast selection of short stories.
+            </p>
+            <p title="instructions" aria-label="instructions">Get your first short story published with us just by signing up and logging in, its that easy!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-around">
+    <div class="form-group col-sm-12 col-md-11 col-lg-6 col-xl-6">
+      <hr>
+    </div>
+  </div>
+  </section>
   <!-- Initally From the Genre page, then every other template page there after  -->
   <section>
     {% block content %} 
@@ -97,8 +115,8 @@
     </div>
 
     <div class="text-center text-dark p-1 copyright-styling">
-      <p>The Write Way © 2021 | All rights reserved. The terms under which this service is provided to you is outlined
-        in the <a href="policy.html" class="text-dark">Privacy Policy.</a></p>
+      <p title="Privacy Policy" aria-label="Privacy Policy">The Write Way © 2021 | All rights reserved. The terms under which this service is provided to you is outlined
+        in the <a href="{{ url_for('policy') }}" class="text-dark">Privacy Policy.</a></p>
     </div>
   </footer>
 

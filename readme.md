@@ -209,11 +209,15 @@ The project was deployed using the steps below.
 
 ### Content
 
--   All content was written by myself with some minor contributions by family and friends.
+-   Privacy Policy - Some of the privacy policy was borrowed from [this link](https://www.booksie.com/member/privacy-policy) to save time on the project. 
+-   The remaining content was written by myself with some minor contributions by family and friends.
 
 &nbsp;
 # README DONE TO HERE !
-Media
+### Media
+
+
+
 
 Images
 
