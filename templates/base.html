@@ -79,9 +79,11 @@
         </div>
       </div>
     </div>
-    <div class="form-group col-sm-12 col-md-11 col-lg-11 col-xl-11">
+    <div class="row justify-content-around">
+    <div class="form-group col-sm-12 col-md-11 col-lg-6 col-xl-6">
       <hr>
     </div>
+  </div>
   </section>
   <!-- Initally From the Genre page, then every other template page there after  -->
   <section>
@@ -114,7 +116,7 @@
 
     <div class="text-center text-dark p-1 copyright-styling">
       <p title="Privacy Policy" aria-label="Privacy Policy">The Write Way © 2021 | All rights reserved. The terms under which this service is provided to you is outlined
-        in the <a href="policy.html" class="text-dark">Privacy Policy.</a></p>
+        in the <a href="{{ url_for('policy') }}" class="text-dark">Privacy Policy.</a></p>
     </div>
   </footer>
 

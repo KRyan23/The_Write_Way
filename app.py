@@ -29,6 +29,14 @@ def get_genre():
     return render_template("genre.html", genre=genre)
 
 
+@myvar.route("/policy")
+
+
+def policy():
+    policy = mongo.db.policy.find()
+    return render_template("policy.html", policy=policy)
+
+
 if __name__ == "__main__":
     myvar.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
