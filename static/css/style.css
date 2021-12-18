@@ -30,6 +30,15 @@ a {
     font-family:Pacifico;
 }
 
+.policy-link:hover {
+    color:#198754;
+}
+
+.policy-heading {
+    margin-top: 0.5em;
+    font-family:Pacifico;
+}
+
 .card:hover {
     border: 1px solid #198754;
     background-color: #e9ecef;

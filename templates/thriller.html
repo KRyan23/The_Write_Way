@@ -16,8 +16,57 @@
     </div>
 </div>
 
+<div class="container genre-cards">
+    <div class="row">
+{% set TheId = namespace(value=0) %}
+<!-- generates unique ids for each story -->
+{%- for t in thriller -%}
+{% set TheId.value = TheId.value + 1 %}
 
+<div class="container story-styling">
+    <div class="row active-story">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-6"></div>
+        <div class="list-group">
+            <div class="list-group-item list-group-item-action" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                    <h4 class="mb-1"><span class="story-title">Title: </span> {{ t.thriller_name }}</h4><small>Author:
+                        <span class="paragraph-styling author-styling">{{ t.thriller_author }}</span></small>
+                </div>
+                <h4 class="mb-1"><span class="story-title">Plot: </span><span class="story-plot">{{
+                    t.thriller_plot}}</span></h4>
+                <div class="d-flex w-100 justify-content-between">
+                    <h4 class="mb-1"></h4><small>Popularity: <span class="badge bg-success rounded-pill">{{
+                        t.thriller_popularity }}</span></small>
+                </div>
+                <a href="#opening"><button type="button" data-bs-toggle="collapse"
+                        data-bs-target="#the-id-of-{{ TheId.value }}"
+                        class="btn btn-outline-success text-center col-12 change-text stretched-link"
+                        aria-expanded="false" aria-controls="collapsed story">
+                        <span>Read</span><span class="hidden">Hide</span> {{ t.thriller_name }} </button></a>
+                <div class="collapse" id="the-id-of-{{ TheId.value }}">
+                    <br>
+                    <div class="card card-story card w-100 mt-2">
+                        <div class="card-body">
+                            {{ t.thriller_content }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+{% endfor %}
 
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+            <a href="#top-of-page"><button type="button" class="btn btn-outline-success btn-lg">
+                    <h5><i class="far fa-arrow-alt-circle-up fa-lg"></i><span class="back-to-top">Back to Top</span><i
+                            class="far fa-arrow-alt-circle-up fa-lg"></i></h5>
+                </button></a>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
