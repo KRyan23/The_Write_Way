@@ -228,12 +228,15 @@ aside p {
     .fab {
         font-size: 0.8em;
     }
+
     .card {
         width: 12em;
     }
+
     aside {
         display: none;
-        }
+    }
+    
     h4 {
        font-size: 0.95em;
     }
@@ -255,6 +258,7 @@ aside p {
         font-size: 1.6em;
         padding: 0 0 0 0;
     }
+    
     .card {
         width: 14em;
     }

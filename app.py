@@ -69,11 +69,19 @@ def horror():
     horror = mongo.db.horror.find()
     return render_template("horror.html", horror=horror, title="Horror")
 
+
 @myvar.route("/thriller")
 
 def thriller():
     thriller = mongo.db.thriller.find()
     return render_template("thriller.html", thriller=thriller, title="Thriller")
+
+
+@myvar.route("/join")
+
+def join():
+    join = mongo.db.join.find()
+    return render_template("join.html", join=join, title="Join Us")
 
 
 if __name__ == "__main__":
