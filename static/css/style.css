@@ -138,6 +138,12 @@ aside p {
   padding: 0.75em 0 1em 0;
 }
 
+.form-hr {
+    color: #198754;
+    padding: 0 0 0 0;
+    opacity: 1;
+}
+
   /* Style for story containers*/
  
 .story-styling {
@@ -188,6 +194,38 @@ aside p {
 .btn-lg {
     margin: 0.75em 0 1.5em 0;
 }
+
+.background-theme {
+    background-color:#f8f9fa;
+    border-color: #198754;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px 5px 5px 5px;
+    opacity: 0.95;
+}
+
+.form-styling {
+    padding: 3em 0 0 0.5em;
+}
+
+.form-label-spacing {
+    padding: 0.5em 0 0.5em 0;
+}
+
+.flash-message {
+    padding: 1em 0.25em 0 0.25em;
+    line-height: 1.6;
+}
+
+.change-text-color {
+    color:black;
+}
+
+.login-options {
+    margin: 1.45em 0 1.75em 0;
+    color: black;
+}
+
 /* ------------------------- Media queries ----------------------------- */
 /*- < 250px-*/
     @media only screen and (max-width: 249px) {
@@ -278,7 +316,13 @@ aside p {
 
     .author-styling {
         font-size: 0.8em;
-      }
+    }
+
+    .background-theme {
+        background-color:#f8f9fa;
+        border-color: #fafafa;
+        
+    }
   }
   
   /*- 500px - 767px -*/
@@ -294,6 +338,11 @@ aside p {
     
     aside {
     display: none;
+    }
+
+    .background-theme {
+        background-color:#f8f9fa;
+        
     }
 }
   /*- 768px - 991px -*/
@@ -321,10 +370,13 @@ aside p {
         padding: 0 1em 0 0;
     }
     .navigation-styling {
-        padding: 0 2em 0 2em;
+        padding: 0 0.5em 0 0.5em;
         
     }
 
+    .search-input-box {
+        margin-left: 0.5em;
+    }
     .card {
         width: 16em;
     }
