@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
+
 a {
     text-decoration: none;
     color:black;
@@ -227,12 +228,22 @@ aside p {
     .fab {
         font-size: 0.8em;
     }
+
     .card {
         width: 12em;
     }
+
     aside {
         display: none;
-        }
+    }
+    
+    h4 {
+       font-size: 0.95em;
+    }
+    
+    .author-styling {
+       font-size: 0.75em;
+    }
   }
   
   /*- 321px - 499px -*/
@@ -247,12 +258,27 @@ aside p {
         font-size: 1.6em;
         padding: 0 0 0 0;
     }
+    
     .card {
-        width: 12em;
+        width: 14em;
     }
+
     aside {
         display: none;
-        }
+    }
+
+    .card-padding {
+        padding-left: 1.6em;
+        
+    }
+
+    h4 {
+        font-size: 1.1em;
+    }
+
+    .author-styling {
+        font-size: 0.8em;
+      }
   }
   
   /*- 500px - 767px -*/
