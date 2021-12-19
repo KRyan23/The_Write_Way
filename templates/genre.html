@@ -29,7 +29,7 @@ Genre
                     <h5 class="card-title">{{ gen.genre_name }}</h5>
                     <p class="card-text">{{gen.genre_description}}</p>
                     <a href="{{ url_for(gen.genre_name|lower) }}" class="btn btn-outline-success genre-button stretched-link">Explore {{ gen.genre_name }}</a>
-                    <!-- looks Like it giving an error here because its tryin to build urls for pages that dont exist -->
+                    
                 </div>
             </div>
         </div>
