@@ -4,14 +4,18 @@
 {{ title }}
 {% endblock %}
 
-{% block content %}
+{% block form_instructions%}
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
       <p>Please take a moment to register with us and you will be on your way shortly to pen your first masterpeice!</p>
-    </div>
+   </div>
   </div>
 </div>
+{% endblock %}
+
+{% block content %}
+
 <div class="container introduction form-styling">
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -21,7 +25,7 @@
           <div class="row d-flex justify-content-around">
             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
               <br>
-              <h2 class="text-center">{{ title }}</h2>
+              <h2 class="text-center" title="Form Title" aria-label="Form Title">{{ title }}</h2>
               <hr class="form-hr">
               <p class="form-label-spacing">Please fill out the form below to complete registration</p>
             </div>
@@ -29,7 +33,7 @@
           <div class="row d-flex justify-content-around">
             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
               <label for="first-name" class="form-label form-label-spacing">First name</label>
-              <input type="text" class="form-control" id="first-name" placeholder="John" name="first-name" minlength="2"
+              <input type="text" class="form-control" id="first-name" placeholder="John" name="first-name" title="First Name" aria-label="First Name" minlength="2"
                 maxlength="15" required>
               <div class="valid-feedback">
                 Your all set!
@@ -42,7 +46,7 @@
           <div class="row d-flex justify-content-around">
             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
               <label for="last-name" class="form-label form-label-spacing">Last name</label>
-              <input type="text" class="form-control" id="last-name" placeholder="Doe" name="last-name" minlength="2"
+              <input type="text" class="form-control" id="last-name" placeholder="Doe" name="last-name" title="Last Name" aria-label="Last Name" minlength="2"
                 maxlength="20" required>
               <div class="valid-feedback">
                 Your all set!
@@ -55,7 +59,7 @@
           <div class="row d-flex justify-content-around">
             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
               <label for="pen-name" class="form-label form-label-spacing">Pen name</label>
-              <input type="text" class="form-control" id="pen-name" name="pen-name" placeholder="ficticious public name"
+              <input type="text" class="form-control" id="pen-name" name="pen-name" aria-label="Pen Name" title="Pen Name" placeholder="Ficticious Authors Name"
                 minlength="3" maxlength="20" required>
               <div class="valid-feedback">
                 Your all set!
@@ -68,7 +72,7 @@
           <div class="row d-flex justify-content-around">
             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
               <label for="password" class="form-label form-label-spacing">Password</label>
-              <input type="text" class="form-control" id="password" name="password"
+              <input type="text" class="form-control" id="password" name="password" aria-label="Password" title="Password" 
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="8 or more characters 0-9, a-z, A-Z" required>
               <div class="valid-feedback">
                 Your all set!
@@ -81,7 +85,7 @@
           <div class="row d-flex justify-content-around">
             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
               <label for="city-name" class="form-label form-label-spacing">City Name</label>
-              <input type="text" class="form-control" id="city-name" name="city-name" minlength="3" maxlength="20"
+              <input type="text" class="form-control" id="city-name" name="city-name" aria-label="City Name" title="City Name" minlength="3" maxlength="20"
                 placeholder="London" required>
               <div class="valid-feedback">
                 Your all set!
@@ -96,7 +100,7 @@
               <!-- The list of countries are from this post https://gist.github.com/danrovito/977bcb97c9c2dfd3398a -->
               <label for="country-name" class="form-label form-label-spacing">Country</label>
 
-              <select id="country-name" name="country-name" class="form-control" required>
+              <select id="country-name" name="country-name" class="form-control" aria-label="Country Name" title="Select Country" required>
                 <option value=""></option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
@@ -356,7 +360,7 @@
           <div class="row d-flex justify-content-around">
             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
               <label for="email-name" class="form-label form-label-spacing">Email</label>
-              <input type="email" class="form-control" id="email-name" name="email-name"
+              <input type="email" class="form-control" id="email-name" name="email-name" aria-label="Email" title="Email"
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
               <div class="valid-feedback">
                 Your all set!
@@ -370,7 +374,7 @@
             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
               <div class="form-check">
                 <br>
-                <input class="form-check-input" type="checkbox" name="terms-name" id="terms-name" required>
+                <input class="form-check-input" type="checkbox" title="Terms and conditions" name="terms-name" aria-label="Agree to terms and conditions" id="terms-name" required>
                 <label class="form-check-label form-label-spacing" for="terms-name">
                   Agree to terms and conditions
                 </label>
@@ -383,7 +387,7 @@
           <div class="row d-flex justify-content-around">
             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
               <br>
-              <button class="btn btn-success text-center" type="submit">Submit form</button>
+              <button class="btn btn-success text-center" type="submit" title="Submit" name="submit" aria-label="Submit Form">Submit form</button>
             </div>
           </div>
           <br>
