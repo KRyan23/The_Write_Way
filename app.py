@@ -1,9 +1,10 @@
 import os
 
 from flask import (Flask, flash, render_template,
-    redirect, request, session, url_for)
+    redirect, request, session, url_for, Markup)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
@@ -77,11 +78,37 @@ def thriller():
     return render_template("thriller.html", thriller=thriller, title="Thriller")
 
 
-@myvar.route("/join")
+@myvar.route("/join", methods=["GET", "POST"])
+
 
 def join():
-    join = mongo.db.join.find()
-    return render_template("join.html", join=join, title="Join Us")
+    if request.method == "POST":
+#check if username exists in database
+        existing_user = mongo.db.user_accounts.find_one(
+            {"pen-name": request.form.get("pen-name").lower()})
+        pen = request.form.get('pen-name')
+        message_failure = Markup("<div class='background-theme text-center '><h4 class='flash-message flex-wrap'>Were sorry but the Pen Name '"+ "<span class='paragraph-styling'>" + pen + "</span>" + "' is already being used by another Author</h4></div><br>")
+        if existing_user:
+	        flash(message_failure)
+	        return redirect(url_for("join"))
+
+        join = {
+            "first-name": request.form.get("first-name").lower(),
+            "last-name": request.form.get("last-name").lower(),
+            "pen-name": request.form.get("pen-name").lower(),
+            "city-name": request.form.get("city-name").lower(),
+            "country-name": request.form.get("country-name").lower(),
+            "email-name": request.form.get("email-name").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.user_accounts.insert_one(join)
+        
+        message_success = Markup("<div class='background-theme text-center '><h4 class='flash-message flex-wrap'>Congratulations '"+ "<span class='paragraph-styling'>" + pen + "</span>" + "' Registration Was Succesful!</h4></div><br>")
+        session["user"] = request.form.get("pen-name").lower()
+        flash(message_success)
+        
+        
+    return render_template("join.html", title="Join Us")
 
 
 @myvar.route("/signin")
