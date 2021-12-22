@@ -84,6 +84,13 @@ def join():
     return render_template("join.html", join=join, title="Join Us")
 
 
+@myvar.route("/signin")
+
+def signin():
+    signin = mongo.db.join.find()
+    return render_template("signin.html", signin=signin, title="Sign In")
+
+
 if __name__ == "__main__":
     myvar.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
