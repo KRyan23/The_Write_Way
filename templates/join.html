@@ -4,67 +4,100 @@
 {{ title }}
 {% endblock %}
 
-{% block form_instructions%}
+{% block content %}
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
       <p>Please take a moment to register with us and you will be on your way shortly to pen your first masterpeice!</p>
-   </div>
+    </div>
   </div>
 </div>
-{% endblock %}
-
-{% block content %}
-
-<!-- Explore using javascript validation here instead of html validation which is weaker -->
 <div class="container introduction form-styling">
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-       <form id="signup-form" method="POST" action="{{ url_for('join') }}">
+      <form id="signup-form" method="POST" class="needs-validation form-intro" novalidate name="the-write-way"
+        action="{{ url_for('join') }}">
         <fieldset class="background-theme">
           <div class="row d-flex justify-content-around">
             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
-          <br>
-          <h2 class="text-center">{{ title }}</h2>
-          <hr class="form-hr"> 
-          <p class="form-label-spacing">Please fill out the form below to complete registration</p>
-        </div>
-        </div>
+              <br>
+              <h2 class="text-center">{{ title }}</h2>
+              <hr class="form-hr">
+              <p class="form-label-spacing">Please fill out the form below to complete registration</p>
+            </div>
+          </div>
           <div class="row d-flex justify-content-around">
             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
               <label for="first-name" class="form-label form-label-spacing">First name</label>
-              <input type="text" class="form-control" id="first-name" placeholder="John" minlength="2" name="first-name" required>
+              <input type="text" class="form-control" id="first-name" placeholder="John" name="first-name" minlength="2"
+                maxlength="15" required>
+              <div class="valid-feedback">
+                Your all set!
+              </div>
+              <div class="invalid-feedback">
+                Please enter a First Name.
+              </div>
             </div>
           </div>
           <div class="row d-flex justify-content-around">
             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
               <label for="last-name" class="form-label form-label-spacing">Last name</label>
-              <input type="text" class="form-control" id="last-name" placeholder="Doe" name="last-name" minlength="2"required>
-            </div>
-          </div>
-            <div class="row d-flex justify-content-around">
-            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
-                <label for="pen-name" class="form-label form-label-spacing">Pen name</label>
-                <input type="text" class="form-control" id="pen-name" name="pen-name" placeholder="ficticious public name" minlength="4" maxlength="20" value="" required>
+              <input type="text" class="form-control" id="last-name" placeholder="Doe" name="last-name" minlength="2"
+                maxlength="20" required>
+              <div class="valid-feedback">
+                Your all set!
+              </div>
+              <div class="invalid-feedback">
+                Please enter a Last Name.
               </div>
             </div>
-            <div class="row d-flex justify-content-around">
-              <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
+          </div>
+          <div class="row d-flex justify-content-around">
+            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
+              <label for="pen-name" class="form-label form-label-spacing">Pen name</label>
+              <input type="text" class="form-control" id="pen-name" name="pen-name" placeholder="ficticious public name"
+                minlength="3" maxlength="20" required>
+              <div class="valid-feedback">
+                Your all set!
+              </div>
+              <div class="invalid-feedback">
+                Please enter a Pen Name.
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-around">
+            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
               <label for="password" class="form-label form-label-spacing">Password</label>
-              <input type="text" class="form-control" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="6" maxlength="20" placeholder="Required 0 - 9, a - z, A - Z and 8 or more characters" required>
+              <input type="text" class="form-control" id="password" name="password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="8 or more characters 0-9, a-z, A-Z" required>
+              <div class="valid-feedback">
+                Your all set!
+              </div>
+              <div class="invalid-feedback">
+                Minimum required 8 <br class="password-message-wrap">characters (0-9, a-z, A-Z)
+              </div>
             </div>
           </div>
-            <div class="row d-flex justify-content-around">
-              <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
+          <div class="row d-flex justify-content-around">
+            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
               <label for="city-name" class="form-label form-label-spacing">City Name</label>
-              <input type="text" class="form-control" id="city-name" name="city-name" maxlength="20" placeholder="London" required>
+              <input type="text" class="form-control" id="city-name" name="city-name" minlength="3" maxlength="20"
+                placeholder="London" required>
+              <div class="valid-feedback">
+                Your all set!
+              </div>
+              <div class="invalid-feedback">
+                Please enter a City.
+              </div>
             </div>
           </div>
-            <div class="row d-flex justify-content-around">
+          <div class="row d-flex justify-content-around">
             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
               <!-- The list of countries are from this post https://gist.github.com/danrovito/977bcb97c9c2dfd3398a -->
               <label for="country-name" class="form-label form-label-spacing">Country</label>
+
               <select id="country-name" name="country-name" class="form-control" required>
+                <option value=""></option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
                 <option value="Albania">Albania</option>
@@ -194,7 +227,8 @@
                 <option value="Lithuania">Lithuania</option>
                 <option value="Luxembourg">Luxembourg</option>
                 <option value="Macao">Macao</option>
-                <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>
+                <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of
+                </option>
                 <option value="Madagascar">Madagascar</option>
                 <option value="Malawi">Malawi</option>
                 <option value="Malaysia">Malaysia</option>
@@ -267,7 +301,8 @@
                 <option value="Solomon Islands">Solomon Islands</option>
                 <option value="Somalia">Somalia</option>
                 <option value="South Africa">South Africa</option>
-                <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands</option>
+                <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich
+                  Islands</option>
                 <option value="Spain">Spain</option>
                 <option value="Sri Lanka">Sri Lanka</option>
                 <option value="Sudan">Sudan</option>
@@ -309,36 +344,52 @@
                 <option value="Yemen">Yemen</option>
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
-             </select>
-          </div>
-        </div>
-        <div class="row d-flex justify-content-around">
-          <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
-            <label for="email-name" class="form-label form-label-spacing">Email</label>
-            <input type="email" class="form-control" id="email-name" name="email-name" required>
-          </div>
-        </div>
-        <div class="row d-flex justify-content-around">
-          <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
-            <div class="form-check">
-                <br>
-              <input class="form-check-input" type="checkbox" name="terms-name" id="terms-name" required>
-              <label class="form-check-label form-label-spacing" for="terms-name">
-                Agree to terms and conditions
-              </label>
+              </select>
+              <div class="valid-feedback">
+                Your all set!
+              </div>
+              <div class="invalid-feedback">
+                Please Select a Country.
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row d-flex justify-content-around">
-          <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
-              <br>
-            <button class="btn btn-success text-center" type="submit">Submit form</button>
+          <div class="row d-flex justify-content-around">
+            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
+              <label for="email-name" class="form-label form-label-spacing">Email</label>
+              <input type="email" class="form-control" id="email-name" name="email-name"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+              <div class="valid-feedback">
+                Your all set!
+              </div>
+              <div class="invalid-feedback">
+                Please enter a Valid Email.
+              </div>
+            </div>
           </div>
-        </div>
+          <div class="row d-flex justify-content-around">
+            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
+              <div class="form-check">
+                <br>
+                <input class="form-check-input" type="checkbox" name="terms-name" id="terms-name" required>
+                <label class="form-check-label form-label-spacing" for="terms-name">
+                  Agree to terms and conditions
+                </label>
+                <div class="invalid-feedback">
+                  "You need to agree to the T's & C's."
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-around">
+            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
+              <br>
+              <button class="btn btn-success text-center" type="submit">Submit form</button>
+            </div>
+          </div>
           <br>
-      </fieldset>
-    </form>
+        </fieldset>
+      </form>
+    </div>
   </div>
-</div>
 </div>
 {% endblock %}
