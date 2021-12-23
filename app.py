@@ -9,6 +9,7 @@ if os.path.exists("env.py"):
     import env
 
 
+
 myvar = Flask(__name__)
 
 myvar.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -87,7 +88,7 @@ def join():
         existing_user = mongo.db.user_accounts.find_one(
             {"pen-name": request.form.get("pen-name").lower()})
         pen = request.form.get('pen-name')
-        message_failure = Markup("<div class='background-theme text-center '><h4 class='flash-message flex-wrap'>Were sorry but the Pen Name '"+ "<span class='paragraph-styling'>" + pen + "</span>" + "' is already being used by another Author</h4></div><br>")
+        message_failure = Markup("<div class='background-theme text-center '><h4 class='flash-message flex-wrap'>Were sorry but the Pen Name<br> '"+ "<span class='paragraph-styling'>" + pen + "</span>" + "'<br> is already in use by another Author</h4></div><br>")
         if existing_user:
 	        flash(message_failure)
 	        return redirect(url_for("join"))
@@ -103,7 +104,9 @@ def join():
         }
         mongo.db.user_accounts.insert_one(join)
         
-        message_success = Markup("<div class='background-theme text-center '><h4 class='flash-message flex-wrap'>Congratulations '"+ "<span class='paragraph-styling'>" + pen + "</span>" + "' Registration Was Succesful!</h4></div><br>")
+        message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Congratulations<br> '"
+        + "<span class='paragraph-styling'>" + pen + "'</span><br>" + "Registration Was Successful!"+"<p></p>"+
+        "<h5 id='success-message-signin'></h5>"+"</h4></div><br>")
         session["user"] = request.form.get("pen-name").lower()
         flash(message_success)
         
@@ -122,5 +125,3 @@ if __name__ == "__main__":
     myvar.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
-      
-# 

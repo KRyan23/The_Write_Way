@@ -29,6 +29,7 @@ a {
     background-color: #198754;
     margin: 0;
     font-family:Pacifico;
+    font-weight: 200;
 }
 
 .policy-link:hover {
@@ -222,12 +223,14 @@ aside p {
 }
 
 .change-text-color {
-    color:black;
+    color: black;    
 }
 
 .login-options {
     margin: 1.45em 0 1.75em 0;
     color: black;
+    font-size: 1em;
+    font-weight: 500;
 }
 
 

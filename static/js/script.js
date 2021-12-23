@@ -28,6 +28,16 @@ var forms = document.querySelectorAll('.needs-validation')
     })
   }
 
+/* For the signin button on suceesful registration */
+
+function checkForSuccess(){
+  document.getElementById('success-message-signin').insertAdjacentHTML(
+    'afterbegin', `<a class="nav-link active nav-link" aria-label="Sign In" href="/signin">
+    <span class="text-menu-style change-text-color">Click Here to Sign In</span></a>`); 
+}
+
+
 
 changeButtonText();  
-validateForms();
+validateForms(); 
+checkForSuccess();
