@@ -121,6 +121,14 @@ def signin():
     return render_template("signin.html", signin=signin, title="Sign In")
 
 
+@myvar.route("/resetpassword")
+
+def resetpassword():
+    resetpassword = mongo.db.join.find()
+    #Just need to add the logic to check both passwords match
+    return render_template("resetpassword.html", resetpassword=resetpassword, title="Reset Password")
+
+
 if __name__ == "__main__":
     myvar.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
