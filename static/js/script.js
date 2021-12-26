@@ -1,4 +1,5 @@
-$().jquery
+var validPassword = "Not A Match" ;
+var inValidPassword = "Your all set!";
 
 /* To Display, Read/Hide Story when clicked */
 function changeButtonText(){
@@ -28,7 +29,7 @@ var forms = document.querySelectorAll('.needs-validation')
     })
   }
 
-/* For the signin button on suceesful registration */
+/* For the signin button on succeesful registration */
 
 function checkForSuccess(){
   document.getElementById('success-message-signin').insertAdjacentHTML(
@@ -36,8 +37,24 @@ function checkForSuccess(){
     <span class="text-menu-style change-text-color">Click Here to Sign In</span></a>`); 
 }
 
+/*  For password checking */
 
+$(document).ready(function () {
+  $("#passwordField2").keyup(checkPasswordMatch);
+ });
 
+function checkPasswordMatch() {
+   let p1 = $("#passwordField1").val();
+   let p2 = $("#passwordField2").val();
+   
+   if (p1 !== p2){
+      $("#validPassword").html(validPassword).addClass('password-check-failure');
+      $('#submitForm').addClass('disabled');
+   }else{
+      $("#validPassword").html(inValidPassword).addClass('password-check-success').removeClass('password-check-failure');
+      $('#submitForm').removeClass('disabled');
+  }
+}
 changeButtonText();  
 validateForms(); 
 checkForSuccess();
