@@ -86,20 +86,20 @@ def join():
     if request.method == "POST":
 #check if username exists in database
         existing_user = mongo.db.user_accounts.find_one(
-            {"pen-name": request.form.get("pen-name").lower()})
-        pen = request.form.get('pen-name')
+            {"pen_name": request.form.get("pen_name").lower()})
+        pen = request.form.get('pen_name')
         message_failure = Markup("<div class='background-theme text-center '><h4 class='flash-message flex-wrap'>Were sorry but the Pen Name<br> '"+ "<span class='paragraph-styling'>" + pen + "</span>" + "'<br> is already in use by another Author</h4></div><br>")
         if existing_user:
 	        flash(message_failure)
 	        return redirect(url_for("join"))
 
         join = {
-            "first-name": request.form.get("first-name").lower(),
-            "last-name": request.form.get("last-name").lower(),
-            "pen-name": request.form.get("pen-name").lower(),
-            "city-name": request.form.get("city-name").lower(),
-            "country-name": request.form.get("country-name").lower(),
-            "email-name": request.form.get("email-name").lower(),
+            "first_name": request.form.get("first_name").lower(),
+            "last_name": request.form.get("last_name").lower(),
+            "pen_name": request.form.get("pen_name").lower(),
+            "city_name": request.form.get("city_name").lower(),
+            "country_name": request.form.get("country_name").lower(),
+            "email_name": request.form.get("email_name").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
         mongo.db.user_accounts.insert_one(join)
@@ -107,27 +107,52 @@ def join():
         message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Congratulations<br> '"
         + "<span class='paragraph-styling'>" + pen + "'</span><br>" + "Registration Was Successful!"+"<p></p>"+
         "<h5 id='success-message-signin'></h5>"+"</h4></div><br>")
-        session["user"] = request.form.get("pen-name").lower()
+        session["user"] = request.form.get("pen_name").lower()
         flash(message_success)
+        return redirect(url_for('profilePage', username=session["user"]))
         
         
     return render_template("join.html", title="Join Us")
 
 
-@myvar.route("/signin")
+@myvar.route("/signin", methods=["GET", "POST"])
 
 def signin():
-    signin = mongo.db.join.find()
-    return render_template("signin.html", signin=signin, title="Sign In")
+    if request.method == "POST":
+        signin = mongo.db.user_accounts.find_one(
+            {"pen_name": request.form.get("pen_name").lower()})
+
+        if signin:
+            if check_password_hash(
+               signin["password"], request.form.get("password")):
+               session["user"] = request.form.get("password")
+               print("Login Successful")
+               flash("Welcome Name")
+               
+            else:
+               print("Sorry Incorrect Password")
+               flash("Incorrect Password")
+               return redirect(url_for("signin"))
+        else:
+            flash("Username does not exist")
+            return redirect(url_for('signin'))
+
+    return render_template("signin.html", title="Sign In")
 
 
-@myvar.route("/resetpassword")
+@myvar.route("/resetPassword")
 
 def resetpassword():
     resetpassword = mongo.db.join.find()
     #Just need to add the logic to check both passwords match
     return render_template("resetpassword.html", resetpassword=resetpassword, title="Reset Password")
 
+@myvar.route("/profilePage/<pen_name>", methods=["GET", "POST"])
+
+def profilePage(pen_name):
+    pen_name = mongo.db.user_accounts.find_one(
+        {"pen_name": session["user"]})["pen_name"]
+    return render_template("profilePage.html", pen_name=pen_name)
 
 if __name__ == "__main__":
     myvar.run(host=os.environ.get("IP"),
