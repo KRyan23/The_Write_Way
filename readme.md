@@ -10,7 +10,7 @@
 &nbsp;
 
 <p align="center">
-  <img width="30%" height="30%" src="/assets/images/the_write_way_front_page.png">
+  <img width="50%" height="50%" src="static/images/the_write_way_front_page.png">
 </p>
 
 
@@ -49,22 +49,21 @@
             - ![#282828](https://via.placeholder.com/15/282828/000000?text=+) `Charcoal Transistion`
             
     -   #### Typography
-        -   The 'SOMETHING OR OTHER' font is used as the main font used throughout the site with Sans Serif as the fall-back font. 'SOMETHING OR OTHER' was chosen to enhance the sites content by giving a 'Top Secret' / 'Spy' feel.
+        -   The Pacifico font was used in places around the site to give its overall signature and feel. Not only is it an attractive font but it also looks handwritten to fit in with the overall theme. 
+        The Roboto font was used as the main body font due to its readability and popularity on countless other sites as as always should these font be inaccessable san-serif was chosen to be the backup font.
 
     -   #### Imagery
-        - The imagery of the website was chosen to convey a functional feel to fit in with the overall Spy theme.
-
+        - I chose not to add to much imagery beyond what was necessary so as not to distract Readers and Writers from the true purpose of the site, that is the enjoyment of reading and writing content. Any imagery that was chosen, its purpose is to convey an instant message to the visitor.
 
 *   ### Wireframes
 
-    - Desktop Wireframes - [View here](/assets/docs/TheWriteWay-Desktop&SiteMap.pdf)
-    - Tablet Wireframes - [View here](/assets/docs/TheWriteWay-Tablet&SiteMap.pdf)
-    - Mobile Wireframes - [View here](/assets/docs/TheWriteWay-Mobile&SiteMap.pdf)
+    - Desktop Wireframes - [View here](/assets/docs/wireframes/TheWriteWay-SiteMap&Desktop-Layout.pdf)
+    - Tablet Wireframes - [View here](/assets/docs/wireframes/TheWriteWay-SiteMap&Tablet-Layout.pdf)
+    - Mobile Wireframes - [View here](/assets/docs/wireframes/TheWriteWay-SiteMap&Mobile-Layout.pdf)
 
 
-    *   ### Screenshots
-
-        - [View here](/assets/docs/screenshots.pdf)
+*   ### Screenshots
+    - Some screenshots of the site - [View here](/assets/docs/screenshots.pdf)
 
 
 ## Features
@@ -73,7 +72,7 @@
 
 -   Interactive elements
 
--   Create Your Own login
+-   Create and Save your own content
 
 -   CRUD functionality for valid users
 
@@ -84,9 +83,17 @@
 -   [HTML5](https://en.wikipedia.org/wiki/HTML5)
 -   [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
 -   [Javascript](https://en.wikipedia.org/wiki/JavaScript)
--   [MongoDb](https://en.wikipedia.org/wiki/MongoDB)
--   [Heroku](https://en.wikipedia.org/wiki/Heroku)
+-   [Python 3](https://en.wikipedia.org/wiki/Python_(programming_language))
 
+### Databases Used
+
+-   [MongoDb](https://en.wikipedia.org/wiki/MongoDB)
+
+### Services Used
+
+-   [Heroku](https://en.wikipedia.org/wiki/Heroku)
+-   [GitHub:](https://en.wikipedia.org/wiki/github)
+    
 
 ### Frameworks, Libraries & Programs Used
 
@@ -98,15 +105,11 @@
     - Google fonts were used to import the "Saria Stencil One" font into the style.css file which is used on all pages throughout the site.
 4. [Font Awesome v5.15.4:](https://fontawesome.com/)
     - Font Awesome was used on all pages throughout the website to add icons for aesthetic and UX purposes.
-5. [Git](https://git-scm.com/)
-    - Git was used for version control to push to GitHub.
-6. [GitHub:](https://github.com/)
-    - GitHub is used to store the projects code after being pushed from Git.
-7. [GitPod](https://www.gitpod.io/)
+5. [GitPod](https://www.gitpod.io/)
     - GitPod was used as the main development platform, this was linked to my GitHub repository.
-8. [Paint.net:](https://www.getpaint.net/doc/latest/index.html)
+6. [Paint.net:](https://www.getpaint.net/doc/latest/index.html)
     - Paint.net was used for resizing images and editing photos for the website.
-9. [Balsamiq:](https://balsamiq.com/)
+7. [Balsamiq:](https://balsamiq.com/)
     - Balsamiq 4.2.1 was used to create the WireFraming during the design process.
 
 
@@ -184,19 +187,19 @@ The project was deployed using the steps below.
 
 ### MongoDb
 
-[Steps to setup MongoDb](assets/docs/setting_up_mongo_db.pdf)
+[Steps to setup MongoDb](assets/docs/setup-and-deployment/setting_up_mongo_db.pdf)
 
 ### GitHub
 
-[Steps to setup GitHub](assets/docs/github-setup-and-instructions.pdf)
+[Steps to setup GitHub](assets/docs/setup-and-deployment/github-setup-and-instructions.pdf)
 
 ### GitPod
 
-[Steps to setup GitPod](assets/docs/setting_up_gitpod.pdf)
+[Steps to setup GitPod](assets/docs/setup-and-deployment/setting_up_gitpod.pdf)
 
 ### Heroku
 
-[Steps to deploy to Heroku](assets/docs/deploying_to_heroku.pdf)
+[Steps to deploy to Heroku](assets/docs/setup-and-deployment/deploying_to_heroku.pdf)
 
 
 
