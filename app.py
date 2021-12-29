@@ -145,7 +145,7 @@ def signin():
 def resetpassword():
     resetpassword = mongo.db.join.find()
     #Just need to add the logic to check both passwords match
-    return render_template("resetpassword.html", resetpassword=resetpassword, title="Reset Password")
+    return render_template("resetPassword.html", resetpassword=resetpassword, title="Reset Password")
 
 @myvar.route("/profilePage/<pen_name>", methods=["GET", "POST"])
 
