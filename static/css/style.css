@@ -233,6 +233,16 @@ aside p {
     font-weight: 500;
 }
 
+.password-check-success {
+    color: #198754;
+    font-size: .875em;
+}
+
+.password-check-failure {
+    color: red;
+    opacity: 0.8;
+    font-size: .875em;
+}
 
 /* ------------------------- Media queries ----------------------------- */
 /*- < 250px-*/

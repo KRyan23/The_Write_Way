@@ -16,7 +16,7 @@
                             <br>
                             <h2 class="text-center" title="Form Title" aria-label="Form Title">{{ title }}</h2>
                             <div class="form-group form-label-spacing">
-                                <input type="text" class="form-control" id="pen-name" name="pen-name"
+                                <input type="text" class="form-control" id="pen-name" name="pen_name"
                                     aria-label="Pen Name" title="Pen Name" placeholder="Pen Name" required="required">
                                 <div class="valid-feedback">
                                     Looks Good!
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                             <div class="form-group form-label-spacing">
-                                <button class="btn btn-outline-success text-center col-12 change-text-color"
+                                <button id="submitForm" class="btn btn-outline-success text-center col-12 change-text-color"
                                     type="submit" title="Submit" name="submit" aria-label="Submit Form">{{ title }}</button>
                             </div>
                             <div class="row text-center justify-content-between">
@@ -43,7 +43,7 @@
                                         aria-label="Create Account">No Account ?</div></a>
                                 </div>
                                 <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 login-options">
-                                    <a href="/resetpassword"><div class="btn-sm btn-outline-success text-center col-12 change-text-color"
+                                    <a href="/resetPassword"><div class="btn-sm btn-outline-success text-center col-12 change-text-color"
                                         title="Forgot Password" 
                                         aria-label="Forgot Password">Forgot Password?</div></a>
                                 </div>
@@ -58,4 +58,4 @@
     </div>
 </div>
 {% endblock %}
-    
+<!-- Flashed Messages content-->

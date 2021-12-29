@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <form id="signin-form" method="POST" class="needs-validation" novalidate action="{{ url_for('signin') }}">
+                <fieldset class="background-theme">
+
+                    <div class="row d-flex justify-content-around">
+                        <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
+                            <br>
+                            <h2 class="text-center" title="Form Title" aria-label="Form Title">{{ title }}</h2>
+                            <div class="form-group form-label-spacing">
+                                Profile Page
+                        </div>
+                    </div>
+                    <br>
+                </fieldset>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<!-- Flashed Messages content-->
