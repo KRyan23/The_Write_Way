@@ -216,7 +216,7 @@ The project was deployed using the steps below.
 -   The remaining content was written by myself with some minor contributions by family and friends.
 
 &nbsp;
-# README DONE TO HERE !
+
 ### Media
 
 
@@ -224,53 +224,35 @@ The project was deployed using the steps below.
 
 Images
 
-The images on the index page were chosen from the following sources.
+The images on the Home Page / Genre Template were chosen from the following sources.
 
-[1 - Big Red Button A](https://pixabay.com/photos/button-light-bright-symbol-icon-2816448/)
+[1 - Image for Fiction Section](https://pixabay.com/photos/library-heaven-birds-mystical-425730/)
 
-[2 - ]()
+[2 - Image for Fantasy Section](https://images.app.goo.gl/Wp2AC4okZsQF1MgRA)
 
-[3 -  ]()
+[3 - Image for Horror Section ](https://www.scimex.org/newsfeed/imagine-your-worst-nightmare-some-people-just-cant)
 
-[4 - ]()
+[4 - Image for History Section](https://www.businessclass.com/destinations/articles/cairo---much-more-than-the-pyramids-of-giza-)
 
-[5 - ]()
+[5 - Image for Thriller Section](https://bit.ly/3eB7c2a)
 
-The images on the 'X' page were chosen from the following sources.
+[6 - Image for Crime Section](https://images.app.goo.gl/1VspTTtoG7i7nt5s7)
 
-[1 - Big Red Button A](https://pixabay.com/photos/button-light-bright-symbol-icon-2816448/)
+[7 - Default Image to load](https://images.app.goo.gl/7y2AY7HYfL1mVt6P8)
 
-[2 - ]()
+The Icons on the various pages were chosen from the following sources.
 
-[3 - ]()
+[1 - Fountain Pen Icon](https://www.kindpng.com/imgv/ThJJxx_transparent-pen-clipart-png-pen-writing-icon-png/)
 
-[4 - ]()
+[2 - Facebook Footer Icon](https://fontawesome.com/v5.15/icons/facebook?style=brands)
 
-[5 - ]()
+[3 - YouTube Footer Icon](https://fontawesome.com/v5.15/icons/youtube-square?style=brands)
 
-The images on the 'X' page were chosen from the following sources.
+[4 - Twitter Footer Icon](https://fontawesome.com/v5.15/icons/twitter?style=brands)
 
-[1 - Big Red Button A](https://pixabay.com/photos/button-light-bright-symbol-icon-2816448/)
+[5 - Instagram Footer Icon](https://fontawesome.com/v5.15/icons/instagram?style=brands)
 
-[2 - ]()
-
-[3 - ]()
-
-[4 - ]()
-
-[5 - ]()
-
-The images on the 'X' page were chosen from the following sources.
-
-[1 - Big Red Button A](https://pixabay.com/photos/button-light-bright-symbol-icon-2816448/)
-
-[2 - ]()
-
-[3 - ]()
-
-[4 - ]()
-
-[5 - ]()
+# README DONE TO HERE !
 
 ### Acknowledgements
 - My Mentor
