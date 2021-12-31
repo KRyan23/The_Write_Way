@@ -55,6 +55,9 @@ function checkPasswordMatch() {
       $('#submitForm').removeClass('disabled');
   }
 }
+
+
 changeButtonText();  
 validateForms(); 
 checkForSuccess();
+
