@@ -23,10 +23,10 @@ def handle_context():
     return dict(os=os)
     
 @myvar.route("/")
-@myvar.route("/get_genre")
+@myvar.route("/genre")
 
 
-def get_genre():
+def genre():
     genre = mongo.db.genre.find()
     return render_template("genre.html", genre=genre)
 
@@ -84,6 +84,7 @@ def thriller():
 
 def join():
     if request.method == "POST":
+        
 #check if username exists in database
         existing_user = mongo.db.user_accounts.find_one(
             {"pen_name": request.form.get("pen_name").lower()})
@@ -109,7 +110,7 @@ def join():
         "<h5 id='success-message-signin'></h5>"+"</h4></div><br>")
         session["user"] = request.form.get("pen_name").lower()
         flash(message_success)
-        return redirect(url_for('profilePage', username=session["user"]))
+        #return redirect(url_for('profilePage', pen_name=session["user"], title=pen))
         
         
     return render_template("join.html", title="Join Us")
@@ -153,6 +154,25 @@ def profilePage(pen_name):
     return render_template("profilePage.html", pen_name=pen_name)
 
 
+@myvar.route("/createStory", methods=["GET", "POST"])
+
+def createStory():
+    
+    return Markup("<h1>Create Story</h1>")
+    
+@myvar.route("/editStory", methods=["GET", "POST"])
+
+def editStory():
+    flash("Edit Story")
+    return Markup("<h1>Edit Story</h1>")
+
+@myvar.route("/removeStory", methods=["GET", "POST"])
+
+def removeStory():
+    flash("Remove Story")
+    return Markup("<h1>Remove Story</h1>")
+
+# Use Js to manipulate the items in the profile Page
 if __name__ == "__main__":
     myvar.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

@@ -34,7 +34,8 @@ var forms = document.querySelectorAll('.needs-validation')
 function checkForSuccess(){
   document.getElementById('success-message-signin').insertAdjacentHTML(
     'afterbegin', `<a class="nav-link active nav-link" aria-label="Sign In" href="/signin">
-    <span class="text-menu-style change-text-color">Click Here to Sign In</span></a>`); 
+    <span class="text-menu-style change-text-color">Click Here to Sign In</span></a>`);
+  document.getElementById('signup-form').style.cssText="display: none;";
 }
 
 /*  For password checking */

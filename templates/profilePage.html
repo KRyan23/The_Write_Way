@@ -7,7 +7,7 @@
 {% block content %}
 <div class="container">
     <div class="row d-flex justify-content-around">
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-8">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10">
             <form id="profile" novalidate>
                 <fieldset class="background-theme">
                     <br>
@@ -18,32 +18,32 @@
                     <div class="row d-flex justify-content-around">
                         <div class="col-sm-12 col-md-12 col-lg-10 col-xl-10">
                             <div class="form-group form-label-spacing-profile">
-                                <button id="submitForm"
+                                <a href="{{ url_for('createStory') }}" 
                                     class="btn btn-outline-success text-center change-text-color col-sm-12 col-md-12 col-lg-10 col-xl-12 profile-page-buttons"
-                                    type="submit" title="Create New Story" name="submit"
+                                    title="Create New Story" name="Create New Story" role="button"
                                     aria-label="Create New Story">Create New Story
-                                </button>
+                                </a>
                             </div>
                             <div class="form-group form-label-spacing-profile">
-                                <button id="submitForm"
+                                <a href="{{ url_for('editStory') }}" 
                                     class="btn btn-outline-success text-center change-text-color col-sm-12 col-md-12 col-lg-10 col-xl-12 profile-page-buttons"
-                                    type="submit" title="Edit Existing Story" name="submit"
-                                    aria-label="Edit Existing Story">Edit Existing Story
-                                </button>
+                                    title="Edit Story" name="Edit Story" role="button"
+                                    aria-label="Edit Story">Edit Existing Story
+                                </a>
                             </div>
                             <div class="form-group form-label-spacing-profile">
-                                <button id=""
+                                <a href="{{ url_for('removeStory') }}" 
                                     class="btn btn-outline-success text-center change-text-color col-sm-12 col-md-12 col-lg-10 col-xl-12 profile-page-buttons"
-                                    type="submit" title="Remove Existing Story" name="submit"
-                                    aria-label="Remove Existing Story">Remove Existing Story
-                                </button>
+                                    title="Remove Story" name="Remove Story" role="button"
+                                    aria-label="Remove Story">Remove Existing Story
+                                </a>
                             </div>
                             <div class="form-group form-label-spacing-profile">
-                                <button id=""
+                                <a href="{{ url_for('genre') }}" 
                                     class="btn btn-outline-success text-center change-text-color col-sm-12 col-md-12 col-lg-10 col-xl-12 profile-page-buttons"
-                                    type="submit" title="Nothing Im Done" name="submit"
-                                    aria-label="Nothing Im Done">Nothing Im Done
-                                </button>
+                                    title="home" name="home" role="button"
+                                    aria-label="home">Nothing Im done
+                                </a>
                             </div>
                         </div>
                     </div>
