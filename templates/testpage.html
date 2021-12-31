@@ -1,0 +1,35 @@
+{% block head %}
+    <script src={{ url_for("static", filename="js/sample.js") }}></script>
+{% endblock %}
+
+
+{% block content %}
+    
+    <script type="text/javascript">
+        let list_data = {{ input_from_python | tojson }};  
+        
+        /*Redefined here as a js variable */
+
+        function add_reversed_data(){
+            var list2 = list_data.reverse();
+            document.getElementById("output_from_html").innerHTML = "new data is" + list2;
+
+        }
+
+        function add_original_data(){
+            document.getElementById("output_from_html2").innerHTML = "original data is" + list_data;
+        }
+
+    </script>
+
+    <p id="input_from_python">{{ input_from_python | tojson }}</p>
+    <p id="output_from_html">from_html_file</p>
+    <p id="output_from_html2">from_html_original</p>
+    <p id="output_from_js">from_js_file</p>
+    <p id="output_from_js2">from_js_original</p>
+    <button type="button"  value="data_update" onclick="add_reversed_data()">test_from_html</button>
+    <button type="button" valu="data_add2" onclick="add_original_data()">test_from_html2</button>
+    <button type="button"  value="data_update_from_js" onclick="add_reversed_data_from_js()">test_from_js</button>
+    <button type="button" value="data_add" onclick="add_data_from_js()">test_from_js_original</button>
+
+{% endblock %}

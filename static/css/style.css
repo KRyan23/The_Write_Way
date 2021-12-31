@@ -136,7 +136,7 @@ aside, h3 {
 }
 
 aside p {
-  padding: 0.75em 0 1em 0;
+    padding: 0.75em 0 1em 0;
 }
 
 .form-hr {
@@ -244,6 +244,18 @@ aside p {
     font-size: .875em;
 }
 
+.profile-page-heading {
+    font-size: 1.5em;
+}
+
+.form-label-spacing-profile {
+    padding: 1.75em 0 1.75em 0;
+    
+}
+
+.profile-page-buttons {
+    font-size: 1.1em;
+}
 /* ------------------------- Media queries ----------------------------- */
 /*- < 250px-*/
     @media only screen and (max-width: 249px) {

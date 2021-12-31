@@ -119,20 +119,18 @@ def join():
 
 def signin():
     if request.method == "POST":
+        
         signin = mongo.db.user_accounts.find_one(
             {"pen_name": request.form.get("pen_name").lower()})
-
+        pen = request.form.get('pen_name')
         if signin:
             if check_password_hash(
                signin["password"], request.form.get("password")):
                session["user"] = request.form.get("password")
                print("Login Successful")
-               flash("Welcome Name")
                
-            else:
-               print("Sorry Incorrect Password")
-               flash("Incorrect Password")
-               return redirect(url_for("signin"))
+            return render_template('profilePage.html', title=pen)
+            
         else:
             flash("Username does not exist")
             return redirect(url_for('signin'))
@@ -153,6 +151,7 @@ def profilePage(pen_name):
     pen_name = mongo.db.user_accounts.find_one(
         {"pen_name": session["user"]})["pen_name"]
     return render_template("profilePage.html", pen_name=pen_name)
+
 
 if __name__ == "__main__":
     myvar.run(host=os.environ.get("IP"),
