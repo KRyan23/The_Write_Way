@@ -89,7 +89,7 @@ def join():
         existing_user = mongo.db.user_accounts.find_one(
             {"pen_name": request.form.get("pen_name").lower()})
         pen = request.form.get('pen_name')
-        message_failure = Markup("<div class='background-theme text-center '><h4 class='flash-message flex-wrap'>Were sorry but the Pen Name<br> '"+ "<span class='paragraph-styling'>" + pen + "</span>" + "'<br> is already in use by another Author</h4></div><br>")
+        message_failure = Markup("<div class='background-theme text-center '><h4 class='flash-message flex-wrap'>Were sorry but the Pen Name<br> '"+ "<span class='paragraph-styling'>" + pen.title() + "</span>" + "'<br> is already in use by another Author</h4></div><br>")
         if existing_user:
 	        flash(message_failure)
 	        return redirect(url_for("join"))
@@ -106,7 +106,7 @@ def join():
         mongo.db.user_accounts.insert_one(join)
         
         message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Congratulations<br> '"
-        + "<span class='paragraph-styling'>" + pen + "'</span><br>" + "Registration Was Successful!"+"<p></p>"+
+        + "<span class='paragraph-styling'>" + pen.title() + "'</span><br>" + "Registration Was Successful!"+"<p></p>"+
         "<h5 id='success-message-signin'></h5>"+"</h4></div><br>")
         session["user"] = request.form.get("pen_name").lower()
         flash(message_success)
@@ -120,40 +120,80 @@ def join():
 
 def signin():
     if request.method == "POST":
-        
+        #User accounts are not case sensitive due to being stored and retireved using the .lower() function
         signin = mongo.db.user_accounts.find_one(
-            {"pen_name": request.form.get("pen_name").lower()})
+            {"pen_name": request.form.get("pen_name").lower()})#This has to match the name label on the form, ie pen_name
         pen = request.form.get('pen_name')
         if signin:
-            if check_password_hash(
-               signin["password"], request.form.get("password")):
-               session["user"] = request.form.get("password")
-               print("Login Successful")
-               
+            if check_password_hash(signin["password"], request.form.get("password")):
+                session["user"] = request.form.get("pen_name").lower()
+                
+            else:
+                message_failure = Markup("<div class='background-theme text-center '><h4 class='flash-message flex-wrap'>Were sorry but the password was incorrect</h4><p></p></div><br>")
+                flash(message_failure)
+                return redirect(url_for('signin'))
+            
             return render_template('profilePage.html', title=pen)
             
         else:
-            flash("Username does not exist")
-            return redirect(url_for('signin'))
+                message_failure = Markup("<div class='background-theme text-center '><h4 class='flash-message flex-wrap'>Were sorry but the Pen Name<br> '"+ "<span class='paragraph-styling'>" + pen.title() + "</span>" + "'<br> Does not exist on our system</h4></div><br>")
+                flash(message_failure)
+                return redirect(url_for('signin'))
 
     return render_template("signin.html", title="Sign In")
 
 
-@myvar.route("/resetPassword")
+@myvar.route("/resetPassword", methods=["GET", "POST"])
 
-def resetpassword():
-    resetpassword = mongo.db.join.find()
-    #Just need to add the logic to check both passwords match
-    return render_template("resetPassword.html", resetpassword=resetpassword, title="Reset Password")
+def resetPassword():
+    if request.method == "POST":
+        # Copied in the signin code to see if we can reuse it.
+        signin = mongo.db.user_accounts.find_one(
+            {"pen_name": request.form.get("pen_name").lower()})#This has to match the name label on the form, ie pen_name
+        pen = request.form.get('pen_name')
+        if signin:
+               #if check_password_hash(
+               #signin["password"], request.form.get("password")):
+               #session["user"] = request.form.get("pen_name").lower()### changed this line
+               # This seemd to work just have to put the method for actually changing the password in above ^
+            join = {"password": generate_password_hash(request.form.get("password"))}
+            mongo.db.user_accounts.insert_one(join)
+            print("Password Reset jnkblkjn")
+               
+            return render_template('resetPassword.html', title="Password for " + pen.title() + " was Reset")
+            
+        else:
+            message_failure = Markup("<div class='background-theme text-center '><h4 class='flash-message flex-wrap'>Were sorry but the Pen Name<br> '"+ "<span class='paragraph-styling'>" + pen.title() + "</span>" + "'<br> Does not exist on our system</h4></div><br>")
+            flash(message_failure)
+            return redirect(url_for('resetPassword'))
+
+    return render_template("resetPassword.html", title="Reset Password")
+
+
 
 @myvar.route("/profilePage/<pen_name>", methods=["GET", "POST"])
 
 def profilePage(pen_name):
     pen_name = mongo.db.user_accounts.find_one(
         {"pen_name": session["user"]})["pen_name"]
-    return render_template("profilePage.html", pen_name=pen_name)
+    
+    if session["user"]:
+        return render_template("profilePage.html", pen_name=pen_name)
+
+    return redirect(url_for("signin"))
 
 
+@myvar.route("/signout")
+
+def signout():
+    
+    session.clear()
+    message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Sign Out Was Successful!"+"<p></p>"+
+        "</h4></div><br>")
+    flash(message_success)
+    return redirect(url_for("signin"))
+    
+######################################################
 @myvar.route("/createStory", methods=["GET", "POST"])
 
 def createStory():

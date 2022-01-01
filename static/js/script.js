@@ -38,7 +38,7 @@ function checkForSuccess(){
   document.getElementById('signup-form').style.cssText="display: none;";
 }
 
-/*  For password checking */
+/*  For password checking 
 
 $(document).ready(function () {
   $("#passwordField2").keyup(checkPasswordMatch);
@@ -56,7 +56,7 @@ function checkPasswordMatch() {
       $('#submitForm').removeClass('disabled');
   }
 }
-
+*/
 
 changeButtonText();  
 validateForms(); 
