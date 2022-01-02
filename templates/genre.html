@@ -4,6 +4,15 @@
 Genre
 {% endblock %}
 
+{% block news %}
+<ul>
+  <li><p>Our Top read of the week</p> <!--pull some stat from the db--></li>
+  <li><p>Our Newest Author is </p> <!--Insert most freqently updated profile--></li>
+  <li><p>Find our our longest published story here "The Stand" By Stephen King<!-- Retrieve another stat from the DB here--></p></li>
+  <li><p>Check out our most recently added genre...</p> <!--pull some stat from the db--></li>
+</ul>
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="row">
@@ -37,5 +46,5 @@ Genre
         {%- endfor -%}
         </div>
         </div>
-        
+
 {% endblock %}

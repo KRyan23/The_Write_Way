@@ -25,11 +25,9 @@ def handle_context():
 @myvar.route("/")
 @myvar.route("/genre")
 
-
 def genre():
     genre = mongo.db.genre.find()
     return render_template("genre.html", genre=genre)
-
 
 @myvar.route("/policy")
 
@@ -110,7 +108,7 @@ def join():
         "<h5 id='success-message-signin'></h5>"+"</h4></div><br>")
         session["user"] = request.form.get("pen_name").lower()
         flash(message_success)
-        #return redirect(url_for('profilePage', pen_name=session["user"], title=pen))
+        
         
         
     return render_template("join.html", title="Join Us")
@@ -122,7 +120,7 @@ def signin():
     if request.method == "POST":
         #User accounts are not case sensitive due to being stored and retireved using the .lower() function
         signin = mongo.db.user_accounts.find_one(
-            {"pen_name": request.form.get("pen_name").lower()})#This has to match the name label on the form, ie pen_name
+            {"pen_name": request.form.get("pen_name").lower()})
         pen = request.form.get('pen_name')
         if signin:
             if check_password_hash(signin["password"], request.form.get("password")):
@@ -158,7 +156,7 @@ def resetPassword():
                # This seemd to work just have to put the method for actually changing the password in above ^
             join = {"password": generate_password_hash(request.form.get("password"))}
             mongo.db.user_accounts.insert_one(join)
-            print("Password Reset jnkblkjn")
+            flash("Password Reset")
                
             return render_template('resetPassword.html', title="Password for " + pen.title() + " was Reset")
             
@@ -192,8 +190,8 @@ def signout():
         "</h4></div><br>")
     flash(message_success)
     return redirect(url_for("signin"))
-    
-######################################################
+
+ 
 @myvar.route("/createStory", methods=["GET", "POST"])
 
 def createStory():

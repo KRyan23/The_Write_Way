@@ -29,25 +29,25 @@
         <div class="list-group">
             <div class="list-group-item list-group-item-action" aria-current="true">
                 <div class="d-flex w-100 justify-content-between">
-                    <h4 class="mb-1"><span class="story-title">Title: </span> {{ fic.fiction_name }}</h4><small>Author:
-                        <span class="paragraph-styling author-styling">{{ fic.fiction_author}}</span></small>
+                    <h4 class="mb-1"><span class="story-title">Title: </span> {{ fic.name }}</h4><small>Author:
+                        <span class="paragraph-styling author-styling">{{ fic.author}}</span></small>
                 </div>
                 <h4 class="mb-1"><span class="story-title">Plot: </span><span class="story-plot">{{
-                    fic.fiction_plot}}</span></h4>
+                    fic.plot}}</span></h4>
                 <div class="d-flex w-100 justify-content-between">
                     <h4 class="mb-1"></h4><small>Popularity: <span class="badge bg-success rounded-pill">{{
-                        fic.fiction_popularity }}</span></small>
+                        fic.popularity }}</span></small>
                 </div>
                 <a href="#opening"><button type="button" data-bs-toggle="collapse"
                         data-bs-target="#the-id-of-{{ TheId.value }}"
                         class="btn btn-outline-success text-center col-12 change-text stretched-link"
                         aria-expanded="false" aria-controls="collapsed story">
-                        <span>Read</span><span class="hidden">Hide</span> {{ fic.fiction_name }} </button></a>
+                        <span>Read</span><span class="hidden">Hide</span> {{ fic.name }} </button></a>
                 <div class="collapse" id="the-id-of-{{ TheId.value }}">
                     <br>
                     <div class="card card-story card w-100 mt-2">
                         <div class="card-body">
-                            {{ fic.fiction_content }}
+                            {{ fic.content }}
                         </div>
                     </div>
                 </div>
