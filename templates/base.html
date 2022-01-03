@@ -23,7 +23,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url_for('get_genre') }}" id="top-of-page"><img src="static/images/pen.png" title="Image of pen" aria-current="Image of pen" alt="Image of pen" class="logo"></a>
+        <a class="navbar-brand" href="{{ url_for('genre') }}" id="top-of-page"><img src="static/images/pen.png" title="Image of pen" aria-current="Image of pen" alt="Image of pen" class="logo"></a>
         <h1 class="main-heading" title="Site Heading" aria-label="Site Heading">The Write Way</h1>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Mobile Nfromavigation">
@@ -33,7 +33,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 navigation-styling">
             <li class="nav-item">
-              <a class="nav-link active home-page" title="Home" aria-current="Home Page" href="{{ url_for('get_genre') }}"><span
+              <a class="nav-link active home-page" title="Home" aria-current="Home Page" href="{{ url_for('genre') }}"><span
                   class="text-menu-style">Home</span></a>
             </li>
             <li class="nav-item">
@@ -43,20 +43,26 @@
               <a class="nav-link active nav-link" aria-label="Sign In" href="{{ url_for('signin') }}"><span class="text-menu-style">Sign In</span></a>
             </li>
             <li class="nav-item">
+              <a class="nav-link active nav-link" aria-label="Create Story" href="{{ url_for('signout') }}"><span class="text-menu-style">Sign Out
+                  </span></a> 
+            </li>
+            <li class="nav-item">
               <a class="nav-link active nav-link" aria-label="Create Story" href="{{ url_for('signin') }}"><span class="text-menu-style">Create
                   </span></a> 
             </li>
           </ul>
-          <form class="d-flex">
-            <input class="form-control me-2 input-box search-input-box" type="search" placeholder="Search Stories.."
-            title="search box" aria-label="Search">
-            <button class="btn btn-outline-success search-box" type="submit" >Search</button>
+          <form class="d-flex" action="{{ url_for('search') }}">
+            <label for="query"> </label>
+            <input class="form-control me-2 input-box search-input-box" type="search" name="search" id="query" 
+            placeholder="Search Stories.." title="Search Box" min-length="2" max-length="12"aria-label="Search" required>
+            <button class="btn btn-outline-success search-box" type="submit">Search</button>
           </form>
         </div>
       </div>
     </nav>
   </header>
 <!-- News content-->
+<section>
   <aside class="news-content">
     <h3 title="News Content" aria-label="News content">Latest News</h3>
     <ul>
@@ -66,6 +72,7 @@
       <li><p>Check out our most recently added genre...</p> <!--pull some stat from the db--></li>
     </ul>
  </aside>
+</section>
 
 <!-- Introduction -->
 <section>
@@ -107,7 +114,8 @@
   <section>
     {% block content %} 
     {% endblock %}
-  </section> 
+  </section>
+
   
   
   <footer class="text-center bg-light">

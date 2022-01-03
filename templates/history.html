@@ -22,32 +22,32 @@
 <!-- generates unique ids for each story -->
 {%- for his in history -%}
 {% set TheId.value = TheId.value + 1 %}
-
+{% if his.genre == "history" %}
 <div class="container story-styling">
     <div class="row active-story">
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-6"></div>
         <div class="list-group">
             <div class="list-group-item list-group-item-action" aria-current="true">
                 <div class="d-flex w-100 justify-content-between">
-                    <h4 class="mb-1"><span class="story-title">Title: </span> {{ his.history_name }}</h4><small>Author:
-                        <span class="paragraph-styling author-styling">{{ his.history_author}}</span></small>
+                    <h4 class="mb-1"><span class="story-title">Title: </span> {{ his.name }}</h4><small>Author:
+                        <span class="paragraph-styling author-styling">{{ his.author}}</span></small>
                 </div>
                 <h4 class="mb-1"><span class="story-title">Plot: </span><span class="story-plot">{{
-                    his.history_plot}}</span></h4>
+                    his.plot}}</span></h4>
                 <div class="d-flex w-100 justify-content-between">
                     <h4 class="mb-1"></h4><small>Popularity: <span class="badge bg-success rounded-pill">{{
-                        his.history_popularity }}</span></small>
+                        his.popularity }}</span></small>
                 </div>
                 <a href="#opening"><button type="button" data-bs-toggle="collapse"
                         data-bs-target="#the-id-of-{{ TheId.value }}"
                         class="btn btn-outline-success text-center col-12 change-text stretched-link"
                         aria-expanded="false" aria-controls="collapsed story">
-                        <span>Read</span><span class="hidden">Hide</span> {{ his.history_name }} </button></a>
+                        <span>Read</span><span class="hidden">Hide</span> {{ his.name }} </button></a>
                 <div class="collapse" id="the-id-of-{{ TheId.value }}">
                     <br>
                     <div class="card card-story card w-100 mt-2">
                         <div class="card-body">
-                            {{ his.history_content }}
+                            {{ his.content }}
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
         </div>
     </div>
 </div>
-
+{% endif %}
 {% endfor %}
 
 <div class="container">
