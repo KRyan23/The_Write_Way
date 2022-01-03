@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container form-styling">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <form id="signup-form" method="POST" class="needs-validation form-intro" novalidate name="the-write-way"
+        action="{{ url_for('join') }}">
+        <fieldset class="background-theme">
+          <div class="row d-flex justify-content-around">
+            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
+              <br>
+              <h2 class="text-center" title="Form Title" aria-label="Form Title">{{ title }}</h2>
+              <hr class="form-hr">
+              <p class="form-label-spacing"></p>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-around">
+            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
+              <label for="selectGenre" class="form-label form-label-spacing">Choose The Genre</label>
+              <select type="text" name="selectGenre" class="form-control form-label-spacing" id="selectGenre" title="Select Genre" aria-label="Select Genre" required>
+                <option value="crime">Crime</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="fiction">Fiction</strong></option>
+                <option value="history">History</strong></option>
+                <option value="horror">Horror</strong></option>
+                <option value="thriller">Thriller</option>
+              </select>
+            </div>
+          </div>
+          <br>
+          <div class="row d-flex justify-content-around">
+            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
+              <label for="last-name" class="form-label form-label-spacing">Story Title</label>
+              <input type="text" class="form-control" id="story-name" placeholder="Enter Story Title" name="name" title="Story Name" aria-label="Story Name" minlength="5"
+                maxlength="20" required>
+              <div class="valid-feedback">
+                Your all set!
+              </div>
+              <div class="invalid-feedback">
+                Please enter a Last Name.
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-around">
+            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
+              <label for="pen-name" class="form-label form-label-spacing">Story Plot</label>
+              <input type="text" class="form-control" id="story-plot" name="plot" aria-label="Story Plot" title="Story Plot" placeholder="Enter Story Plot"
+                minlength="3" maxlength="20" required>
+              <div class="valid-feedback">
+                Your all set!
+              </div>
+              <div class="invalid-feedback">
+                Please enter a Pen Name.
+              </div>
+            </div>
+          </div>
+          
+          <div class="row d-flex justify-content-around">
+            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
+              <label for="city-name" class="form-label form-label-spacing">Enter Story Content</label>
+              <input type="text" class="form-control" id="story-content" name="content" aria-label="Story Content" title="Story Content" minlength="50" placeholder="Enter Story Content............" size="20"
+               required>
+              <div class="valid-feedback">
+                Your all set!
+              </div>
+              <div class="invalid-feedback">
+                Please enter a City.
+              </div>
+            </div>
+          </div>
+         
+          
+          <div class="row d-flex justify-content-around">
+            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
+              <div class="form-check">
+                <br>
+                <input class="form-check-input" type="checkbox" title="Terms and conditions" name="terms_name" aria-label="Agree to terms and conditions" id="terms-name" required>
+                <label class="form-check-label form-label-spacing" for="terms-name">
+                  Agree to terms and conditions
+                </label>
+                <div class="invalid-feedback">
+                  "You need to agree to the T's & C's."
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-around">
+            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
+              <br>
+              <button class="btn btn-success text-center" type="submit" title="Submit" name="submit" aria-label="Submit Form">Submit form</button>
+            </div>
+          </div>
+          <br>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

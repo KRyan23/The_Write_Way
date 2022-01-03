@@ -204,8 +204,9 @@ def signout():
 @myvar.route("/createStory", methods=["GET", "POST"])
 
 def createStory():
+    temp = mongo.db.shortStories.find()
     
-    return Markup("<h1>Create Story</h1>")
+    return render_template("create.html", temp=temp, title="Create A New Story")
     
 @myvar.route("/editStory", methods=["GET", "POST"])
 
