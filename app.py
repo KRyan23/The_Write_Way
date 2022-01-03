@@ -157,24 +157,19 @@ def resetPassword():
     if request.method == "POST":
         # Copied in the signin code to see if we can reuse it.
         signin = mongo.db.user_accounts.find_one(
-            {"pen_name": request.form.get("pen_name").lower()})#This has to match the name label on the form, ie pen_name
+            {"pen_name": request.form.get("pen_name").lower()})
         pen = request.form.get('pen_name')
         if signin:
                #if check_password_hash(
                #signin["password"], request.form.get("password")):
                #session["user"] = request.form.get("pen_name").lower()### changed this line
-               # This seemd to work just have to put the method for actually changing the password in above ^
+               # This seemed to work just have to put the method for actually changing the password in above ^
             join = {"password": generate_password_hash(request.form.get("password"))}
             mongo.db.user_accounts.insert_one(join)
             flash("Password Reset")
                
             return render_template('resetPassword.html', title="Password for " + pen.title() + " was Reset")
-            
-        else:
-            message_failure = Markup("<div class='background-theme text-center '><h4 class='flash-message flex-wrap'>Were sorry but the Pen Name<br> '"+ "<span class='paragraph-styling'>" + pen.title() + "</span>" + "'<br> Does not exist on our system</h4></div><br>")
-            flash(message_failure)
-            return redirect(url_for('resetPassword'))
-
+        
     return render_template("resetPassword.html", title="Reset Password")
 
 
