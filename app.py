@@ -2,7 +2,7 @@ import os
 
 from flask import (Flask, flash, render_template,
     redirect, request, session, url_for, Markup)
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, MongoClient
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -18,6 +18,7 @@ myvar.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(myvar)
 #define a function to handle checking source files
+client = MongoClient()
 @myvar.context_processor
 def handle_context():
     return dict(os=os)
@@ -29,6 +30,15 @@ def genre():
     genre = mongo.db.genre.find()
     return render_template("genre.html", genre=genre)
 
+
+@myvar.route("/search", methods=["GET", "POST"])
+
+def search():
+    #query = request.form.get("query")
+    #crime = list(mongo.db.crime.find({"$text":{"$search": query}}))
+    #flash(query)
+    return render_template("crime.html", crime=crime)
+
 @myvar.route("/policy")
 
 def policy():
@@ -39,41 +49,41 @@ def policy():
 @myvar.route("/crime")
 
 def crime():
-    crime = mongo.db.crime.find()
+    crime = mongo.db.shortStories.find()
     return render_template("crime.html", crime=crime, title="Crime")
 
 @myvar.route("/fantasy")
 
 def fantasy():
-    fantasy = mongo.db.fantasy.find()
+    fantasy = mongo.db.shortStories.find()
     return render_template("fantasy.html", fantasy=fantasy, title="Fantasy")
 
 
 @myvar.route("/fiction")
     
 def fiction():    
-    fiction = mongo.db.fiction.find()
+    fiction = mongo.db.shortStories.find()
     return render_template("fiction.html", fiction=fiction, title="Fiction")
 
 
 @myvar.route("/history")
 
 def history():
-    history = mongo.db.history.find()
+    history = mongo.db.shortStories.find()
     return render_template("history.html", history=history, title="History")
 
 
 @myvar.route("/horror")
 
 def horror():
-    horror = mongo.db.horror.find()
+    horror = mongo.db.shortStories.find()
     return render_template("horror.html", horror=horror, title="Horror")
 
 
 @myvar.route("/thriller")
 
 def thriller():
-    thriller = mongo.db.thriller.find()
+    thriller = mongo.db.shortStories.find()
     return render_template("thriller.html", thriller=thriller, title="Thriller")
 
 
@@ -184,14 +194,18 @@ def profilePage(pen_name):
 @myvar.route("/signout")
 
 def signout():
-    
-    session.clear()
-    message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Sign Out Was Successful!"+"<p></p>"+
+    if session:
+        session.clear()
+        message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Sign Out Was Successful!"+"<p></p>"+
         "</h4></div><br>")
-    flash(message_success)
+        flash(message_success)
+    else:
+        message_failure = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>You are not Signed In<p></p></h4></div><br>")
+        flash(message_failure)
     return redirect(url_for("signin"))
 
  
+
 @myvar.route("/createStory", methods=["GET", "POST"])
 
 def createStory():

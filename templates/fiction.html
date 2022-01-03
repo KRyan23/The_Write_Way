@@ -22,7 +22,7 @@
 <!-- generates unique ids for each story -->
 {%- for fic in fiction -%}
 {% set TheId.value = TheId.value + 1 %}
-
+{% if fic.genre == "fiction" %}
 <div class="container story-styling">
     <div class="row active-story">
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-6"></div>
@@ -55,7 +55,7 @@
         </div>
     </div>
 </div>
-
+{% endif %}
 {% endfor %}
 
 <div class="container">

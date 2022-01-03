@@ -51,10 +51,11 @@
                   </span></a> 
             </li>
           </ul>
-          <form class="d-flex">
-            <input class="form-control me-2 input-box search-input-box" type="search" placeholder="Search Stories.."
-            title="search box" aria-label="Search">
-            <button class="btn btn-outline-success search-box" type="submit" >Search</button>
+          <form class="d-flex" action="{{ url_for('search') }}">
+            <label for="query"> </label>
+            <input class="form-control me-2 input-box search-input-box" type="search" name="search" id="query" 
+            placeholder="Search Stories.." title="Search Box" min-length="2" max-length="12"aria-label="Search" required>
+            <button class="btn btn-outline-success search-box" type="submit">Search</button>
           </form>
         </div>
       </div>
