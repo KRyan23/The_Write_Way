@@ -257,6 +257,18 @@ aside p {
 .profile-page-buttons {
     font-size: 1.1em;
 }
+
+.form-input-box-text {
+    font-size: 1.1em;
+}
+
+.form-label-checkbox-spacing {
+    margin: 0.8em 0.1em 0.5em 0;
+}
+
+.form-input-button-text {
+    font-size: 1.25em;
+}
 /* ------------------------- Media queries ----------------------------- */
 /*- < 250px-*/
     @media only screen and (max-width: 249px) {

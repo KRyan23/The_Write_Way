@@ -183,6 +183,7 @@ def profilePage(pen_name):
     if session["user"]:
         return render_template("profilePage.html", pen_name=pen_name)
 
+        
     return redirect(url_for("signin"))
 
 
@@ -199,15 +200,28 @@ def signout():
         flash(message_failure)
     return redirect(url_for("signin"))
 
- 
+
 
 @myvar.route("/createStory", methods=["GET", "POST"])
 
 def createStory():
-    temp = mongo.db.shortStories.find()
+        if session["user"]:
+            pen_name = session["user"]
+            print(pen_name)
+        #Need to add conditional logic here on form submission
+        #addstory = {
+        #    "pen_name": pen_name,
+        #    "genre": request.form.get("genre").lower(),
+         #   "name": request.form.get("name").lower(),
+         #   "plot": request.form.get("plot").lower(),
+        #    "content": request.form.get("content").lower(),          
+       ## }
+        #mongo.db.user_accounts.insert_one(addstory)
+        flash("Congratulation On Publishing Your Story!")
+        return render_template("profilePage.html")
+        #return render_template("profilePage.html", title=request.form.get("name").lower())
     
-    return render_template("create.html", temp=temp, title="Create A New Story")
-    
+
 @myvar.route("/editStory", methods=["GET", "POST"])
 
 def editStory():

@@ -29,7 +29,7 @@ var forms = document.querySelectorAll('.needs-validation')
     })
   }
 
-/* For the signin button on succeesful registration */
+/* For the signin button on successful registration */
 
 function checkForSuccess(){
   document.getElementById('success-message-signin').insertAdjacentHTML(
@@ -38,7 +38,7 @@ function checkForSuccess(){
   document.getElementById('signup-form').style.cssText="display: none;";
 }
 
-/*  For password checking 
+/*  For password checking */
 
 $(document).ready(function () {
   $("#passwordField2").keyup(checkPasswordMatch);
@@ -56,7 +56,8 @@ function checkPasswordMatch() {
       $('#submitForm').removeClass('disabled');
   }
 }
-*/
+
+
 
 changeButtonText();  
 validateForms(); 
