@@ -128,7 +128,6 @@ def join():
 
 def signin():
     if request.method == "POST":
-        #User accounts are not case sensitive due to being stored and retireved using the .lower() function
         signin = mongo.db.user_accounts.find_one(
             {"pen_name": request.form.get("pen_name").lower()})
         pen = request.form.get('pen_name')
@@ -202,24 +201,22 @@ def signout():
 
 
 
-@myvar.route("/createStory", methods=["GET", "POST"])
+@myvar.route("/create", methods=["GET", "POST"])
 
-def createStory():
-        if session["user"]:
-            pen_name = session["user"]
-            print(pen_name)
-        #Need to add conditional logic here on form submission
-        #addstory = {
-        #    "pen_name": pen_name,
-        #    "genre": request.form.get("genre").lower(),
-         #   "name": request.form.get("name").lower(),
-         #   "plot": request.form.get("plot").lower(),
-        #    "content": request.form.get("content").lower(),          
-       ## }
-        #mongo.db.user_accounts.insert_one(addstory)
-        flash("Congratulation On Publishing Your Story!")
-        return render_template("profilePage.html")
-        #return render_template("profilePage.html", title=request.form.get("name").lower())
+def create():
+        if session.get('user'):
+            if session['user']:
+                print("logged in")
+                pen_name = session["user"]
+                if request.method == "POST":
+                    message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Lets get that story published<p></p></h4></div><br>")
+                    flash(message_success)
+        else:
+            message_failure = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Invalid action for user profile<p></p></h4></div><br>")
+            flash(message_failure)
+        return render_template("create.html", create=create, title=pen_name)
+        
+       
     
 
 @myvar.route("/editStory", methods=["GET", "POST"])
