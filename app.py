@@ -173,17 +173,28 @@ def resetPassword():
 
 
 
-@myvar.route("/profilePage/<pen_name>", methods=["GET", "POST"])
+@myvar.route("/profilePage/<pen_name>",  methods=["GET", "POST"])
 
 def profilePage(pen_name):
+    
     pen_name = mongo.db.user_accounts.find_one(
         {"pen_name": session["user"]})["pen_name"]
+    title = pen_name
     
     if session["user"]:
-        return render_template("profilePage.html", pen_name=pen_name)
+        return render_template("profilePage.html", pen_name=pen_name, title=title)
 
         
     return redirect(url_for("signin"))
+
+@myvar.route("/backtoprofile")
+
+def backtoprofile():
+    print("backtoprofile function accesed")
+    if session.get('user'):
+        if session['user']:
+                pen_name, title = session["user"], session["user"]
+                return redirect(url_for('profilePage', pen_name=pen_name ))
 
 
 @myvar.route("/signout")
@@ -210,11 +221,12 @@ def create():
                 pen_name = session["user"]
                 if request.method == "POST":
                     addstory = {
-                "pen_name": pen_name,
+                "author": pen_name.lower(),
                 "genre": request.form.get("genre").lower(),
                 "name": request.form.get("name").lower(),
                 "plot": request.form.get("plot").lower(),
-                "content": request.form.get("content").lower(),          
+                "content": request.form.get("content").lower(),
+                "popularity": 1,          
                                 }
                     mongo.db.shortStories.insert_one(addstory)
 

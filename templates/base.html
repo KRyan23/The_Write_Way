@@ -24,7 +24,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="{{ url_for('genre') }}" id="top-of-page"><img src="static/images/pen.png" title="Image of pen" aria-current="Image of pen" alt="Image of pen" class="logo"></a>
-        <h1 class="main-heading" title="Site Heading" aria-label="Site Heading">The Write Way</h1>
+       <a href="{{ url_for('genre') }}" class="main-heading-link"><h1 class="main-heading" title="Site Heading" aria-label="Site Heading">The Write Way</h1></a> 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Mobile Nfromavigation">
           <span class="navbar-toggler-icon"></span>
@@ -43,11 +43,7 @@
               <a class="nav-link active nav-link" aria-label="Sign In" href="{{ url_for('signin') }}"><span class="text-menu-style">Sign In</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active nav-link" aria-label="Create Story" href="{{ url_for('signout') }}"><span class="text-menu-style">Sign Out
-                  </span></a> 
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active nav-link" aria-label="Create Story" href="{{ url_for('signin') }}"><span class="text-menu-style">Create
+              <a class="nav-link active nav-link" aria-label="Create Story" href="{{ url_for('create') }}"><span class="text-menu-style">Create
                   </span></a> 
             </li>
           </ul>

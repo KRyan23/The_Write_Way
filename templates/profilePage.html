@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{ title }} + "Page"
+{{ title }}
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,9 @@
             <form id="profile" novalidate>
                 <fieldset class="background-theme">
                     <br>
-                    <h2 class="text-center " title="Form Title" aria-label="Form Title">Welcome {{ title|capitalize }}</h2>
+                    <h2 class="text-center " title="Form Title" aria-label="Form Title">Welcome 
+                    <p></p>{{ title|title }}
+                        </h2>
                     <p class="text-center profile-page-heading"> What would you like to do today?</p>
                     <hr>
 
