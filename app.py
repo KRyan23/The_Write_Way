@@ -209,12 +209,22 @@ def create():
                 print("logged in")
                 pen_name = session["user"]
                 if request.method == "POST":
-                    message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Lets get that story published<p></p></h4></div><br>")
+                    addstory = {
+                "pen_name": pen_name,
+                "genre": request.form.get("genre").lower(),
+                "name": request.form.get("name").lower(),
+                "plot": request.form.get("plot").lower(),
+                "content": request.form.get("content").lower(),          
+                                }
+                    mongo.db.shortStories.insert_one(addstory)
+
+                    message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Well Done for getting your story published<p></p></h4></div><br>")
                     flash(message_success)
-        else:
-            message_failure = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Invalid action for user profile<p></p></h4></div><br>")
-            flash(message_failure)
-        return render_template("create.html", create=create, title=pen_name)
+                    return redirect(url_for('profilePage', pen_name=pen_name))
+            else:
+                message_failure = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Invalid action for user profile<p></p></h4></div><br>")
+                flash(message_failure)
+            return render_template("create.html", create=create, title=pen_name)
         
        
     

@@ -29,11 +29,11 @@
         <div class="list-group">
             <div class="list-group-item list-group-item-action" aria-current="true">
                 <div class="d-flex w-100 justify-content-between">
-                    <h4 class="mb-1"><span class="story-title">Title: </span> {{ hor.name }}</h4><small>Author:
-                        <span class="paragraph-styling author-styling">{{ hor.author }}</span></small>
+                    <h4 class="mb-1"><span class="story-title">Title: </span> {{ hor.name|striptags|title }}</h4><small>Author:
+                        <span class="paragraph-styling author-styling">{{ hor.author|striptags|title }}</span></small>
                 </div>
                 <h4 class="mb-1"><span class="story-title">Plot: </span><span class="story-plot">{{
-                    hor.plot }}</span></h4>
+                    hor.plot|striptags|capitalize }}</span></h4>
                 <div class="d-flex w-100 justify-content-between">
                     <h4 class="mb-1"></h4><small>Popularity: <span class="badge bg-success rounded-pill">{{
                         hor.popularity }}</span></small>
@@ -42,12 +42,12 @@
                         data-bs-target="#the-id-of-{{ TheId.value }}"
                         class="btn btn-outline-success text-center col-12 change-text stretched-link"
                         aria-expanded="false" aria-controls="collapsed story">
-                        <span>Read</span><span class="hidden">Hide</span> {{ hor.name }} </button></a>
+                        <span>Read</span><span class="hidden">Hide</span> {{ hor.name|striptags|title }} </button></a>
                 <div class="collapse" id="the-id-of-{{ TheId.value }}">
                     <br>
                     <div class="card card-story card w-100 mt-2">
                         <div class="card-body">
-                            {{ hor.content }}
+                            {{ hor.content|striptags|capitalize }}
                         </div>
                     </div>
                 </div>
