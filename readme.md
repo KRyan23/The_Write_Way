@@ -63,7 +63,7 @@
 
 
 *   ### Screenshots
-    - Some screenshots of the site - [View here](/assets/docs/screenshots.pdf)
+    - Some screenshots of the site - [View here](/assets/docs/TheWriteWay-screenshots.pdf)
 
 
 ## Features
@@ -171,13 +171,13 @@ The W3C Mark-up Validator and W3C CSS Jigsaw Validator Services were used to val
 ### Further Testing
 
 -   The Website was tested on Google Chrome, Opera, Internet Explorer 11, Microsoft Edge and Firefox browsers.
-- The website was continually checked on a variety of emulated devices under Chromes Developer tools, these included Desktop, Moto4, GalaxyS5, Pixel, IPhones5,6,7,8,X, IPad/Pro and the Surface Duo.
--   Internal and external linking were continually tested throughout the project to ensure functionality.
--   Family members were asked to review the site and to give their initial thoughts and feedback. Their input was used to make small design changes to all 3 games.
+- The website was checked on a variety of emulated devices under Chromes Developer tools, these included Desktop, Moto4, GalaxyS5, Pixel, IPhones5,6,7,8,X, IPad/Pro and the newer Nest Hub and Nest Hub Max.
+-   Internal and external linking were tested throughout the project to ensure functionality.
+-   Family members were asked to review the site and to give their initial thoughts and feedback. Their input was used to make small design changes to parts of the site.
 
 ### Known Bugs
 
--  [Results](/assets/docs/known-bugs.pdf)
+-  [Results](/assets/docs/testing-and-troubleshooting/known-bugs.pdf)
 
 ## Deployment
 &nbsp;
@@ -251,8 +251,6 @@ The Icons on the various pages were chosen from the following sources.
 [4 - Twitter Footer Icon](https://fontawesome.com/v5.15/icons/twitter?style=brands)
 
 [5 - Instagram Footer Icon](https://fontawesome.com/v5.15/icons/instagram?style=brands)
-
-# README DONE TO HERE !
 
 ### Acknowledgements
 - My Mentor

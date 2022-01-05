@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{ title }} + "Page"
+{{ title }}
 {% endblock %}
 
 {% block content %}
@@ -11,14 +11,16 @@
             <form id="profile" novalidate>
                 <fieldset class="background-theme">
                     <br>
-                    <h2 class="text-center " title="Form Title" aria-label="Form Title">Welcome {{ title|capitalize }}</h2>
+                    <h2 class="text-center " title="Form Title" aria-label="Form Title">Welcome 
+                    <p></p>{{ title|title }}
+                        </h2>
                     <p class="text-center profile-page-heading"> What would you like to do today?</p>
                     <hr>
 
                     <div class="row d-flex justify-content-around text-center">
                         <div class="col-sm-12 col-md-12 col-lg-10 col-xl-10">
                             <div class="form-group form-label-spacing-profile">
-                                <a href="{{ url_for('createStory') }}" 
+                                <a href="{{ url_for('create') }}" 
                                     class="btn btn-outline-success text-center change-text-color col-sm-12 col-md-12 col-lg-10 col-xl-12 profile-page-buttons"
                                     title="Create New Story" name="Create New Story" role="button"
                                     aria-label="Create New Story">Create A New Story

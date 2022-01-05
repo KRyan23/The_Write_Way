@@ -18,6 +18,11 @@ a {
     padding: 0 2em 0 2em;
 }
 
+.main-heading-link:hover {
+    text-decoration: none;
+    color:black;
+}
+
 .navigation-styling {
     border: 1px solid #198754;
     border-radius: 5px;
@@ -85,7 +90,7 @@ a {
     font-family:Pacifico;
 }
 
-.introduction {
+.introduction, .back-to-profile-button {
     padding: 2em 0 0.25em 0;
 }
 
@@ -256,6 +261,18 @@ aside p {
 
 .profile-page-buttons {
     font-size: 1.1em;
+}
+
+.form-input-box-text {
+    font-size: 1.1em;
+}
+
+.form-label-checkbox-spacing {
+    margin: 0.8em 0.1em 0.5em 0;
+}
+
+.form-input-button-text {
+    font-size: 1.25em;
 }
 /* ------------------------- Media queries ----------------------------- */
 /*- < 250px-*/

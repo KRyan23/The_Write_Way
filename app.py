@@ -128,7 +128,6 @@ def join():
 
 def signin():
     if request.method == "POST":
-        #User accounts are not case sensitive due to being stored and retireved using the .lower() function
         signin = mongo.db.user_accounts.find_one(
             {"pen_name": request.form.get("pen_name").lower()})
         pen = request.form.get('pen_name')
@@ -157,38 +156,45 @@ def resetPassword():
     if request.method == "POST":
         # Copied in the signin code to see if we can reuse it.
         signin = mongo.db.user_accounts.find_one(
-            {"pen_name": request.form.get("pen_name").lower()})#This has to match the name label on the form, ie pen_name
+            {"pen_name": request.form.get("pen_name").lower()})
         pen = request.form.get('pen_name')
         if signin:
                #if check_password_hash(
                #signin["password"], request.form.get("password")):
                #session["user"] = request.form.get("pen_name").lower()### changed this line
-               # This seemd to work just have to put the method for actually changing the password in above ^
+               # This seemed to work just have to put the method for actually changing the password in above ^
             join = {"password": generate_password_hash(request.form.get("password"))}
             mongo.db.user_accounts.insert_one(join)
             flash("Password Reset")
                
             return render_template('resetPassword.html', title="Password for " + pen.title() + " was Reset")
-            
-        else:
-            message_failure = Markup("<div class='background-theme text-center '><h4 class='flash-message flex-wrap'>Were sorry but the Pen Name<br> '"+ "<span class='paragraph-styling'>" + pen.title() + "</span>" + "'<br> Does not exist on our system</h4></div><br>")
-            flash(message_failure)
-            return redirect(url_for('resetPassword'))
-
+        
     return render_template("resetPassword.html", title="Reset Password")
 
 
 
-@myvar.route("/profilePage/<pen_name>", methods=["GET", "POST"])
+@myvar.route("/profilePage/<pen_name>",  methods=["GET", "POST"])
 
 def profilePage(pen_name):
+    
     pen_name = mongo.db.user_accounts.find_one(
         {"pen_name": session["user"]})["pen_name"]
+    title = pen_name
     
     if session["user"]:
-        return render_template("profilePage.html", pen_name=pen_name)
+        return render_template("profilePage.html", pen_name=pen_name, title=title)
 
+        
     return redirect(url_for("signin"))
+
+@myvar.route("/backtoprofile")
+
+def backtoprofile():
+    print("backtoprofile function accesed")
+    if session.get('user'):
+        if session['user']:
+                pen_name, title = session["user"], session["user"]
+                return redirect(url_for('profilePage', pen_name=pen_name ))
 
 
 @myvar.route("/signout")
@@ -204,14 +210,37 @@ def signout():
         flash(message_failure)
     return redirect(url_for("signin"))
 
- 
 
-@myvar.route("/createStory", methods=["GET", "POST"])
 
-def createStory():
+@myvar.route("/create", methods=["GET", "POST"])
+
+def create():
+        if session.get('user'):
+            if session['user']:
+                print("logged in")
+                pen_name = session["user"]
+                if request.method == "POST":
+                    addstory = {
+                "author": pen_name.lower(),
+                "genre": request.form.get("genre").lower(),
+                "name": request.form.get("name").lower(),
+                "plot": request.form.get("plot").lower(),
+                "content": request.form.get("content").lower(),
+                "popularity": 1,          
+                                }
+                    mongo.db.shortStories.insert_one(addstory)
+
+                    message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Well Done for getting your story published<p></p></h4></div><br>")
+                    flash(message_success)
+                    return redirect(url_for('profilePage', pen_name=pen_name))
+            else:
+                message_failure = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Invalid action for user profile<p></p></h4></div><br>")
+                flash(message_failure)
+            return render_template("create.html", create=create, title=pen_name)
+        
+       
     
-    return Markup("<h1>Create Story</h1>")
-    
+
 @myvar.route("/editStory", methods=["GET", "POST"])
 
 def editStory():
