@@ -330,6 +330,11 @@ aside p {
     .author-styling {
        font-size: 0.75em;
     }
+
+    .g-recaptcha {
+        transform:scale(0.66);
+        transform-origin:0 0;
+        }
   }
   
   /*- 321px - 499px -*/
@@ -369,7 +374,10 @@ aside p {
     .background-theme {
         background-color:#f8f9fa;
         border-color: #fafafa;
-        
+    }
+    .g-recaptcha {
+        transform:scale(0.87);
+        transform-origin:0 0;
     }
   }
   

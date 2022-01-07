@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+<div class="container form-styling">
+  <div class="row d-flex justify-content-around">
+    <div class="col-sm-12 col-md-12 col-lg-10 col-xl-10">
+      <form id="add-new-story" method="POST" class="needs-validation form-intro" novalidate name="create-story"
+        action="{{ url_for('create') }}">
+        <fieldset class="background-theme">
+          <div class="row d-flex justify-content-around">
+            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
+              <br>
+              <h2 class="text-center" title="Form Title" aria-label="Form Title">Edit An Existing Story<p></p>
+               {{ title|title }}
+                </h2>
+              <hr class="form-hr">
+              <div class="mb-3">
+                <label for="selectGenre" class="form-label form-label-spacing form-input-box-text">1. Choose A
+                  Story To Edit</label>
+                <select type="text" name="name" class="form-select form-input-box-text" title=" Select
+                Name" aria-label="Select Genre" required>
+                  {% for story in stories %}
+                                   
+                  <option value="{{ story.name }}">{{ story.name }}</option>
+                                  
+                  {% endfor %}
+                  
+                </select>
+              </div>
+    <div class="mb-3">
+      <label for="name" class="form-label form-label-spacing form-input-box-text">2. Edit The Story Title</label>
+      <input type="text" id="name" name="name" class="form-control form-input-box-text" placeholder="Enter Story Title" title="Story Name" minlength="5"
+      maxlength="40" value="" required>
+      <div class="valid-feedback">
+        Your all set!
+      </div>
+      <div class="invalid-feedback">
+        Minimum Length 5 Characters
+      </div>
+      
+    </div>
+    
+     <div class="mb-3">
+      <label for="story-plot" class="form-label form-label-spacing form-input-box-text">3. Edit The Story Plot</label>
+      <textarea type="text" id="story-plot" placeholder="Eg: There was a new Sherrif in town,and his first job is to restore order in the town of little rock..." 
+      name="plot" title="Story Plot" aria-label="Story Plot" class="form-control form-input-box-text" minlength="12"
+      maxlength="165" rows="3" required>
+                  
+                  
+      
+    
+
+      
+    </textarea>
+      <div class="valid-feedback">
+        Your all set!
+      </div>
+      <div class="invalid-feedback">
+        Minimum Length 15 Characters (about 4 words )
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="story-content" class="form-label form-label-spacing form-input-box-text">4. Edit The Story Content</label>
+      <textarea type="text" id="story-content" placeholder="Now Pen your masterpeice! Because these are short stories please try and keep the word count to between 600 - 650 words" 
+      minlength="250" name="content" title="Story Content" aria-label="Story Content" class="form-control form-input-box-text"
+      maxlength="3650" rows="8" required></textarea>
+      <div class="valid-feedback">
+        Your all set!
+      </div>
+      <div class="invalid-feedback">
+        Minimum Length 250 Characters (about 60 words )
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <input type="checkbox" id="story-content" minlength="250" name="terms_name" title="Agree to terms and conditions" aria-label="Terms and Conditions" class="form-input-box-text form-check-input form-label-checkbox-spacing form-input-box-text" required>
+      <label for="story-content" class="form-check-label form-input-box-text form-label-spacing text-wrap">
+       I agree to the T's & C's
+      </label>
+    </div>
+    <br>
+    <button class="btn btn-success text-center form-input-button-text col-12" type="submit" id="publish-story" title="Publish Story" name="submit" aria-label="Publish Story">Ammend and Publish Story</button>
+    <p></p>
+    <div class="text-center back-to-profile-button">
+      <a aria-label="Back To Profile" href="{{ url_for('backtoprofile') }}">
+    <button class="btn-sm btn-outline-success text-center form-input-button-text col-4" type="button" title="Back to Profile" name="Back to Profile" aria-label="Publish Story">Back to Profile</button>
+  </a>
+  </div>
+
+   </div>
+</div>
+<br>
+  </fieldset>
+</form>
+    </div>
+  </div>
+</div>
+{% endblock %}

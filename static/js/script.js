@@ -57,6 +57,15 @@ function checkPasswordMatch() {
   }
 }
 
+/* For Recapcha validation */
+var recapcha=false; 
+
+function verifyRecapcha() {
+  recapcha = true;
+}
+function isRecapchaValid(){
+    return recapcha;
+}
 
 
 changeButtonText();  

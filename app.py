@@ -24,20 +24,13 @@ def handle_context():
     return dict(os=os)
     
 @myvar.route("/")
+
 @myvar.route("/genre")
 
 def genre():
     genre = mongo.db.genre.find()
     return render_template("genre.html", genre=genre)
 
-
-@myvar.route("/search", methods=["GET", "POST"])
-
-def search():
-    #query = request.form.get("query")
-    #crime = list(mongo.db.crime.find({"$text":{"$search": query}}))
-    #flash(query)
-    return render_template("crime.html", crime=crime)
 
 @myvar.route("/policy")
 
@@ -154,21 +147,21 @@ def signin():
 
 def resetPassword():
     if request.method == "POST":
-        # Copied in the signin code to see if we can reuse it.
-        signin = mongo.db.user_accounts.find_one(
-            {"pen_name": request.form.get("pen_name").lower()})
-        pen = request.form.get('pen_name')
+        signin = mongo.db.user_accounts.find_one({"pen_name": request.form.get("pen_name").lower()})
+        pen_name = request.form.get('pen_name')
         if signin:
-               #if check_password_hash(
-               #signin["password"], request.form.get("password")):
-               #session["user"] = request.form.get("pen_name").lower()### changed this line
-               # This seemed to work just have to put the method for actually changing the password in above ^
-            join = {"password": generate_password_hash(request.form.get("password"))}
-            mongo.db.user_accounts.insert_one(join)
-            flash("Password Reset")
+            username = { "pen_name": request.form.get('pen_name') }
+            newpassword = { "$set": { "password": generate_password_hash(request.form.get("password"))}}
+            mongo.db.user_accounts.update_one(username, newpassword)
+            message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Password for " + pen_name.title() + " was reset<p></p>" +
+            "</h4></div><br>")
+            flash(message_success)
                
-            return render_template('resetPassword.html', title="Password for " + pen.title() + " was Reset")
-        
+            return render_template('resetPassword.html', title="Reset Password" )
+        else:
+            message_failure = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Please Check username and or email for '" + pen_name.title() + "<p></p>" +
+            "</h4></div><br>")
+            flash(message_failure)
     return render_template("resetPassword.html", title="Reset Password")
 
 
@@ -186,6 +179,7 @@ def profilePage(pen_name):
 
         
     return redirect(url_for("signin"))
+
 
 @myvar.route("/backtoprofile")
 
@@ -209,7 +203,6 @@ def signout():
         message_failure = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>You are not Signed In<p></p></h4></div><br>")
         flash(message_failure)
     return redirect(url_for("signin"))
-
 
 
 @myvar.route("/create", methods=["GET", "POST"])
@@ -236,16 +229,23 @@ def create():
             else:
                 message_failure = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Invalid action for user profile<p></p></h4></div><br>")
                 flash(message_failure)
-            return render_template("create.html", create=create, title=pen_name)
-        
+            return render_template("create.html", create=create, title=pen_name)   
        
     
-
 @myvar.route("/editStory", methods=["GET", "POST"])
 
 def editStory():
-    flash("Edit Story")
-    return Markup("<h1>Edit Story</h1>")
+    if session.get('user'):
+            if session['user']:
+                pen_name = session["user"]
+                #stories = mongo.db.shortStories.find_one({"_id": ObjectId(story_id)})
+                #names = mongo.db.shortstories.find().sort("name", 1)
+                #print(stories)
+                           
+                stories = mongo.db.shortStories.find()
+               
+                return render_template("editStory.html", stories=stories, title=pen_name)
+
 
 @myvar.route("/removeStory", methods=["GET", "POST"])
 
@@ -253,7 +253,17 @@ def removeStory():
     flash("Remove Story")
     return Markup("<h1>Remove Story</h1>")
 
-# Use Js to manipulate the items in the profile Page
+
+@myvar.route("/search", methods=["GET", "POST"])
+
+def search():
+    #query = request.form.get("query")
+    #crime = list(mongo.db.crime.find({"$text":{"$search": query}}))
+    #flash(query)
+    return render_template("crime.html", crime=crime)
+
+
+
 if __name__ == "__main__":
     myvar.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

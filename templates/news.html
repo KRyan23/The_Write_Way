@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block newsaside %}
+  <ul>
+    <li><p>Our Top Contributing Author is Joe Bloggs</p> <!--Insert most freqently updated profile--></li>
+    <li><p>Find our our longest published story here "The Stand" By Stephen King<!-- Retrieve another stat from the DB here--></p></li>
+    <li><p>Check out our most recently added genre...</p> <!--pull some stat from the db--></li>
+  </ul>
+  {% for new in news %}
+
+  {{ new.newestauthor }}
+{% endfor %}
+
+{% endblock %}
