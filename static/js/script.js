@@ -1,5 +1,6 @@
 var validPassword = "Not A Match" ;
 var inValidPassword = "Your all set!";
+var recapcha=false;
 
 /* To Display, Read/Hide Story when clicked */
 function changeButtonText(){
@@ -58,14 +59,20 @@ function checkPasswordMatch() {
 }
 
 /* For Recapcha validation */
-var recapcha=false; 
 
 function verifyRecapcha() {
-  recapcha = true;
+  $('#recapcha-message').css('color', '#198754');
+  recapcha = true;  
 }
 function isRecapchaValid(){
-    return recapcha;
-}
+  setTimeout(() => {
+  $('#recapcha-message').css("fontSize", "0.875em").css('color', 'rgb(220, 53, 69)');
+  }, 1000);
+  return recapcha;
+  }
+  
+      
+
 
 
 changeButtonText();  
