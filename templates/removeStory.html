@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block content %}
+<div class="container form-styling">
+  <div class="row d-flex justify-content-around">
+    <div class="col-sm-12 col-md-12 col-lg-10 col-xl-10">
+      <form id="add-new-story" method="POST" class="needs-validation form-intro" novalidate name="create-story"
+        action="{{ url_for('create') }}">
+        <fieldset class="background-theme">
+          <div class="row d-flex justify-content-around">
+            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
+              <br>
+              <h2 class="text-center" title="Form Title" aria-label="Form Title">Remove Existing Story<p></p>
+               {{ title|title }}
+                </h2>
+              <hr class="form-hr">
+              <div class="mb-3">
+                <label for="selectGenre" class="form-label form-label-spacing form-input-box-text">Choose A
+                  Story To Remove</label>
+                <select type="text" name="name" id="selectGenre" class="form-select form-input-box-text" title="Select Name" aria-label="Select Genre" required>
+                  
+                <option disabled></option>
+                {% for story in stories %}  
+                  <option value="{{ story.name }}">{{ story.name }}</option>
+                                  
+                  {% endfor %}
+                  
+                </select>
+          </div>
+          <input type="checkbox" id="story-content" name="terms_name" title="Agree to terms and conditions"
+            aria-label="Terms and Conditions" class="form-input-box-text form-check-input profile-checkbox-spacing"
+            required>
+          <label for="story-content" class="form-input-box-text text-wrap profile-checkbox-text-spacing">
+            Removal is Irreversible!
+          </label>
+          <div class="valid-feedback">
+            Your all set!
+          </div>
+          <div class="invalid-feedback">
+            Please check the box
+          </div>
+          
+    
+        
+    <br>
+    
+    <button class="btn btn-success text-center form-input-button-text col-12" type="submit" id="remove-story" title="Publish Story" name="submit" aria-label="Remove Story">Remove Published Story</button>
+    <p></p>
+    <div class="text-center back-to-profile-button">
+      <a aria-label="Back To Profile" href="{{ url_for('backtoprofile') }}">
+    <button class="btn-sm btn-outline-success text-center form-input-button-text col-8" type="button" title="Back to Profile" name="Back to Profile" aria-label="Back to Profile">Back to Profile</button>
+  </a>
+    </div>
+   </div>
+</div>
+<br>
+  </fieldset>
+</form>
+    </div>
+  </div>
+</div>
+{% endblock %}

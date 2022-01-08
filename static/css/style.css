@@ -274,6 +274,15 @@ aside p {
 .recapcha-text-spacing {
     padding: 0.75em 0 0 0;
 }
+
+.profile-checkbox-spacing {
+    margin: 1.5em 0 2em 0;
+}
+.profile-checkbox-text-spacing {
+    padding: 1.25em 0 0em 0.25em;
+}
+
+.
 /* ------------------------- Media queries ----------------------------- */
 /*- < 250px-*/
     @media only screen and (max-width: 249px) {

@@ -249,8 +249,12 @@ def editStory():
 @myvar.route("/removeStory", methods=["GET", "POST"])
 
 def removeStory():
-    flash("Remove Story")
-    return Markup("<h1>Remove Story</h1>")
+    if session.get('user'):
+            if session['user']:
+                pen_name = session["user"]
+                print("welcome "+pen_name)
+                stories = mongo.db.shortStories.find()
+    return render_template("removeStory.html", stories=stories, title=pen_name)
 
 
 @myvar.route("/search", methods=["GET", "POST"])
