@@ -267,12 +267,12 @@ aside p {
     font-size: 1.1em;
 }
 
-.form-label-checkbox-spacing {
-    margin: 0.8em 0.1em 0.5em 0;
-}
-
 .form-input-button-text {
     font-size: 1.25em;
+}
+
+.recapcha-text-spacing {
+    padding: 0.75em 0 0 0;
 }
 /* ------------------------- Media queries ----------------------------- */
 /*- < 250px-*/
@@ -296,7 +296,11 @@ aside p {
         aside {
             display: none;
             }
-  }
+            .g-recaptcha {
+                transform:scale(0.50);
+                transform-origin:0 0;
+                }
+      }
   
   /*- 250px - 320px -*/
   @media only screen and (min-width: 250px) and (max-width: 320px) {
@@ -379,6 +383,7 @@ aside p {
         transform:scale(0.87);
         transform-origin:0 0;
     }
+    
   }
   
   /*- 500px - 767px -*/

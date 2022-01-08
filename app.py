@@ -153,14 +153,13 @@ def resetPassword():
             username = { "pen_name": request.form.get('pen_name') }
             newpassword = { "$set": { "password": generate_password_hash(request.form.get("password"))}}
             mongo.db.user_accounts.update_one(username, newpassword)
-            message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Password for " + pen_name.title() + " was reset<p></p>" +
+            message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>The password for " +"<br>" + pen_name.title() + " was reset!<p></p>" +
             "</h4></div><br>")
             flash(message_success)
                
             return render_template('resetPassword.html', title="Reset Password" )
         else:
-            message_failure = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Please Check username and or email for '" + pen_name.title() + "<p></p>" +
-            "</h4></div><br>")
+            message_failure = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Please Check Your<br>'pen name' and 'password'<p></p></h4></div><br>")
             flash(message_failure)
     return render_template("resetPassword.html", title="Reset Password")
 
