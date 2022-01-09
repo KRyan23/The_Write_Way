@@ -28,7 +28,7 @@
                 {% for story in stories %}  
                   <option value="{{ story.name }}">{{ story.name }}</option>
                                   
-                  {% endfor %}
+                  
                   
                 </select>
           </div>
@@ -45,12 +45,13 @@
             Please check the box
           </div>
           
-    
+          
+          
         
     <br>
-    
-    <button class="btn btn-success text-center form-input-button-text col-12" type="submit" id="remove-story" title="Publish Story" name="submit" aria-label="Remove Story">Remove Published Story</button>
-    <p></p>
+    <a href="{{ url_for('delete_story', story_id=story._id) }}">
+    <button class="btn btn-success text-center form-input-button-text col-12" type="button" id="remove-story" title="Publish Story" name="submit" aria-label="Remove Story">Remove Published Story</button>
+  </a><p></p>{% endfor %}
     <div class="text-center back-to-profile-button">
       <a aria-label="Back To Profile" href="{{ url_for('backtoprofile') }}">
     <button class="btn-sm btn-outline-success text-center form-input-button-text col-8" type="button" title="Back to Profile" name="Back to Profile" aria-label="Back to Profile">Back to Profile</button>

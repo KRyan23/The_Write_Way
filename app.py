@@ -10,77 +10,77 @@ if os.path.exists("env.py"):
 
 
 
-myvar = Flask(__name__)
+myapp = Flask(__name__)
 
-myvar.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
-myvar.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-myvar.secret_key = os.environ.get("SECRET_KEY")
+myapp.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+myapp.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+myapp.secret_key = os.environ.get("SECRET_KEY")
 
-mongo = PyMongo(myvar)
+mongo = PyMongo(myapp)
 #define a function to handle checking source files
 client = MongoClient()
-@myvar.context_processor
+@myapp.context_processor
 def handle_context():
     return dict(os=os)
     
-@myvar.route("/")
+@myapp.route("/")
 
-@myvar.route("/genre")
+@myapp.route("/genre")
 
 def genre():
     genre = mongo.db.genre.find()
     return render_template("genre.html", genre=genre)
 
 
-@myvar.route("/policy")
+@myapp.route("/policy")
 
 def policy():
     policy = mongo.db.policy.find()
     return render_template("policy.html", policy=policy)
 
 
-@myvar.route("/crime")
+@myapp.route("/crime")
 
 def crime():
     crime = mongo.db.shortStories.find()
     return render_template("crime.html", crime=crime, title="Crime")
 
-@myvar.route("/fantasy")
+@myapp.route("/fantasy")
 
 def fantasy():
     fantasy = mongo.db.shortStories.find()
     return render_template("fantasy.html", fantasy=fantasy, title="Fantasy")
 
 
-@myvar.route("/fiction")
+@myapp.route("/fiction")
     
 def fiction():    
     fiction = mongo.db.shortStories.find()
     return render_template("fiction.html", fiction=fiction, title="Fiction")
 
 
-@myvar.route("/history")
+@myapp.route("/history")
 
 def history():
     history = mongo.db.shortStories.find()
     return render_template("history.html", history=history, title="History")
 
 
-@myvar.route("/horror")
+@myapp.route("/horror")
 
 def horror():
     horror = mongo.db.shortStories.find()
     return render_template("horror.html", horror=horror, title="Horror")
 
 
-@myvar.route("/thriller")
+@myapp.route("/thriller")
 
 def thriller():
     thriller = mongo.db.shortStories.find()
     return render_template("thriller.html", thriller=thriller, title="Thriller")
 
 
-@myvar.route("/join", methods=["GET", "POST"])
+@myapp.route("/join", methods=["GET", "POST"])
 
 
 def join():
@@ -117,7 +117,7 @@ def join():
     return render_template("join.html", title="Join Us")
 
 
-@myvar.route("/signin", methods=["GET", "POST"])
+@myapp.route("/signin", methods=["GET", "POST"])
 
 def signin():
     if request.method == "POST":
@@ -143,7 +143,7 @@ def signin():
     return render_template("signin.html", title="Sign In")
 
 
-@myvar.route("/resetPassword", methods=["GET", "POST"])
+@myapp.route("/resetPassword", methods=["GET", "POST"])
 
 def resetPassword():
     if request.method == "POST":
@@ -165,7 +165,7 @@ def resetPassword():
 
 
 
-@myvar.route("/profilePage/<pen_name>",  methods=["GET", "POST"])
+@myapp.route("/profilePage/<pen_name>",  methods=["GET", "POST"])
 
 def profilePage(pen_name):
     
@@ -180,7 +180,7 @@ def profilePage(pen_name):
     return redirect(url_for("signin"))
 
 
-@myvar.route("/backtoprofile")
+@myapp.route("/backtoprofile")
 
 def backtoprofile():
     print("backtoprofile function accesed")
@@ -190,7 +190,7 @@ def backtoprofile():
                 return redirect(url_for('profilePage', pen_name=pen_name ))
 
 
-@myvar.route("/signout")
+@myapp.route("/signout")
 
 def signout():
     if session:
@@ -204,7 +204,7 @@ def signout():
     return redirect(url_for("signin"))
 
 
-@myvar.route("/create", methods=["GET", "POST"])
+@myapp.route("/create", methods=["GET", "POST"])
 
 def create():
         if session.get('user'):
@@ -230,23 +230,27 @@ def create():
                 flash(message_failure)
             return render_template("create.html", create=create, title=pen_name)   
        
-    
-@myvar.route("/editStory", methods=["GET", "POST"])
+# This is the main function for edit story
+@myapp.route("/editStory/<story_id>", methods=["GET", "POST"])
 
-def editStory():
+def editStory(story_id): # ref vid5e
+    story = mongo.db.shortStories.find_one({"_id": ObjectId(story_id)})
+    name = mongo.db.shortStories.name.find().sort("name", 1)
+    return render_template("editStory.html", story=story, name=name)
+
+# This function is called by the 'Remove Story' button on the page 
+@myapp.route("/delete_story/<story_id>")
+
+def delete_story(story_id):
     if session.get('user'):
             if session['user']:
-                pen_name = session["user"]
-                #stories = mongo.db.shortStories.find_one({"_id": ObjectId(story_id)})
-                #names = mongo.db.shortstories.find().sort("name", 1)
-                #print(stories)
-                           
-                stories = mongo.db.shortStories.find()
+                mongo.db.shortStories.remove({"_id": ObjectId(story_id)})
+                flash("story removed")
+                return redirect(url_for("removeStory"))
                
-                return render_template("editStory.html", stories=stories, title=pen_name)
 
 
-@myvar.route("/removeStory", methods=["GET", "POST"])
+@myapp.route("/removeStory", methods=["GET", "POST"])
 
 def removeStory():
     if session.get('user'):
@@ -254,20 +258,20 @@ def removeStory():
                 pen_name = session["user"]
                 print("welcome "+pen_name)
                 stories = mongo.db.shortStories.find()
-    return render_template("removeStory.html", stories=stories, title=pen_name)
+    return render_template("removeStory.html")
 
 
-@myvar.route("/search", methods=["GET", "POST"])
+@myapp.route("/search", methods=["GET", "POST"])
 
 def search():
     #query = request.form.get("query")
-    #stories = list(mongo.db.crime.find({"$text":{"$search": query}}))
-    #flash(query)
-    return render_template("crime.html", crime=crime)
+    #stories = list(mongo.db.shortStories.find({"$text":{"$search": query}}))
+    print("")
+    
 
 
 
 if __name__ == "__main__":
-    myvar.run(host=os.environ.get("IP"),
+    myapp.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
