@@ -99,6 +99,11 @@ h2 {
     font-family:Pacifico;
 }
 
+.text-header-spacing {
+    /* to replace the <p></p> 8 spacing we used */
+    margin: 1em 0 1em 0;
+}
+
 .card {
     width: 18em;
     margin-bottom: 1em;
@@ -282,7 +287,6 @@ aside p {
     padding: 1.25em 0 0em 0.25em;
 }
 
-.
 /* ------------------------- Media queries ----------------------------- */
 /*- < 250px-*/
     @media only screen and (max-width: 249px) {

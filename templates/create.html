@@ -15,16 +15,14 @@
           <div class="row d-flex justify-content-around">
             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
               <br>
-              <h2 class="text-center" title="Form Title" aria-label="Form Title">Create Your Story<p></p>
+              <h2 class="text-center" title="Form Title" aria-label="Form Title"><span class="text-header-spacing">Create Your Story</span>
                {{ title|title }}
                 </h2>
               <hr class="form-hr">
               <div class="mb-3">
-                <label for="genre" class="form-label form-label-spacing form-input-box-text">1. Choose A
-                  Genre</label>
-                <select type="text" name="genre" class="form-select form-input-box-text" id="genre title=" Select
-                  Genre" aria-label="Select Genre" required>
-                  <option disabled> Select From List..</option>
+                <label for="genre" class="form-label form-label-spacing form-input-box-text">1. Choose A Genre</label>
+                <select name="genre" class="form-select form-input-box-text" id="genre" title="Select Genre" aria-label="Select Genre" required>
+                  <option value="" disabled> Select From List..</option>
                   <option value="crime">Crime</option>
                   <option value="fantasy">Fantasy</option>
                   <option value="fiction">Fiction</option>
@@ -46,7 +44,7 @@
     </div>
      <div class="mb-3">
       <label for="story-plot" class="form-label form-label-spacing form-input-box-text">3. Describe the Plot</label>
-      <textarea type="text" id="story-plot" placeholder="Eg: There was a new Sherrif in town,and his first job is to restore order in the town of little rock..." 
+      <textarea id="story-plot" placeholder="Eg: There was a new Sherrif in town,and his first job is to restore order in the town of little rock..." 
       name="plot" title="Story Plot" aria-label="Story Plot" class="form-control form-input-box-text" minlength="12"
       maxlength="165" rows="3" required></textarea>
       <div class="valid-feedback">
@@ -58,7 +56,7 @@
     </div>
     <div class="mb-3">
       <label for="story-content" class="form-label form-label-spacing form-input-box-text">4. Write Your Story here</label>
-      <textarea type="text" id="story-content" placeholder="Now Pen your masterpeice! Because these are short stories please try and keep the word count to between 600 - 650 words" 
+      <textarea id="story-content" placeholder="Now Pen your masterpeice! Because these are short stories please try and keep the word count to between 600 - 650 words" 
       minlength="250" name="content" title="Story Content" aria-label="Story Content" class="form-control form-input-box-text"
       maxlength="3650" rows="8" required></textarea>
       <div class="valid-feedback">
@@ -70,8 +68,8 @@
     </div>
     
     <div class="mb-3">
-      <input type="checkbox" id="story-content" minlength="250" name="terms_name" title="Agree to terms and conditions" aria-label="Terms and Conditions" class="form-input-box-text form-check-input profile-checkbox-spacing" required>
-      <label for="story-content" class="form-input-box-text text-wrap profile-checkbox-text-spacing">
+      <input type="checkbox" id="terms" name="terms" title="Agree to terms and conditions" aria-label="Terms and Conditions" class="form-input-box-text form-check-input profile-checkbox-spacing" required>
+      <label for="terms" class="form-input-box-text text-wrap profile-checkbox-text-spacing">
        I agree to the T's & C's
       </label>
     </div>
@@ -80,7 +78,7 @@
     <p></p>
     <div class="text-center back-to-profile-button">
       <a aria-label="Back To Profile" href="{{ url_for('backtoprofile') }}">
-    <button class="btn-sm btn-outline-success text-center form-input-button-text col-8" type="button" title="Back to Profile" name="Back to Profile" aria-label="Publish Story">Back to Profile</button>
+   <!-- validator giving out about button being a decendant of 'a' tag--> <button class="btn-sm btn-outline-success text-center form-input-button-text col-8" type="button" title="Back to Profile" name="Back to Profile" aria-label="Publish Story">Back to Profile</button>
   </a>
   </div>
 

@@ -261,7 +261,7 @@ def removeStory():
 
 def search():
     #query = request.form.get("query")
-    #crime = list(mongo.db.crime.find({"$text":{"$search": query}}))
+    #stories = list(mongo.db.crime.find({"$text":{"$search": query}}))
     #flash(query)
     return render_template("crime.html", crime=crime)
 

@@ -12,6 +12,7 @@ function changeButtonText(){
     }
       
 /* Needed for bootstrap form validation to work */
+/* From https://getbootstrap.com/docs/5.0/forms/validation/ */
 function validateForms() {
   'use strict'
 
@@ -71,10 +72,6 @@ function isRecapchaValid(){
   return recapcha;
   }
   
-      
-
-
-
 changeButtonText();  
 validateForms(); 
 checkForSuccess();
