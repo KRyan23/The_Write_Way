@@ -90,7 +90,7 @@ def join():
         existing_user = mongo.db.user_accounts.find_one(
             {"pen_name": request.form.get("pen_name").lower()})
         pen = request.form.get('pen_name')
-        message_failure = Markup("<div class='background-theme text-center '><h4 class='flash-message flex-wrap'>Were sorry but the Pen Name<br> '"+ "<span class='paragraph-styling'>" + pen.title() + "</span>" + "'<br> is already in use by another Author</h4></div><br>")
+        message_failure = Markup("Were sorry but the Pen Name<br> '"+ "<span class='paragraph-styling'>" + pen.title() + "</span>" + "'<br> is already in use by another Author")
         if existing_user:
 	        flash(message_failure)
 	        return redirect(url_for("join"))
@@ -106,9 +106,9 @@ def join():
         }
         mongo.db.user_accounts.insert_one(join)
         
-        message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Congratulations<br> '"
+        message_success = Markup("Congratulations<br> '"
         + "<span class='paragraph-styling'>" + pen.title() + "'</span><br>" + "Registration Was Successful!"+"<p></p>"+
-        "<h5 id='success-message-signin'></h5>"+"</h4></div><br>")
+        "<h5 id='success-message-signin'></h5>")
         session["user"] = request.form.get("pen_name").lower()
         flash(message_success)
         
@@ -129,14 +129,14 @@ def signin():
                 session["user"] = request.form.get("pen_name").lower()
                 
             else:
-                message_failure = Markup("<div class='background-theme text-center '><h4 class='flash-message flex-wrap'>Were sorry but the password was incorrect</h4><p></p></div><br>")
+                message_failure = Markup("Were sorry but the password was incorrect")
                 flash(message_failure)
                 return redirect(url_for('signin'))
             
             return render_template('profilePage.html', title=pen)
             
         else:
-                message_failure = Markup("<div class='background-theme text-center '><h4 class='flash-message flex-wrap'>Were sorry but the Pen Name<br> '"+ "<span class='paragraph-styling'>" + pen.title() + "</span>" + "'<br> Does not exist on our system</h4></div><br>")
+                message_failure = Markup("Were sorry but the Pen Name<br> '"+ "<span class='paragraph-styling'>" + pen.title() + "</span>" + "'<br> Does not exist on our system")
                 flash(message_failure)
                 return redirect(url_for('signin'))
 
@@ -153,13 +153,12 @@ def resetPassword():
             username = { "pen_name": request.form.get('pen_name') }
             newpassword = { "$set": { "password": generate_password_hash(request.form.get("password"))}}
             mongo.db.user_accounts.update_one(username, newpassword)
-            message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>The password for " +"<br>" + pen_name.title() + " was reset!<p></p>" +
-            "</h4></div><br>")
+            message_success = Markup("The password for " +"<br>" + pen_name.title() + " was reset!")
             flash(message_success)
                
             return render_template('resetPassword.html', title="Reset Password" )
         else:
-            message_failure = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Please Check Your<br>'pen name' and 'password'<p></p></h4></div><br>")
+            message_failure = Markup("Please Check Your<br>'pen name' and 'password' ")
             flash(message_failure)
     return render_template("resetPassword.html", title="Reset Password")
 
@@ -195,12 +194,9 @@ def backtoprofile():
 def signout():
     if session:
         session.clear()
-        message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Sign Out Was Successful!"+"<p></p>"+
-        "</h4></div><br>")
-        flash(message_success)
+        flash("Sign Out Was Successful!")
     else:
-        message_failure = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>You are not Signed In<p></p></h4></div><br>")
-        flash(message_failure)
+        flash("You are not Signed In")
     return redirect(url_for("signin"))
 
 
@@ -222,30 +218,28 @@ def create():
                                 }
                     mongo.db.shortStories.insert_one(addstory)
 
-                    message_success = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Well Done for getting your story published<p></p></h4></div><br>")
-                    flash(message_success)
+                    
+                    flash("Well Done for getting your story published")
                     return redirect(url_for('profilePage', pen_name=pen_name))
             else:
-                message_failure = Markup("<div class='background-theme text-center'><h4 class='flash-message flex-wrap'>Invalid action for user profile<p></p></h4></div><br>")
-                flash(message_failure)
+                
+                flash("Invalid action for user profile")
             return render_template("create.html", create=create, title=pen_name)   
        
 # This is the main function for edit story
-@myapp.route("/editStory/<story_id>", methods=["GET", "POST"])
+@myapp.route("/editStory", methods=["GET", "POST"])
 
 def editStory(story_id): # ref vid5e
     story = mongo.db.shortStories.find_one({"_id": ObjectId(story_id)})
     name = mongo.db.shortStories.name.find().sort("name", 1)
     return render_template("editStory.html", story=story, name=name)
 
-# This function is called by the 'Remove Story' button on the page 
-@myapp.route("/delete_story/<story_id>")
+ 
+@myapp.route("/deleteStory/<story_id>")
 
-def delete_story(story_id):
-    if session.get('user'):
-            if session['user']:
+def deleteStory(story_id):
                 mongo.db.shortStories.remove({"_id": ObjectId(story_id)})
-                flash("story removed")
+                flash("Congratulations The Story Was Deleted")
                 return redirect(url_for("removeStory"))
                
 
@@ -256,9 +250,8 @@ def removeStory():
     if session.get('user'):
             if session['user']:
                 pen_name = session["user"]
-                print("welcome "+pen_name)
                 stories = mongo.db.shortStories.find()
-    return render_template("removeStory.html")
+    return render_template("removeStory.html", stories=stories, pen_name=pen_name)
 
 
 @myapp.route("/search", methods=["GET", "POST"])
@@ -267,8 +260,6 @@ def search():
     #query = request.form.get("query")
     #stories = list(mongo.db.shortStories.find({"$text":{"$search": query}}))
     print("")
-    
-
 
 
 if __name__ == "__main__":

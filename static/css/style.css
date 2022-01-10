@@ -155,6 +155,17 @@ aside p {
     opacity: 1;
 }
 
+.message-container {
+    padding: 0em 0 2em 0;
+}
+
+.message-container h4{
+    padding: 1em 0 1em 0;
+}
+
+.flash-message-styling {
+    margin-bottom: 2em;
+}
   /* Style for story containers*/
  
 .story-styling {
@@ -287,6 +298,18 @@ aside p {
     padding: 1.25em 0 0em 0.25em;
 }
 
+.profile-button-spacing {
+    margin: 2em 0 2em 0;
+}
+
+.valid-feedback {
+    font-size: 1.15em;
+}
+
+.invalid-feedback {
+    font-weight: 400;
+    font-size: 1.1em;
+}
 /* ------------------------- Media queries ----------------------------- */
 /*- < 250px-*/
     @media only screen and (max-width: 249px) {

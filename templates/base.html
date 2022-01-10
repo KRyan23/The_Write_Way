@@ -88,11 +88,14 @@
       {% with messages = get_flashed_messages() %}
   {% if messages %}
   {% for message in messages %}
-  <div class="container">
-    <div class="row d-flex">
-      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        {{ message }}
-     </div>
+  <div class="container message-container">
+    <div class="row d-flex justify-content-around">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10">
+        <div class='background-theme text-center'>
+          <h4 class='flash-message flex-wrap'>{{ message }}
+          </h4>
+        </div>
+      </div>
     </div>
   </div>
   {% endfor %}
