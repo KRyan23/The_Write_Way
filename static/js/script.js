@@ -67,7 +67,7 @@ function verifyRecapcha() {
 }
 function isRecapchaValid(){
   setTimeout(() => {
-  $('#recapcha-message').css("fontSize", "0.875em").css('color', 'rgb(220, 53, 69)');
+  $('#recapcha-message').css("fontSize", "1.1em").css('color', 'rgb(220, 53, 69)');
   }, 1000);
   return recapcha;
   }

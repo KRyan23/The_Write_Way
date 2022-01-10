@@ -182,11 +182,13 @@ def profilePage(pen_name):
 @myapp.route("/backtoprofile")
 
 def backtoprofile():
-    print("backtoprofile function accesed")
     if session.get('user'):
         if session['user']:
                 pen_name, title = session["user"], session["user"]
                 return redirect(url_for('profilePage', pen_name=pen_name ))
+    else:
+        flash("You are not Logged in")
+        return redirect(url_for("signin"))
 
 
 @myapp.route("/signout")
@@ -205,7 +207,6 @@ def signout():
 def create():
         if session.get('user'):
             if session['user']:
-                print("logged in")
                 pen_name = session["user"]
                 if request.method == "POST":
                     addstory = {
@@ -214,15 +215,11 @@ def create():
                 "name": request.form.get("name").lower(),
                 "plot": request.form.get("plot").lower(),
                 "content": request.form.get("content").lower(),
-                "popularity": 1,          
-                                }
+                "popularity": 1,}          
                     mongo.db.shortStories.insert_one(addstory)
-
-                    
                     flash("Well Done for getting your story published")
                     return redirect(url_for('profilePage', pen_name=pen_name))
             else:
-                
                 flash("Invalid action for user profile")
             return render_template("create.html", create=create, title=pen_name)   
        
