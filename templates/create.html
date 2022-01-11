@@ -23,7 +23,7 @@
               <div class="mb-3">
                 <label for="genre" class="form-label form-label-spacing form-input-box-text">1. Choose A Genre</label>
                 <select name="genre" class="form-select form-input-box-text" id="genre" title="Select Genre" aria-label="Select Genre" required>
-                  <option value="" disabled> Select From List..</option>
+                  <option value="" required> Select From List..</option>
                   <option value="crime">Crime</option>
                   <option value="fantasy">Fantasy</option>
                   <option value="fiction">Fiction</option>
@@ -31,6 +31,12 @@
                   <option value="horror">Horror</option>
                   <option value="thriller">Thriller</option>
                 </select>
+                <div class="valid-feedback">
+                  Your all set!
+                </div>
+                <div class="invalid-feedback">
+                  Please Select a Genre
+                </div>
               </div>
     <div class="mb-3">
       <label for="name" class="form-label form-label-spacing form-input-box-text">2. Choose a Story Title</label>

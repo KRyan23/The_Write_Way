@@ -10,17 +10,21 @@
   <div class="row d-flex justify-content-around">
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10">
 
-<fieldset class="background-theme">
+<fieldset class="background-theme blip">
 <div class="container form-styling">
-  <div class="row d-flex justify-content-around">
-    <div class="col-sm-12 col-md-12 col-lg-10 col-xl-10">
+  <div class="row d-flex justify-content-around ">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10">
+      <h2 class="text-center" aria-label="Form Title">Remove a {{ pen_name|title }} Story </h2>
+      <hr>
       <div class="container genre-cards">
         <div class="row">
+          
           {% set deleteButtonText = "Delete Story" %}
           {% set backToProfileText = "Cancel and Return to Profile" %}
           {% set confirmDeletion = "Check the Box to Confirm" %}
           {% set TheId = namespace(value=0) %}
-          {% for story in stories %}  
+          {% for story in stories %}
+          {% if pen_name == story.author %}  
           {% set TheId.value = TheId.value + 1 %}
     <div class="container story-styling">
         <div class="row active-story">
@@ -64,7 +68,9 @@
             </div>
         </div>
     </div>
+    {% endif %}
   {% endfor %}
+  
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">

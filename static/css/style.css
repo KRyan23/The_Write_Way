@@ -26,7 +26,7 @@ a {
 .navigation-styling {
     border: 1px solid #198754;
     border-radius: 5px;
-    padding: 0 2em 0 2em;
+    padding: 0 1.5em 0 1.5em;
     margin:  0 0 0 0;
 }
 
@@ -156,7 +156,7 @@ aside p {
 }
 
 .message-container {
-    padding: 0em 0 2em 0;
+    padding: 0 0 2em 0;
 }
 
 .message-container h4{
@@ -224,6 +224,11 @@ aside p {
     border-style: solid;
     border-radius: 5px 5px 5px 5px;
     opacity: 0.95;
+    
+}
+
+.blip {
+    padding-right: -2em;
 }
 
 .form-intro {
@@ -231,7 +236,7 @@ aside p {
 }
 
 .form-styling {
-    padding: 3em 0 0 0.5em;
+    padding: 3em 0 0 0; /*removed 0.5 padding on last entry*/
 }
 
 .form-label-spacing {
@@ -239,7 +244,6 @@ aside p {
 }
 
 .flash-message {
-    padding: 1em 0.25em 0 0.25em;
     line-height: 1.6;
 }
 
@@ -310,6 +314,7 @@ aside p {
     font-weight: 400;
     font-size: 1.1em;
 }
+
 /* ------------------------- Media queries ----------------------------- */
 /*- < 250px-*/
     @media only screen and (max-width: 249px) {
@@ -335,6 +340,9 @@ aside p {
             .g-recaptcha {
                 transform:scale(0.50);
                 transform-origin:0 0;
+                }
+                .desktop-category-heading {
+                    display:none;
                 }
       }
   
@@ -374,6 +382,9 @@ aside p {
     .g-recaptcha {
         transform:scale(0.66);
         transform-origin:0 0;
+        }
+        .desktop-category-heading {
+            display:none;
         }
   }
   
@@ -419,7 +430,10 @@ aside p {
         transform:scale(0.87);
         transform-origin:0 0;
     }
-    
+
+    .desktop-category-heading {
+        display:none;
+    }
   }
   
   /*- 500px - 767px -*/
@@ -445,11 +459,19 @@ aside p {
     .password-message-wrap {
         display:none;
     }
+
+    .desktop-category-heading {
+        display:none;
+    }
 }
   /*- 768px - 991px -*/
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     .card {
         width: 14em;
+    }
+
+    .mobile-category-heading {
+        display: none;
     }
   }
   
@@ -466,16 +488,26 @@ aside p {
     .password-message-wrap{
         display:none;
     }
+
+    .mobile-category-heading {
+        display: none;
+    }
   }
   
   /*- 1024px - 1200px -*/
   @media only screen and (min-width: 1024px) and (max-width: 1200px) {
     .main-heading {
         font-size: 2.4em;
-        padding: 0 1em 0 0;
+        padding: 0 0.5em 0 0;
     }
+
+    .logo {
+        height:60px;
+        width: 60px;
+    }
+
     .navigation-styling {
-        padding: 0 0.5em 0 0.5em;
+        padding: 0 0 0 0;
         
     }
 
@@ -488,6 +520,9 @@ aside p {
     .password-message-wrap{
         display:none;
     }
+    .mobile-category-heading {
+        display: none;
+    }
   }
 
   /* 1200px -> */
@@ -495,5 +530,8 @@ aside p {
 
     .password-message-wrap{
         display:none;
+    }
+    .mobile-category-heading {
+        display: none;
     }
 }
