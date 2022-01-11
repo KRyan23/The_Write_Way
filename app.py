@@ -24,7 +24,6 @@ def handle_context():
     return dict(os=os)
     
 @myapp.route("/")
-
 @myapp.route("/genre")
 
 def genre():
@@ -250,6 +249,22 @@ def removeStory():
                 stories = mongo.db.shortStories.find()
     return render_template("removeStory.html", stories=stories, pen_name=pen_name)
 
+
+@myapp.route("/updatePopularity/<genre>", methods=["GET", "POST"])
+
+def updatePopularity(genre):
+                    print(genre)
+                    if request.method == "POST":
+                        if session.get('user'):
+                            name = { "name": request.form.get('name') }
+                            popularity = { "$inc": { "popularity": 1 }}
+                            mongo.db.shortStories.update_one(name, popularity)
+                            flash("updated")
+                        return redirect(url_for(genre))
+                    else:
+	                    flash("You need to be signed for this")
+                    return redirect(url_for("signin"))
+               
 
 @myapp.route("/search", methods=["GET", "POST"])
 

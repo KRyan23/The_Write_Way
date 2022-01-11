@@ -54,7 +54,7 @@
           </ul>
           <form class="d-flex" action="{{ url_for('search') }}">
             <label for="query"> </label>
-            <input class="form-control me-2 input-box search-input-box" type="search" name="search" id="query" 
+            <input class="form-control me-auto input-box search-input-box" type="search" name="search" id="query" 
             placeholder="Search Stories.." title="Search Box" aria-label="Search" required>
             <button class="btn btn-outline-success search-box" type="submit">Search</button>
           </form>
@@ -62,6 +62,7 @@
       </div>
     </nav>
   </header>
+  
 <!-- News content-->
 <section>
   <aside class="news-content">
@@ -72,8 +73,11 @@
       <li><p>Find our our longest published story here "The Stand" By Stephen King<!-- Retrieve another stat from the DB here--></p></li>
       <li><p>Check out our most recently added genre...</p> <!--pull some stat from the db--></li>
     </ul>
-    </aside>  
-</section>
+    </section>
+  
+  </aside>  
+
+
 
 <!-- Introduction -->
     <div class="container">
@@ -113,7 +117,7 @@
     {% block content %} 
     {% endblock %}
   </section>
-
+  
   
   
   <footer class="text-center bg-light">
@@ -166,8 +170,7 @@
         }
       }
       </script>
-  {% block customscripts %}
-  {% endblock %}
+  
 </body>
 
 </html>
