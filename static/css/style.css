@@ -330,10 +330,58 @@ aside p {
     margin: 1em 0 1em 0; 
 }
 
+.fantasy-background-story-image {
+    background-image: url('/static/images/fantasy.jpg');
+    width: auto;
+    height: 180px;
+    background-size: cover;
+    background-position:top;
+    border-radius: 5px;
+    margin: 1em 0 1em 0; 
+}
+
+.fiction-background-story-image {
+    background-image: url('/static/images/fiction.jpg');
+    width: auto;
+    height: 180px;
+    background-size: cover;
+    background-position:top;
+    border-radius: 5px;
+    margin: 1em 0 1em 0; 
+}
+
+.history-background-story-image {
+    background-image: url('/static/images/history.jpg');
+    width: auto;
+    height: 180px;
+    background-size: cover;
+    background-position:center;
+    border-radius: 5px;
+    margin: 1em 0 1em 0; 
+}
+
+.horror-background-story-image {
+    background-image: url('/static/images/horror.jpg');
+    width: auto;
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    margin: 1em 0 1em 0; 
+}
+
+.thriller-background-story-image {
+    background-image: url('/static/images/thriller.jpg');
+    width: auto;
+    height: 180px;
+    background-size: cover;
+    background-position:center;
+    border-radius: 5px;
+    margin: 1em 0 1em 0; 
+}
 .like-story-button {
     padding: 1em 1em 1em 1em;
     margin: 0 0 2em 0;
-   
 }
 /* ------------------------- Media queries ----------------------------- */
 /*- < 250px-*/

@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="introduction">
-                <h3 class="paragraph-styling">Read any of our {{ title }} stories</h3>
+                <h2 class="paragraph-styling">Read any of our {{ title|capitalize }} stories</h2>
             </div>
         </div>
     </div>
@@ -19,9 +19,12 @@
 <div class="container genre-cards">
     <div class="row">
 {% set TheId = namespace(value=0) %}
+<!-- loops thorugh the genre and sorts stories by popularity rating listed first -->
+{%- for fic in fiction|sort(attribute='popularity', reverse = True) -%}
 <!-- generates unique ids for each story -->
-{%- for fic in fiction -%}
 {% set TheId.value = TheId.value + 1 %}
+<!-- passes the function back the genre you were in so it returns to the same page -->
+{% set popularity = "fiction" %}
 {% if fic.genre == "fiction" %}
 <div class="container story-styling">
     <div class="row active-story">
@@ -32,15 +35,16 @@
                     <h4 class="mb-1"><span class="story-title">Title: </span> {{ fic.name|striptags|title }}</h4><small>Author:
                         <span class="paragraph-styling author-styling">{{ fic.author|striptags|title }}</span></small>
                 </div>
+                <div class="fiction-background-story-image"></div>
                 <h4 class="mb-1"><span class="story-title">Plot: </span><span class="story-plot">{{
                     fic.plot|striptags|capitalize }}</span></h4>
                 <div class="d-flex w-100 justify-content-between">
-                    <h4 class="mb-1"></h4><small>Popularity: <span class="badge bg-success rounded-pill">{{
-                        fic.popularity }}</span></small>
+                    <h4 class="mb-1"></h4><small>Popularity: <span class="badge bg-success rounded-pill">
+                        {{ fic.popularity }}</span></small>
                 </div>
                 <a href="#opening"><button type="button" data-bs-toggle="collapse"
                         data-bs-target="#the-id-of-{{ TheId.value }}"
-                        class="btn btn-outline-success text-center col-12 change-text stretched-link"
+                        class="btn btn-outline-success text-center col-12 change-text"
                         aria-expanded="false" aria-controls="collapsed story">
                         <span>Read</span><span class="hidden">Hide</span> {{ fic.name|striptags|title }} </button></a>
                 <div class="collapse" id="the-id-of-{{ TheId.value }}">
@@ -48,6 +52,13 @@
                     <div class="card card-story card w-100 mt-2">
                         <div class="card-body">
                             {{ fic.content|striptags|capitalize }}
+                        </div>
+                        <div class="like-story-button">
+                            <form method="POST" class="text-center" name="feedback-form" action="{{ url_for('updatePopularity', genre=popularity) }}">
+                                <label for="name" class="form-label form-label-spacing form-input-box-text"></label>
+                                <input type="text" id="name" class="form-control form-input-box-text" name="name" value="{{ fic.name|lower }}" hidden>
+                                <button class="btn btn-success text-center " type="submit" title="Submit" name="submit" aria-label="Submit Form">Like this Story</button>
+                            </form>
                         </div>
                     </div>
                 </div>

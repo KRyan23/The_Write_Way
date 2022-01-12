@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="introduction">
-                <h3 class="paragraph-styling" >Read any of our {{ title }} stories</h3>
+                <h2 class="paragraph-styling" >Read any of our {{ title|capitalize }} stories</h2>
             </div>
         </div>
     </div>
@@ -19,9 +19,11 @@
 <div class="container genre-cards">
     <div class="row">
 {% set TheId = namespace(value=0) %}
-<!-- generates unique ids for each story -->
+<!-- loops thorugh the genre and sorts stories by popularity rating -->
 {%- for cri in crime|sort(attribute='popularity', reverse = True) -%}
+<!-- generates unique ids for each story -->
 {% set TheId.value = TheId.value + 1 %}
+<!-- passes the function back the genre you were in so it returns to the same page -->
 {% set popularity = "crime" %}
 {% if cri.genre == "crime" %}
 <div class="container story-styling card-padding ">
