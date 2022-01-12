@@ -22,7 +22,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url_for('genre') }}" id="top-of-page"><img src="static/images/pen.png" title="Image of pen" aria-current="Image of pen" alt="Image of pen" class="logo"></a>
+        <a class="navbar-brand" href="{{ url_for('genre') }}" id="top-of-page"><img src="static/images/pen.png" title="Image of pen" aria-label="Image of pen" alt="Image of pen" class="logo"></a>
        <a href="{{ url_for('genre') }}" class="main-heading-link"><h1 class="main-heading" title="Site Heading" aria-label="Site Heading">The Write Way</h1></a> 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Mobile Nfromavigation">
@@ -32,7 +32,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 navigation-styling">
             <li class="nav-item">
-              <a class="nav-link active home-page" title="Home" aria-current="Home Page" href="{{ url_for('genre') }}"><span
+              <a class="nav-link active" title="Home" aria-label="Home Page" href="{{ url_for('genre') }}"><span
                   class="text-menu-style">Home</span></a>
             </li>
             <li class="nav-item">
@@ -41,60 +41,57 @@
             <li class="nav-item">
               <a class="nav-link active nav-link" aria-label="Sign In" href="{{ url_for('signin') }}"><span class="text-menu-style">Sign In</span></a>
             </li>
+            {% if session.user|lower %}
             <li class="nav-item">
-              <a class="nav-link active nav-link" aria-label="Create Story" href="{{ url_for('create') }}"><span class="text-menu-style">Create
+              <a class="nav-link active nav-link" aria-label="Profile Page" href="{{ url_for('backtoprofile') }}"><span class="text-menu-style">Profile
                   </span></a> 
             </li>
+            <li class="nav-item">
+              <a class="nav-link active nav-link" aria-label="Profile Page" href="{{ url_for('signout') }}"><span class="text-menu-style">Sign Out
+                  </span></a> 
+            </li>
+            {% endif %}
           </ul>
           <form class="d-flex" action="{{ url_for('search') }}">
             <label for="query"> </label>
-            <input class="form-control me-2 input-box search-input-box" type="search" name="search" id="query" 
-            placeholder="Search Stories.." title="Search Box" min-length="2" max-length="12"aria-label="Search" required>
+            <input class="form-control me-auto input-box search-input-box" type="search" name="search" id="query" 
+            placeholder="Search Stories.." title="Search Box" aria-label="Search" required>
             <button class="btn btn-outline-success search-box" type="submit">Search</button>
           </form>
         </div>
       </div>
     </nav>
   </header>
-<!-- News content-->
-<section>
-  <aside class="news-content">
-    <h3 title="News Content" aria-label="News content">Latest News</h3>
-    <ul>                                 
-      <li><p>Our Top read of the week </p><!--pull some stat from the db--></li>
-      <li><p>Our Newest Author is </p> <!--Insert most freqently updated profile--></li>
-      <li><p>Find our our longest published story here "The Stand" By Stephen King<!-- Retrieve another stat from the DB here--></p></li>
-      <li><p>Check out our most recently added genre...</p> <!--pull some stat from the db--></li>
-    </ul>
-    </aside>  
-</section>
+   {% block aside %}
+  {% endblock %}
 
 <!-- Introduction -->
-<section>
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <div class="introduction">
-            <p title="introduction" aria-label="introduction"><span class="paragraph-styling">Welcome </span>to the <span class="paragraph-styling">Write Way,</span>
+            <p title="site introduction"><span class="paragraph-styling">Welcome </span>to the <span class="paragraph-styling">Write Way,</span>
               a site for reading enthusiasts and writers alike. Feel free to read our vast selection of short stories.
             </p>
-            <p title="instructions" aria-label="instructions">Get your first short story published with us just by signing up and logging in, its that easy!</p>
+            <p title="site directions">Get your first short story published with us just by signing up and logging in, its that easy!</p>
           </div>
         </div>
       </div>
     </div>  
-  </section>
-
+  
      <!-- Flashed Messages content-->
     <section>
       {% with messages = get_flashed_messages() %}
   {% if messages %}
   {% for message in messages %}
-  <div class="container">
-    <div class="row d-flex">
-      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        {{ message }}
-     </div>
+  <div class="container message-container">
+    <div class="row d-flex justify-content-around">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10">
+        <div class='background-theme text-center'>
+          <h4 class='flash-message'>{{- message -}}
+          </h4>
+        </div>
+      </div>
     </div>
   </div>
   {% endfor %}
@@ -106,12 +103,12 @@
     {% block content %} 
     {% endblock %}
   </section>
-
+  
   
   
   <footer class="text-center bg-light">
     <div class="container pt-4">
-      <section class="mb-4">
+      <section class="mb-4"><!-- validator giving out about section tag without header -->
 
         <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://www.facebook.com/" target="_blank"
           rel="noopener" aria-label="facebook" title="facebook" role="button">
@@ -129,10 +126,10 @@
           rel="noopener" aria-label="instagram" title="instagram" role="button">
           <i class="fab fa-instagram social-media fa-lg"></i></a>
 
-    </div>
+    </div> <!-- validator giving out about this-->
 
     <div class="text-center text-dark p-1 copyright-styling">
-      <p title="Privacy Policy" aria-label="Privacy Policy">The Write Way © 2021 | All rights reserved. The terms under which this service is provided to you is outlined
+      <p title="Privacy Policy">The Write Way © 2021 | All rights reserved. The terms under which this service is provided to you is outlined
         in the <a href="{{ url_for('policy') }}" class="paragraph-styling policy-link">Privacy Policy.</a></p>
     </div>
   </footer>
@@ -159,8 +156,7 @@
         }
       }
       </script>
-  {% block customscripts %}
-  {% endblock %}
+  
 </body>
 
 </html>

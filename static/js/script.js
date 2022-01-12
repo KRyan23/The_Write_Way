@@ -12,6 +12,7 @@ function changeButtonText(){
     }
       
 /* Needed for bootstrap form validation to work */
+/* From https://getbootstrap.com/docs/5.0/forms/validation/ */
 function validateForms() {
   'use strict'
 
@@ -66,15 +67,11 @@ function verifyRecapcha() {
 }
 function isRecapchaValid(){
   setTimeout(() => {
-  $('#recapcha-message').css("fontSize", "0.875em").css('color', 'rgb(220, 53, 69)');
+  $('#recapcha-message').css("fontSize", "1.1em").css('color', 'rgb(220, 53, 69)');
   }, 1000);
   return recapcha;
   }
   
-      
-
-
-
 changeButtonText();  
 validateForms(); 
 checkForSuccess();
