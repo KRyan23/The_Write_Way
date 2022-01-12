@@ -253,16 +253,15 @@ def removeStory():
 @myapp.route("/updatePopularity/<genre>", methods=["GET", "POST"])
 
 def updatePopularity(genre):
-                    print(genre)
-                    if request.method == "POST":
-                        if session.get('user'):
+                    if session.get('user'):
+                        if request.method == "POST":
                             name = { "name": request.form.get('name') }
                             popularity = { "$inc": { "popularity": 1 }}
                             mongo.db.shortStories.update_one(name, popularity)
-                            flash("updated")
                         return redirect(url_for(genre))
                     else:
-	                    flash("You need to be signed for this")
+                        message_failure = Markup("You Need To Be Signed In<br>to 'Like' A Story")
+                        flash(message_failure)
                     return redirect(url_for("signin"))
                
 

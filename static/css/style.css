@@ -201,6 +201,7 @@ aside p {
 .rounded-pill {
     padding: 0.8em 0.8em 0.8em 0.8em;
     margin-bottom: 1em;
+    font-size: 0.9em;
 }
 
 .author-styling {
@@ -319,6 +320,21 @@ aside p {
     font-size: 1.1em;
 }
 
+.crime-background-story-image {
+    background-image: url('/static/images/crime.jpg');
+    width: auto;
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    margin: 1em 0 1em 0; 
+}
+
+.like-story-button {
+    padding: 1em 1em 1em 1em;
+    margin: 0 0 2em 0;
+   
+}
 /* ------------------------- Media queries ----------------------------- */
 /*- < 250px-*/
 @media only screen and (max-width: 249px) {
