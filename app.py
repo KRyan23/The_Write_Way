@@ -28,7 +28,8 @@ def handle_context():
 
 def genre():
     genre = mongo.db.genre.find()
-    return render_template("genre.html", genre=genre)
+    news = mongo.db.news.find()
+    return render_template("genre.html", genre=genre, news=news)
 
 
 @myapp.route("/policy")

@@ -4,7 +4,23 @@
 Genre
 {% endblock %}
 
-
+{% block aside %}
+<!-- News content-->
+<section>
+  <aside class="navigation-aside">
+    <h2 title="News Content" aria-label="News content">Latest News</h2>
+    <ul>                                 
+      {% for n in news %}
+      <li><p>We would like to give a Warm Welcome to our newest Author {{ n.author|title }}.</p></li>
+      <li><p> {{ n.author|title }} is sharing his writing with us all the way from {{ n.city_name|title }}, {{ n.country_name|title }}.</p></li>
+      <li><p>The latest addition to our {{ n.genre|title }} is the short story "{{ n.name|title }}", why not head over there and check it out.</p></li>
+      <li><p>Our {{ n.genre|title }} genre just recently had some short stories added...</p></li>
+      {% endfor %}
+    </ul>  
+ 
+  </aside>
+</section>  
+{% endblock%}
 
 {% block content %}
 <div class="container">
@@ -18,13 +34,14 @@ Genre
     </div>
   </div>
  
-  
 
   <div class="container genre-cards">
     <div class="row">
 
         {%- for gen in genre -%}
+        
         {% set picExtension = '.jpg' %}
+        
         
         <div class="col d-flex justify-content-center col-lg-4">
             <div class="card">
@@ -42,6 +59,10 @@ Genre
         {%- endfor -%}
         </div>
         </div>
-
+        
+        
 {% endblock %}
+
+
+
 

@@ -133,9 +133,10 @@ ul {
     list-style-type: none;
 }
 
-aside {
+.navigation-aside {
+    padding-top: 10em;
     width: 20vw;
-    height: 147vh;
+    height: 130vh;
     padding-left: 2px;
     padding-right: 2px;
     margin-left: 15px;
@@ -144,15 +145,6 @@ aside {
     font-style: italic;
     background-color: #f8f9fa;
     text-align: left;
-}
-
-aside,
-h3 {
-    padding: 0.25em 0 1em 0;
-}
-
-aside p {
-    padding: 0.75em 0 1em 0;
 }
 
 .form-hr {
