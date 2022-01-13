@@ -259,7 +259,7 @@ ul {
 
 .form-styling {
     padding: 3em 0 0 0;
-    /*removed 0.5 padding on last entry*/
+    
 }
 
 .form-label-spacing {
@@ -677,7 +677,4 @@ ul {
          flex-grow: 0.55; 
     }
 
-    .form-control {
-        padding: 0.3em 1em 0.3em 0;
-    }
 }

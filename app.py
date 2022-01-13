@@ -176,12 +176,13 @@ def resetPassword():
 @myapp.route("/profilePage/<pen_name>",  methods=["GET", "POST"])
 
 def profilePage(pen_name):
-    news = mongo.db.news.find()
+    
     pen_name = mongo.db.user_accounts.find_one(
         {"pen_name": session["user"]})["pen_name"]
     title = pen_name
     
     if session["user"]:
+        news = mongo.db.news.find()
         return render_template("profilePage.html", pen_name=pen_name, title=title, news=news)
     return redirect(url_for("signin"))
 

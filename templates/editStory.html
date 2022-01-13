@@ -110,22 +110,20 @@
             <div class="list-group">
                 <div class="list-group-item list-group-item-action" aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1"><span class="story-title">Title: </span>
-                          
-                          <label for="name" class="form-label form-label-spacing form-input-box-text"></label>
-      <input type="text" id="name" name="name" class="form-control form-input-box-text" placeholder="Enter Story Title" title="Story Name" minlength="5" maxlength="40" value="{{ story.name|title }}" required>
-
-                          </h4><small>Author:
-                            <span class="paragraph-styling author-styling">{{ story.author|title }}</span></small>
-                    </div>
-                    <h4 class="mb-1"><span class="story-title">Plot: </span>
+                      <h4 class="mb-1"><span class="story-title">Title: </span></h4><small>Author:
+                        <span class="paragraph-styling author-styling">{{ story.author|title }}</span></small>
+                      </div>
+                       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <input type="text" id="name" name="name" class="form-control form-input-box-text" placeholder="Enter Story Title" title="Story Name" minlength="5" maxlength="40" value="{{ story.name|title }}" required>
+                        <label for="name" class="form-label form-label-spacing form-input-box-text"></label>
+                        </div>
+                        <h4 class="mb-1"><span class="story-title">Plot: </span></h4>
                       <label for="story-plot" class="form-label form-label-spacing form-input-box-text"></label>
-      <textarea id="story-plot" name="plot" title="Story Plot" aria-label="Story Plot" class="form-control form-input-box-text" minlength="12"
-      maxlength="165" rows="3"  required>{{ story.plot|capitalize }}</textarea>
-                      
-                      <span class="story-plot">
-                        {{story.plot|capitalize}}</span></h4>
-                                      <div class="text-center profile-button-spacing">
+                      <textarea id="story-plot" name="plot" title="Story Plot" aria-label="Story Plot" class="form-control form-input-box-text" minlength="12"
+                      maxlength="165" rows="3"  required>{{ story.plot|capitalize }}</textarea>
+                      </div>
+                     
+                      <div class="text-center profile-button-spacing">
                       <a href="{{ url_for('backtoprofile') }}"><button type="button" 
                              class="btn btn-outline-success text-center col-10 change-text"
                         aria-expanded="false" aria-controls="collapsed story">
