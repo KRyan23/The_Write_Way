@@ -4,6 +4,84 @@
 {{ title }}
 {% endblock %}
 
+{% block aside %}
+<!-- News content -->
+<section>
+  <aside class="navigation-aside">
+    <h2 class="news-heading" title="News Content" aria-label="News content">Latest News</h2>
+    <ul>
+      {% for new in news %}
+      <li>
+        <p>We would like to give a Warm Welcome to our newest Author <span
+            class="news-text">{{ new.author|title }}</span>.</p>
+      </li>
+      <hr class="news-hr">
+      <li>
+        <p><span class="news-text"> {{ new.author|title }}</span> is sharing his writing with us all the way from <span
+            class="news-text">{{ new.city_name|title }}</span>, <span
+            class="news-text">{{ new.country_name|title }}</span>.</p>
+      </li>
+      <hr class="news-hr">
+      <li>
+        <p>The latest addition to our <span class="news-text">{{ new.genre|title }}</span> genre is the short story
+          "<span class="news-text">{{ new.name|title }}</span>", why not head over there and check it out.</p>
+      </li>
+      <hr class="news-hr">
+      <li>
+        <p>Our <span class="news-text">{{ new.genre|title }}</span> genre just recently had some short stories added...
+        </p>
+      </li>
+      {% endfor %}
+    </ul>
+    <!-- aside navigation-->
+    <h3 class="aside-genre-heading">Explore Genres</h3>
+    <div class="container text-center genre-aside-card">
+      <div class="row">
+        <div class="col-sm card aside-genre-card">
+          <img src="static/images/fiction.jpg" onerror="this.src='static/images/default.jpg';"
+            class="genre-aside-thumbnails" alt="image for fiction" aria-label="image for fiction" />
+          <h5 class="card-title">Fiction</h5>
+          <a href="{{ url_for('fiction') }}" class="stretched-link"></a>
+        </div>
+        <div class="col-sm card aside-genre-card">
+          <img src="static/images/fantasy.jpg" onerror="this.src='static/images/default.jpg';"
+            class="genre-aside-thumbnails" alt="image for fantasy" aria-label="image for fantasy" />
+          <h5 class="card-title">Fantasy</h5>
+          <a href="{{ url_for('fantasy') }}" class="stretched-link"></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm card aside-genre-card">
+          <img src="static/images/horror.jpg" onerror="this.src='static/images/default.jpg';"
+            class="genre-aside-thumbnails" alt="image for horror" aria-label="image for horror" />
+          <h5 class="card-title">Horror</h5>
+          <a href="{{ url_for('horror') }}" class="stretched-link"></a>
+        </div>
+        <div class="col-sm card aside-genre-card">
+          <img src="static/images/history.jpg" onerror="this.src='static/images/default.jpg';"
+            class="genre-aside-thumbnails" alt="image for history" aria-label="image for history" />
+          <h5 class="card-title">History</h5>
+          <a href="{{ url_for('history') }}" class="stretched-link"></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm card aside-genre-card">
+          <img src="static/images/thriller.jpg" onerror="this.src='static/images/default.jpg';"
+            class="genre-aside-thumbnails" alt="image for thriller" aria-label="image for thriller" />
+          <h5 class="card-title">Thriller</h5>
+          <a href="{{ url_for('thriller') }}" class="stretched-link"></a>
+        </div>
+        <div class="col-sm card aside-genre-card">
+          <img src="static/images/crime.jpg" onerror="this.src='static/images/default.jpg';"
+            class="genre-aside-thumbnails" alt="image for crime" aria-label="image for crime" />
+          <h5 class="card-title">Crime</h5>
+          <a href="{{ url_for('crime') }}" class="stretched-link"></a>
+        </div>
+      </div>
+    </div>
+  </aside>
+</section>
+{% endblock%}
 
 {% block content %}
 <div class="container">
@@ -47,7 +125,7 @@
                       novalidate>
                       <div class="text-center profile-button-spacing">
                         <button type="submit" data-bs-toggle="collapse"
-                          class="btn btn-outline-danger text-center text-wrap col-sm-1 col-md-8 col-lg-8 col-xl-6" aria-expanded="false"
+                          class="btn btn-outline-danger text-center text-wrap col-sm-6 col-md-8 col-lg-8 col-xl-6" aria-expanded="false"
                           aria-controls="collapsed story">
                           <span>{{ deleteButtonText }}</span><br><strong>"{{ story.name|title }}"</strong></button>
                       </div>
