@@ -38,13 +38,14 @@
     <div class="container text-center genre-aside-card">
       <div class="row">
         <div class="col-sm card aside-genre-card">
-          <img src="static/images/fiction.jpg" onerror="this.src='static/images/default.jpg';"
+          <img src={{ url_for('static', filename='images/fiction.jpg')}} onerror="this.src='static/images/default.jpg';"
             class="genre-aside-thumbnails" alt="image for fiction" aria-label="image for fiction" />
           <h5 class="card-title">Fiction</h5>
           <a href="{{ url_for('fiction') }}" class="stretched-link"></a>
+          
         </div>
         <div class="col-sm card aside-genre-card">
-          <img src="static/images/fantasy.jpg" onerror="this.src='static/images/default.jpg';"
+          <img src={{ url_for('static', filename='images/fantasy.jpg')}} onerror="this.src='static/images/default.jpg';"
             class="genre-aside-thumbnails" alt="image for fantasy" aria-label="image for fantasy" />
           <h5 class="card-title">Fantasy</h5>
           <a href="{{ url_for('fantasy') }}" class="stretched-link"></a>
@@ -52,13 +53,13 @@
       </div>
       <div class="row">
         <div class="col-sm card aside-genre-card">
-          <img src="static/images/horror.jpg" onerror="this.src='static/images/default.jpg';"
+          <img src={{ url_for('static', filename='images/horror.jpg')}} onerror="this.src='static/images/default.jpg';"
             class="genre-aside-thumbnails" alt="image for horror" aria-label="image for horror" />
           <h5 class="card-title">Horror</h5>
           <a href="{{ url_for('horror') }}" class="stretched-link"></a>
         </div>
         <div class="col-sm card aside-genre-card">
-          <img src="static/images/history.jpg" onerror="this.src='static/images/default.jpg';"
+          <img src={{ url_for('static', filename='images/history.jpg')}} onerror="this.src='static/images/default.jpg';"
             class="genre-aside-thumbnails" alt="image for history" aria-label="image for history" />
           <h5 class="card-title">History</h5>
           <a href="{{ url_for('history') }}" class="stretched-link"></a>
@@ -66,13 +67,13 @@
       </div>
       <div class="row">
         <div class="col-sm card aside-genre-card">
-          <img src="static/images/thriller.jpg" onerror="this.src='static/images/default.jpg';"
+          <img src={{ url_for('static', filename='images/thriller.jpg')}} onerror="this.src='static/images/default.jpg';"
             class="genre-aside-thumbnails" alt="image for thriller" aria-label="image for thriller" />
           <h5 class="card-title">Thriller</h5>
           <a href="{{ url_for('thriller') }}" class="stretched-link"></a>
         </div>
         <div class="col-sm card aside-genre-card">
-          <img src="static/images/crime.jpg" onerror="this.src='static/images/default.jpg';"
+          <img src={{ url_for('static', filename='images/crime.jpg')}} onerror="this.src='static/images/default.jpg';"
             class="genre-aside-thumbnails" alt="image for crime" aria-label="image for crime" />
           <h5 class="card-title">Crime</h5>
           <a href="{{ url_for('crime') }}" class="stretched-link"></a>

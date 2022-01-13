@@ -22,7 +22,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url_for('genre') }}" id="top-of-page"><img src="static/images/pen.png" title="Image of pen" aria-label="Image of pen" alt="Image of pen" class="logo"></a>
+        <a class="navbar-brand" href="{{ url_for('genre') }}" id="top-of-page"><img src={{ url_for('static', filename='images/pen.png')}} title="Image of pen" aria-label="Image of pen" alt="Image of pen" class="logo"></a>
        <a href="{{ url_for('genre') }}" class="main-heading-link"><h1 class="main-heading" title="Site Heading" aria-label="Site Heading">The Write Way</h1></a> 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Mobile Nfromavigation">
@@ -35,12 +35,6 @@
               <a class="nav-link active" title="Home" aria-label="Home Page" href="{{ url_for('genre') }}"><span
                   class="text-menu-style">Home</span></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link active nav-link" aria-label="Join Us" href="{{ url_for('join') }}"><span class="text-menu-style">Join Us</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active nav-link" aria-label="Sign In" href="{{ url_for('signin') }}"><span class="text-menu-style">Sign In</span></a>
-            </li>
             {% if session.user|lower %}
             <li class="nav-item">
               <a class="nav-link active nav-link" aria-label="Profile Page" href="{{ url_for('backtoprofile') }}"><span class="text-menu-style">Profile
@@ -49,6 +43,13 @@
             <li class="nav-item">
               <a class="nav-link active nav-link" aria-label="Profile Page" href="{{ url_for('signout') }}"><span class="text-menu-style">Sign Out
                   </span></a> 
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link active nav-link" aria-label="Join Us" href="{{ url_for('join') }}"><span class="text-menu-style">Join Us</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active nav-link" aria-label="Sign In" href="{{ url_for('signin') }}"><span class="text-menu-style">Sign In</span></a>
             </li>
             {% endif %}
           </ul>
