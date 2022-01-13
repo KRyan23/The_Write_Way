@@ -24,6 +24,7 @@ def handle_context():
     return dict(os=os)
     
 @myapp.route("/")
+
 @myapp.route("/genre")
 
 def genre():
@@ -36,54 +37,62 @@ def genre():
 
 def policy():
     policy = mongo.db.policy.find()
-    return render_template("policy.html", policy=policy)
+    news = mongo.db.news.find()
+    return render_template("policy.html", policy=policy, news=news)
 
 
 @myapp.route("/crime")
 
 def crime():
     crime = mongo.db.shortStories.find()
-    return render_template("crime.html", crime=crime, title="Crime")
+    news = mongo.db.news.find()
+    return render_template("crime.html", crime=crime, title="Crime", news=news)
 
 @myapp.route("/fantasy")
 
 def fantasy():
     fantasy = mongo.db.shortStories.find()
-    return render_template("fantasy.html", fantasy=fantasy, title="Fantasy")
+    news = mongo.db.news.find()
+    return render_template("fantasy.html", fantasy=fantasy, title="Fantasy", news=news)
 
 
 @myapp.route("/fiction")
     
 def fiction():    
     fiction = mongo.db.shortStories.find()
-    return render_template("fiction.html", fiction=fiction, title="Fiction")
+    news = mongo.db.news.find()
+    return render_template("fiction.html", fiction=fiction, title="Fiction", news=news)
 
 
 @myapp.route("/history")
 
 def history():
     history = mongo.db.shortStories.find()
-    return render_template("history.html", history=history, title="History")
+    news = mongo.db.news.find()
+    return render_template("history.html", history=history, title="History", news=news)
 
 
 @myapp.route("/horror")
 
 def horror():
     horror = mongo.db.shortStories.find()
-    return render_template("horror.html", horror=horror, title="Horror")
+    news = mongo.db.news.find()
+    return render_template("horror.html", horror=horror, title="Horror", news=news)
 
 
 @myapp.route("/thriller")
 
 def thriller():
     thriller = mongo.db.shortStories.find()
-    return render_template("thriller.html", thriller=thriller, title="Thriller")
+    news = mongo.db.news.find()
+    return render_template("thriller.html", thriller=thriller, title="Thriller", news=news)
 
 
 @myapp.route("/join", methods=["GET", "POST"])
 
 
 def join():
+    news = mongo.db.news.find()
     if request.method == "POST":
         
 #check if username exists in database
@@ -114,7 +123,7 @@ def join():
         
         
         
-    return render_template("join.html", title="Join Us")
+    return render_template("join.html", title="Join Us", news=news)
 
 
 @myapp.route("/signin", methods=["GET", "POST"])
@@ -167,25 +176,24 @@ def resetPassword():
 @myapp.route("/profilePage/<pen_name>",  methods=["GET", "POST"])
 
 def profilePage(pen_name):
-    
+    news = mongo.db.news.find()
     pen_name = mongo.db.user_accounts.find_one(
         {"pen_name": session["user"]})["pen_name"]
     title = pen_name
     
     if session["user"]:
-        return render_template("profilePage.html", pen_name=pen_name, title=title)
-
-        
+        return render_template("profilePage.html", pen_name=pen_name, title=title, news=news)
     return redirect(url_for("signin"))
 
 
 @myapp.route("/backtoprofile")
 
 def backtoprofile():
+    news = mongo.db.news.find()
     if session.get('user'):
         if session['user']:
                 pen_name, title = session["user"], session["user"]
-                return redirect(url_for('profilePage', pen_name=pen_name ))
+                return redirect(url_for('profilePage', pen_name=pen_name, news=news ))
     else:
         flash("You are not Logged in")
         return redirect(url_for("signin"))
@@ -205,6 +213,7 @@ def signout():
 @myapp.route("/create", methods=["GET", "POST"])
 
 def create():
+        news = mongo.db.news.find()
         if session.get('user'):
             if session['user']:
                 pen_name = session["user"]
@@ -221,17 +230,30 @@ def create():
                     return redirect(url_for('profilePage', pen_name=pen_name))
             else:
                 flash("Invalid action for user profile")
-            return render_template("create.html", create=create, title=pen_name)   
+            return render_template("create.html", create=create, title=pen_name, news=news)   
        
 # This is the main function for edit story
 @myapp.route("/editStory", methods=["GET", "POST"])
 
-def editStory(story_id): # ref vid5e
-    story = mongo.db.shortStories.find_one({"_id": ObjectId(story_id)})
-    name = mongo.db.shortStories.name.find().sort("name", 1)
-    return render_template("editStory.html", story=story, name=name)
+def editStory(): 
+    news = mongo.db.news.find()
+    #story = mongo.db.shortStories.find_one({"_id": ObjectId(story_id)})
+    #name = mongo.db.shortStories.name.find().sort("name", 1)
+    if session.get('user'):
+            if session['user']:
+                pen_name = session["user"]
+                stories = mongo.db.shortStories.find()
+    return render_template("editStory.html", stories=stories, pen_name=pen_name, news=news)
+    
 
- 
+@myapp.route("/updateStory/<story_id>")
+
+def updateStory(story_id):
+                #mongo.db.shortStories.remove({"_id": ObjectId(story_id)})
+                flash("Congratulations The Story Was Updated")
+                return redirect(url_for("editStory.html"))
+               
+
 @myapp.route("/deleteStory/<story_id>")
 
 def deleteStory(story_id):
@@ -244,11 +266,12 @@ def deleteStory(story_id):
 @myapp.route("/removeStory", methods=["GET", "POST"])
 
 def removeStory():
+    news = mongo.db.news.find()
     if session.get('user'):
             if session['user']:
                 pen_name = session["user"]
                 stories = mongo.db.shortStories.find()
-    return render_template("removeStory.html", stories=stories, pen_name=pen_name)
+    return render_template("removeStory.html", stories=stories, pen_name=pen_name, news=news)
 
 
 @myapp.route("/updatePopularity/<genre>", methods=["GET", "POST"])
