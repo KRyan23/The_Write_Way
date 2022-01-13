@@ -8,16 +8,68 @@ Genre
 <!-- News content-->
 <section>
   <aside class="navigation-aside">
-    <h2 title="News Content" aria-label="News content">Latest News</h2>
+    <h2 class="news-heading" title="News Content" aria-label="News content">Latest News</h2>
+    
+    
     <ul>                                 
       {% for n in news %}
-      <li><p>We would like to give a Warm Welcome to our newest Author {{ n.author|title }}.</p></li>
-      <li><p> {{ n.author|title }} is sharing his writing with us all the way from {{ n.city_name|title }}, {{ n.country_name|title }}.</p></li>
-      <li><p>The latest addition to our {{ n.genre|title }} is the short story "{{ n.name|title }}", why not head over there and check it out.</p></li>
-      <li><p>Our {{ n.genre|title }} genre just recently had some short stories added...</p></li>
+      <li><p>We would like to give a Warm Welcome to our newest Author <span class="news-text">{{ n.author|title }}</span>.</p></li><hr class="news-hr">
+      <li><p><span class="news-text"> {{ n.author|title }}</span> is sharing his writing with us all the way from <span class="news-text">{{ n.city_name|title }}</span>, <span class="news-text">{{ n.country_name|title }}</span>.</p></li><hr class="news-hr">
+      <li><p>The latest addition to our <span class="news-text">{{ n.genre|title }}</span> is the short story "<span class="news-text">{{ n.name|title }}</span>", why not head over there and check it out.</p></li><hr class="news-hr">
+      <li><p>Our <span class="news-text">{{ n.genre|title }}</span> genre just recently had some short stories added...</p></li>
       {% endfor %}
     </ul>  
- 
+    
+    <h3 class="aside-genre-heading">Explore Genres</h3>
+
+    <div class="container text-center genre-aside-card">
+      <div class="row">
+        <div class="col-sm card aside-genre-card">
+          <img src="static/images/fiction.jpg" onerror="this.src='static/images/default.jpg';"
+          class="genre-aside-thumbnails" alt="image for fiction" aria-label="image for fiction" />
+          <h5 class="card-title">Fiction</h5>
+          <a href="{{ url_for('fiction') }}" class="stretched-link"></a>
+        </div>
+        <div class="col-sm card aside-genre-card">
+          <img src="static/images/fantasy.jpg" onerror="this.src='static/images/default.jpg';"
+          class="genre-aside-thumbnails" alt="image for fantasy" aria-label="image for fantasy" />
+          <h5 class="card-title">Fantasy</h5>
+          <a href="{{ url_for('fantasy') }}" class="stretched-link"></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm card aside-genre-card">
+          <img src="static/images/horror.jpg" onerror="this.src='static/images/default.jpg';"
+          class="genre-aside-thumbnails" alt="image for horror" aria-label="image for horror" />
+          <h5 class="card-title">Horror</h5>
+          <a href="{{ url_for('horror') }}" class="stretched-link"></a>
+        </div>
+        <div class="col-sm card aside-genre-card">
+          <img src="static/images/history.jpg" onerror="this.src='static/images/default.jpg';"
+          class="genre-aside-thumbnails" alt="image for history" aria-label="image for history" />
+          <h5 class="card-title">History</h5>
+          <a href="{{ url_for('history') }}" class="stretched-link"></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm card aside-genre-card">
+          <img src="static/images/thriller.jpg" onerror="this.src='static/images/default.jpg';"
+          class="genre-aside-thumbnails" alt="image for thriller" aria-label="image for thriller" />
+          <h5 class="card-title">Horror</h5>
+          <a href="{{ url_for('thriller') }}" class="stretched-link"></a>
+        </div>
+        <div class="col-sm card aside-genre-card">
+          <img src="static/images/crime.jpg" onerror="this.src='static/images/default.jpg';"
+          class="genre-aside-thumbnails" alt="image for crime" aria-label="image for crime" />
+          <h5 class="card-title">History</h5>
+          <a href="{{ url_for('crime') }}" class="stretched-link"></a>
+        </div>
+      </div>
+
+
+    </div>
+    
+
   </aside>
 </section>  
 {% endblock%}
@@ -27,8 +79,8 @@ Genre
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <div class="introduction">
-            <h2 class="desktop-category-heading">Browse our categories........</h2>
-            <h2 class="mobile-category-heading text-center">Browse our categories</h2>
+            <h2 class="desktop-category-heading">Browse Our Genres........</h2>
+            <h2 class="mobile-category-heading text-center">Browse Our Genres</h2>
           </div>
       </div>
     </div>
