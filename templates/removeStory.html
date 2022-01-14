@@ -7,10 +7,15 @@
 {% block aside %}
 <!-- News content -->
 <section>
-  <aside class="navigation-aside">
+  <aside class="news-navigation-aside">
     <h2 class="news-heading" title="News Content" aria-label="News content">Latest News</h2>
     <ul>
       {% for new in news %}
+      <li>
+        <p>Check here for the latest news on our ever expanding list of Genres, 
+          Authors and stories</p>
+        </li>
+        <hr class="news-hr">
       <li>
         <p>We would like to give a Warm Welcome to our newest Author <span
             class="news-text">{{ new.author|title }}</span>.</p>
@@ -33,52 +38,6 @@
       </li>
       {% endfor %}
     </ul>
-    <!-- aside navigation-->
-    <h3 class="aside-genre-heading">Explore Genres</h3>
-    <div class="container text-center genre-aside-card">
-      <div class="row">
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/fiction.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for fiction" aria-label="image for fiction" />
-          <h5 class="card-title">Fiction</h5>
-          <a href="{{ url_for('fiction') }}" class="stretched-link"></a>
-        </div>
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/fantasy.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for fantasy" aria-label="image for fantasy" />
-          <h5 class="card-title">Fantasy</h5>
-          <a href="{{ url_for('fantasy') }}" class="stretched-link"></a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/horror.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for horror" aria-label="image for horror" />
-          <h5 class="card-title">Horror</h5>
-          <a href="{{ url_for('horror') }}" class="stretched-link"></a>
-        </div>
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/history.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for history" aria-label="image for history" />
-          <h5 class="card-title">History</h5>
-          <a href="{{ url_for('history') }}" class="stretched-link"></a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/thriller.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for thriller" aria-label="image for thriller" />
-          <h5 class="card-title">Thriller</h5>
-          <a href="{{ url_for('thriller') }}" class="stretched-link"></a>
-        </div>
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/crime.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for crime" aria-label="image for crime" />
-          <h5 class="card-title">Crime</h5>
-          <a href="{{ url_for('crime') }}" class="stretched-link"></a>
-        </div>
-      </div>
-    </div>
   </aside>
 </section>
 {% endblock%}
@@ -87,83 +46,81 @@
 <div class="container">
   <div class="row d-flex justify-content-around">
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10">
-
-<fieldset class="background-theme blip">
-<div class="container form-styling">
-  <div class="row d-flex justify-content-around ">
-    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10">
-      <h2 class="text-center" aria-label="Form Title">Remove a {{ pen_name|title }} Story </h2>
-      <hr>
-      <div class="container genre-cards">
-        <div class="row">
-          
-          {% set deleteButtonText = "Delete Story" %}
-          {% set backToProfileText = "Cancel and Return to Profile" %}
-          {% set confirmDeletion = "Check the Box to Confirm" %}
-          {% set TheId = namespace(value=0) %}
-          {% for story in stories %}
-          {% if pen_name == story.author %}  
-          {% set TheId.value = TheId.value + 1 %}
-    <div class="container story-styling">
-        <div class="row active-story">
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-6"></div>
-            <div class="list-group">
-                <div class="list-group-item list-group-item-action" aria-current="true">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1"><span class="story-title">Title: </span> {{ story.name|title }}</h4><small>Author:
-                            <span class="paragraph-styling author-styling">{{ story.author|title }}</span></small>
-                    </div>
-                    <h4 class="mb-1"><span class="story-title">Plot: </span><span class="story-plot">{{
+      <fieldset class="background-theme blip">
+        <div class="container form-styling">
+          <div class="row d-flex justify-content-around ">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10">
+              <h2 class="text-center" aria-label="Form Title">Remove a {{ pen_name|title }} Story </h2>
+              <hr>
+              <div class="container genre-cards">
+                <div class="row">
+                  {% set deleteButtonText = "Delete Story" %}
+                  {% set backToProfileText = "Cancel and Return to Profile" %}
+                  {% set confirmDeletion = "Check the Box to Confirm" %}
+                  {% set TheId = namespace(value=0) %}
+                  {% for story in stories %}
+                  {% if pen_name == story.author %}
+                  {% set TheId.value = TheId.value + 1 %}
+                  <div class="container story-styling">
+                    <div class="row active-story">
+                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-6"></div>
+                      <div class="list-group">
+                        <div class="list-group-item list-group-item-action" aria-current="true">
+                          <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1"><span class="story-title">Title: </span> {{ story.name|title }}</h4>
+                            <small>Author:
+                              <span class="paragraph-styling author-styling">{{ story.author|title }}</span></small>
+                          </div>
+                          <h4 class="mb-1"><span class="story-title">Plot: </span><span class="story-plot">{{
                       story.plot|capitalize}}</span></h4>
-                                      <div class="text-center profile-button-spacing">
-                      <a href="{{ url_for('backtoprofile') }}"><button type="button" 
-                             class="btn btn-outline-success text-center col-10 change-text"
-                        aria-expanded="false" aria-controls="collapsed story">
-                        <span><strong>{{ backToProfileText }}</strong></span></button></a>
+                          <div class="text-center profile-button-spacing">
+                            <a href="{{ url_for('backtoprofile') }}"><button type="button"
+                                class="btn btn-outline-success text-center col-10 change-text" aria-expanded="false"
+                                aria-controls="collapsed story">
+                                <span><strong>{{ backToProfileText }}</strong></span></button></a>
+                          </div>
+                          <form class="needs-validation form-intro"
+                            action="{{ url_for('deleteStory', story_id=story._id) }}" novalidate>
+                            <div class="text-center profile-button-spacing">
+                              <button type="submit" data-bs-toggle="collapse"
+                                class="btn btn-outline-danger text-center text-wrap col-sm-6 col-md-8 col-lg-8 col-xl-6"
+                                aria-expanded="false" aria-controls="collapsed story">
+                                <span>{{ deleteButtonText }}</span><br><strong>"{{ story.name|title }}"</strong></button>
+                            </div>
+                            <input type="checkbox" id="story-content-{{ TheId.value }}" name="remove-story"
+                              title="Remove Story Checkbox" aria-label="Remove Story Checkbox"
+                              class="form-input-box-text form-check-input profile-checkbox-spacing" required>
+                            <label for="story-content-{{ TheId.value }}"
+                              class="form-input-box-text text-wrap profile-checkbox-text-spacing">{{ confirmDeletion }}
+                            </label>
+                            <div class="valid-feedback">
+                              Your all set!
+                            </div>
+                            <div class="invalid-feedback ">
+                              <strong>Please check the box</strong>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
                     </div>
-                    <form class="needs-validation form-intro" action="{{ url_for('deleteStory', story_id=story._id) }}"
-                      novalidate>
-                      <div class="text-center profile-button-spacing">
-                        <button type="submit" data-bs-toggle="collapse"
-                          class="btn btn-outline-danger text-center text-wrap col-sm-6 col-md-8 col-lg-8 col-xl-6" aria-expanded="false"
-                          aria-controls="collapsed story">
-                          <span>{{ deleteButtonText }}</span><br><strong>"{{ story.name|title }}"</strong></button>
+                  </div>
+                  {% endif %}
+                  {% endfor %}
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                        <a href="#top-of-page"><button type="button" class="btn btn-outline-success btn-lg">
+                            <h5><i class="far fa-arrow-alt-circle-up fa-lg"></i><span class="back-to-top">Back to
+                                Top</span><i class="far fa-arrow-alt-circle-up fa-lg"></i></h5>
+                          </button></a>
                       </div>
-                      <input type="checkbox" id="story-content-{{ TheId.value }}" name="remove-story"
-                        title="Remove Story Checkbox" aria-label="Remove Story Checkbox"
-                        class="form-input-box-text form-check-input profile-checkbox-spacing" required>
-                      <label for="story-content-{{ TheId.value }}"
-                        class="form-input-box-text text-wrap profile-checkbox-text-spacing">{{ confirmDeletion }}
-                      </label>
-                      <div class="valid-feedback">
-                        Your all set!
-                      </div>
-                      <div class="invalid-feedback ">
-                        <strong>Please check the box</strong>
-                      </div>
-                    </form>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
+      </fieldset>
     </div>
-    {% endif %}
-  {% endfor %}
-  
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
-          <a href="#top-of-page"><button type="button" class="btn btn-outline-success btn-lg">
-              <h5><i class="far fa-arrow-alt-circle-up fa-lg"></i><span class="back-to-top">Back to Top</span><i
-                  class="far fa-arrow-alt-circle-up fa-lg"></i></h5>
-            </button></a>
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </fieldset>
-    </div>
-    </div>
-    </div>
+  </div>
+</div>
 {% endblock %}

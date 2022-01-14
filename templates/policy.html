@@ -3,10 +3,15 @@
 {% block aside %}
 <!-- News content -->
 <section>
-  <aside class="navigation-aside">
+  <aside class="news-navigation-aside">
     <h2 class="news-heading" title="News Content" aria-label="News content">Latest News</h2>
     <ul>
       {% for new in news %}
+      <li>
+        <p>Check here for the latest news on our ever expanding list of Genres, 
+          Authors and stories</p>
+        </li>
+        <hr class="news-hr">
       <li>
         <p>We would like to give a Warm Welcome to our newest Author <span
             class="news-text">{{ new.author|title }}</span>.</p>
@@ -29,70 +34,23 @@
       </li>
       {% endfor %}
     </ul>
-    <!-- aside navigation-->
-    <h3 class="aside-genre-heading">Explore Genres</h3>
-    <div class="container text-center genre-aside-card">
-      <div class="row">
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/fiction.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for fiction" aria-label="image for fiction" />
-          <h5 class="card-title">Fiction</h5>
-          <a href="{{ url_for('fiction') }}" class="stretched-link"></a>
-        </div>
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/fantasy.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for fantasy" aria-label="image for fantasy" />
-          <h5 class="card-title">Fantasy</h5>
-          <a href="{{ url_for('fantasy') }}" class="stretched-link"></a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/horror.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for horror" aria-label="image for horror" />
-          <h5 class="card-title">Horror</h5>
-          <a href="{{ url_for('horror') }}" class="stretched-link"></a>
-        </div>
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/history.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for history" aria-label="image for history" />
-          <h5 class="card-title">History</h5>
-          <a href="{{ url_for('history') }}" class="stretched-link"></a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/thriller.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for thriller" aria-label="image for thriller" />
-          <h5 class="card-title">Thriller</h5>
-          <a href="{{ url_for('thriller') }}" class="stretched-link"></a>
-        </div>
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/crime.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for crime" aria-label="image for crime" />
-          <h5 class="card-title">Crime</h5>
-          <a href="{{ url_for('crime') }}" class="stretched-link"></a>
-        </div>
-      </div>
-    </div>
   </aside>
 </section>
 {% endblock%}
 
 {% block content %}
-
 {% for pol in policy %}
 <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <div>
-            <h3 class="text-center policy-heading">{{ pol.policy_description }}</h3>
-        </div>         
-          <div class="introduction">
-          {{ pol.policy_content|safe }}
-        </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div>
+        <h3 class="text-center policy-heading">{{ pol.policy_description }}</h3>
+      </div>
+      <div class="introduction">
+        {{ pol.policy_content|safe }}
       </div>
     </div>
   </div>
-    {% endfor %}
+</div>
+{% endfor %}
 {% endblock %}

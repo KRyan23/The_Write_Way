@@ -17,29 +17,20 @@
     {% endblock %}
   </title>
 </head>
-
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url_for('genre') }}" id="top-of-page"><img src="static/images/pen.png" title="Image of pen" aria-label="Image of pen" alt="Image of pen" class="logo"></a>
+        <a class="navbar-brand" href="{{ url_for('genre') }}" id="top-of-page"><img src={{ url_for('static', filename='images/pen.png')}} title="Image of pen" aria-label="Image of pen" alt="Image of pen" class="logo"></a>
        <a href="{{ url_for('genre') }}" class="main-heading-link"><h1 class="main-heading" title="Site Heading" aria-label="Site Heading">The Write Way</h1></a> 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Mobile Nfromavigation">
           <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </button><div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 navigation-styling">
             <li class="nav-item">
               <a class="nav-link active" title="Home" aria-label="Home Page" href="{{ url_for('genre') }}"><span
                   class="text-menu-style">Home</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active nav-link" aria-label="Join Us" href="{{ url_for('join') }}"><span class="text-menu-style">Join Us</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active nav-link" aria-label="Sign In" href="{{ url_for('signin') }}"><span class="text-menu-style">Sign In</span></a>
             </li>
             {% if session.user|lower %}
             <li class="nav-item">
@@ -49,6 +40,13 @@
             <li class="nav-item">
               <a class="nav-link active nav-link" aria-label="Profile Page" href="{{ url_for('signout') }}"><span class="text-menu-style">Sign Out
                   </span></a> 
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link active nav-link" aria-label="Join Us" href="{{ url_for('join') }}"><span class="text-menu-style">Join Us</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active nav-link" aria-label="Sign In" href="{{ url_for('signin') }}"><span class="text-menu-style">Sign In</span></a>
             </li>
             {% endif %}
           </ul>
@@ -62,9 +60,98 @@
       </div>
     </nav>
   </header>
-   {% block aside %}
+  <section>
+  <aside class="genre-navigation-aside">
+    <!-- aside navigation-->
+    <h3 class="aside-genre-heading">Explore Genres</h3>
+    <p class="genre-aside-text">Get back to where you left off reading. Navigate to any of our Genres from this section.</p> 
+      <hr class="genre-hr">
+<div class="container col-sm-12 col-md-12 col-lg-10 col-xl-6">
+      <div class="row ">
+    <div class="col d-flex justify-content-around ">
+      <div class="card ">
+        <img src={{ url_for('static', filename='images/fiction.jpg')}} onerror="this.src='static/images/default.jpg';"
+            class="genre-aside-thumbnails" alt="image for fiction" aria-label="image for fiction" />
+        <div class="card-body card-thumbnails-body">
+          <h6 class="card-title">Fiction</h6>         
+          <a href="{{ url_for('fiction') }}" class="stretched-link"></a>
+        </div>
+      </div>
+      </div>
+    </div>
+<div class="row ">
+        <div class="col d-flex justify-content-around ">
+      <div class="card ">
+        <img src={{ url_for('static', filename='images/fantasy.jpg')}} onerror="this.src='static/images/default.jpg';"
+            class="genre-aside-thumbnails" alt="image for fantasy" aria-label="image for fantasy" />
+        <div class="card-body card-thumbnails-body">
+          <h6 class="card-title">Fantasy</h6>         
+          <a href="{{ url_for('fantasy') }}" class="stretched-link"></a>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <hr class="genre-hr">
+    <div class="container col-sm-12 col-md-12 col-lg-10 col-xl-6">
+    <div class="row ">
+      <div class="col d-flex justify-content-around ">
+        <div class="card">
+          <img src={{ url_for('static', filename='images/horror.jpg')}} onerror="this.src='static/images/default.jpg';"
+              class="genre-aside-thumbnails" alt="image for horror" aria-label="image for horror" />
+          <div class="card-body card-thumbnails-body">
+            <h6 class="card-title">Horror</h6>         
+            <a href="{{ url_for('horror') }}" class="stretched-link"></a>
+          </div>
+        </div>
+        </div>
+      </div>
+  <div class="row ">
+          <div class="col d-flex justify-content-around ">
+        <div class="card ">
+          <img src={{ url_for('static', filename='images/history.jpg')}} onerror="this.src='static/images/default.jpg';"
+              class="genre-aside-thumbnails" alt="image for history" aria-label="image for history" />
+          <div class="card-body card-thumbnails-body">
+            <h6 class="card-title">History</h6>         
+            <a href="{{ url_for('history') }}" class="stretched-link"></a>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  <hr class="genre-hr">
+      <div class="container col-sm-12 col-md-12 col-lg-10 col-xl-6">
+      <div class="row ">
+        <div class="col d-flex justify-content-around ">
+          <div class="card ">
+            <img src={{ url_for('static', filename='images/thriller.jpg')}} onerror="this.src='static/images/default.jpg';"
+                class="genre-aside-thumbnails" alt="image for thriller" aria-label="image for thriller" />
+            <div class="card-body card-thumbnails-body">
+              <h6 class="card-title">Thriller</h6>         
+              <a href="{{ url_for('thriller') }}" class="stretched-link"></a>
+            </div>
+          </div>
+          </div>
+        </div>
+          <div class="row ">
+            <div class="col d-flex justify-content-around ">
+          <div class="card ">
+            <img src={{ url_for('static', filename='images/crime.jpg')}} onerror="this.src='static/images/default.jpg';"
+                class="genre-aside-thumbnails" alt="image for crime" aria-label="image for crime" />
+            <div class="card-body card-thumbnails-body">
+              <h6 class="card-title">Crime</h6>         
+              <a href="{{ url_for('crime') }}" class="stretched-link"></a>
+            </div>
+          </div>
+        </div>
+        </div>
+</div>
+</div>
+  </aside>
+</section>
+</aside>
+  {% block aside %}
   {% endblock %}
-
 <!-- Introduction -->
     <div class="container">
       <div class="row">
@@ -78,8 +165,7 @@
         </div>
       </div>
     </div>  
-  
-     <!-- Flashed Messages content-->
+       <!-- Flashed Messages content-->
     <section>
       {% with messages = get_flashed_messages() %}
   {% if messages %}
@@ -103,37 +189,27 @@
     {% block content %} 
     {% endblock %}
   </section>
-  
-  
-  
-  <footer class="text-center bg-light">
+   <footer class="text-center bg-light">
     <div class="container pt-4">
-      <section class="mb-4"><!-- validator giving out about section tag without header -->
-
+      <section class="mb-4">
         <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://www.facebook.com/" target="_blank"
           rel="noopener" aria-label="facebook" title="facebook" role="button">
-          <i class="fab fa-facebook social-media fa-lg"></i></a>
-
+         <i class="fab fa-facebook social-media fa-lg"></i></a>
         <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://www.youtube.com/" target="_blank"
           rel="noopener" aria-label="youtube" title="youtube" role="button">
           <i class="fab fa-youtube-square social-media fa-lg"></i></a>
-
         <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://twitter.com/?lang=en/" target="_blank"
           rel="noopener" aria-label="twitter" title="twitter" role="button">
           <i class="fab fa-twitter social-media fa-lg"></i></a>
-
         <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://instagram.com/?lang=en/" target="_blank"
           rel="noopener" aria-label="instagram" title="instagram" role="button">
           <i class="fab fa-instagram social-media fa-lg"></i></a>
-
-    </div> <!-- validator giving out about this-->
-
+    </div> 
     <div class="text-center text-dark p-1 copyright-styling">
       <p title="Privacy Policy">The Write Way © 2021 | All rights reserved. The terms under which this service is provided to you is outlined
         in the <a href="{{ url_for('policy') }}" class="paragraph-styling policy-link">Privacy Policy.</a></p>
     </div>
   </footer>
-
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
@@ -151,12 +227,9 @@
         var recaptcha = document.forms["myForm"]["g-recaptcha-response"];
         recaptcha.required = true;
         recaptcha.oninvalid = function(e) {
-          // do something
           alert("Please complete the captcha");
         }
       }
       </script>
-  
 </body>
-
 </html>

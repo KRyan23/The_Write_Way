@@ -129,6 +129,7 @@ def join():
 @myapp.route("/signin", methods=["GET", "POST"])
 
 def signin():
+    news = mongo.db.news.find()
     if request.method == "POST":
         signin = mongo.db.user_accounts.find_one(
             {"pen_name": request.form.get("pen_name").lower()})
@@ -142,14 +143,14 @@ def signin():
                 flash(message_failure)
                 return redirect(url_for('signin'))
             
-            return render_template('profilePage.html', title=pen)
+            return render_template('profilePage.html', title=pen, news=news)
             
         else:
                 message_failure = Markup("Were sorry but the Pen Name<br> '"+ "<span class='paragraph-styling'>" + pen.title() + "</span>" + "'<br> Does not exist on our system")
                 flash(message_failure)
-                return redirect(url_for('signin'))
+                return redirect(url_for('signin', news=news))
 
-    return render_template("signin.html", title="Sign In")
+    return render_template("signin.html", title="Sign In", news=news)
 
 
 @myapp.route("/resetPassword", methods=["GET", "POST"])
@@ -184,7 +185,7 @@ def profilePage(pen_name):
     if session["user"]:
         news = mongo.db.news.find()
         return render_template("profilePage.html", pen_name=pen_name, title=title, news=news)
-    return redirect(url_for("signin"))
+    return redirect(url_for("signin", news=news))
 
 
 @myapp.route("/backtoprofile")
@@ -197,18 +198,19 @@ def backtoprofile():
                 return redirect(url_for('profilePage', pen_name=pen_name, news=news ))
     else:
         flash("You are not Logged in")
-        return redirect(url_for("signin"))
+        return redirect(url_for("signin", news=news))
 
 
 @myapp.route("/signout")
 
 def signout():
+    news = mongo.db.news.find()
     if session:
         session.clear()
         flash("Sign Out Was Successful!")
     else:
         flash("You are not Signed In")
-    return redirect(url_for("signin"))
+    return redirect(url_for("signin", news=news))
 
 
 @myapp.route("/create", methods=["GET", "POST"])
