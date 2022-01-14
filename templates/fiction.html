@@ -92,7 +92,7 @@
                 </div>
                 <div class="like-story-button">
                   <form method="POST" class="text-center" name="feedback-form"
-                    action="{{ url_for('updatePopularity', genre=popularity) }}">
+                    action="{{ url_for('updatepopularity', genre=popularity) }}">
                     <label for="name" class="form-label form-label-spacing form-input-box-text"></label>
                     <input type="text" id="name" class="form-control form-input-box-text" name="name"
                       value="{{ fic.name|lower }}" hidden>

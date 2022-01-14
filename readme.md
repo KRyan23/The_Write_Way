@@ -24,19 +24,23 @@
 
         1. As a First Time Visitor, I want to easily understand the main purpose of the site.
         2. As a First Time Visitor, I would like to browse the sites content without signing up or logging in.
+        3. As a First Time Visitor, I would like to sign up and create an account.
+        4. As a First Time Visitor, I would like to sign into my profile and create my first story.
         
     -   #### Returning Visitor Goals
 
-        1. As a Returning Visitor, I would like create my own login profile to allow me create content.
-        2. As a Returning Visitor, I would like to easily connect with the sites social media channels.
+        1. As a Returning Visitor, I've forgotten my password and need to reset it. 
+        2. As a Returning Visitor, I would like to login into my profile and 'like' the stories I read.
+        3. As a Returning Visitor, I've changed my mind and would like to delete the story I earlier added.
+         
         
 
     -   #### Frequent User Goals
         
         1. As a Frequent Visitor, I would like create another short story.
-        2. As a Frequent Visitor, I would like read back over one of my recently added short stories.
-        3. As a Frequent Visitor, I would like edit one of my recently added short stories.
-        4. As a Frequent Visitor, I would like remove one of my recently added short stories.
+        2. As a Frequent Visitor, I would like edit one of my short stories.
+        3. As a Frequent Visitor, I would like remove one of my short stories.
+        4. As a Frequent Visitor, I would like read back over one of my recently added short stories.
 
 -   ### Design
     -   #### Colour Scheme
@@ -137,37 +141,52 @@ The W3C Mark-up Validator and W3C CSS Jigsaw Validator Services were used to val
         1. The site has been designed to give a good and unimpeded flow from start to end.
         2. The sites categories and most of its content are freely availible to unregistered users. 
 
+    3. As a First Time Visitor, I would like to sign up and create an account.
 
+        1. As a first time vistor they are presented with 3 navigation links. 'Home' brings users back to the home page. 'Sign In' brings the users to the sign in page, if they click this by accident there is a link to 'Join Us' page called 'No Account?'. The last item is the 'Join Us' link which allows the users to easily sign up in a matter of minutes.
     
+    4.  As a First Time Visitor, I would like to sign into my profile and create my first story.
+
+        1. As a first time visitor after signing up, the user can navigate to the 'Sign In' page and login. Inside in the 
+        profile page the user can click on 'Create A New Story' and from there create their own content.
+
 -   #### Returning Visitor Goals
 
-    1. As a Returning Visitor, I would like create my own login profile to allow me create content.
+    1. As a Returning Visitor, I've forgotten my password and need to reset it.
 
-        1. A returning visitor to the site can choose the 'Signup' button or 'Login' from the main navigation menu. From here they are invited to complete the signup process.
+        1. As a returning visitor to the site, when the user clicks on the 'Sign In' page and realises they can't
+        remember their password, there is a link on the 'Sign In' page called 'Forgot Password'. On navigating to this
+        the user is brought to the 'Reset Password' page, the user then enters their 'Pen Name' and after choosing a new password hits the 'Reset Password' to complete the process. The user is then redirected back to the 'Sign In' page, where they can try again. If the user enters an incorrect 'Pen Name' or makes on up that is not in the database, they get the message Please Check Your 'Pen Name' and 'Password'. 
 
     
-    2. As a Returning Visitor, I would like to easily connect with the sites social media channels.
+    2. As a Returning Visitor, I would like to login into my profile and 'like' the stories I read.
 
-        1. A returning visitor can use the social media links at the bottom of the page to connect with a larger audience.
+        1. As a returning vistor to the site they will have noticed a 'Like Story' button at the end of each Short Story.
+        As a registered user you can 'Like' a story which updates it popularity rating. The most popular stories are then listed at the top of each Genre page according to the popularity number. A simple click will update the number on story, close the reading pane and return the user to the top page to discourage multiple clicks. Should the user click on the 'Like Story' without being signed in, they will be redirected to the 'Sign In' page along with the message 'You Need To Be Signed Into 'Like' A Story'.
 
--   #### Frequent User Goals
+    3. As a Returning Visitor, I've changed my mind and would like to delete the story I earlier added.
 
+        1. As a returning visitor to the site, they will first need to sign in to access their profile page. From the profile page they need to choose the link 'Delete Existing Story'. This bring them to a page which lists all the short stories that the current logged in user has created. To delete a story the user needs to click on the 'Delete Story' button, in case the user clicks on it by accident, there is a check box that prevents this. The story can then be removed once the 'Check Box to Confirm' is ticked. Alternatively if the user gets cold feet and does not want to remove his content, placed above each 'Delete Story' is a larger green button labelled 'Cancel and Return to Profile'.
+
+-   #### Frequent User Goals  
+        
+        
     1. As a Frequent Visitor, I would like create another short story.
 
-        1. The user first needs a valid logon. Once logged in they can go to their profile page and choose the 'Create New' button. They then shoose a category for their story along with a public or private setting, lastly when they are finshed writing, they can submit the short story by clicking the 'Submit' button. 
+        1. The user first needs a valid logon. Once logged in they can go to their profile page and choose the 'Create A New Story' button. They then need to choose 1. A Genre for their story. 2. Write a story title. 3. Write a short  story plot. 4. Pen their masterpeice in the Story content section. Lastly the user just needs to agree to the Terms and conditions of the site and hit 'Publish Story'. If the user decides they would prefer to read 'Privacy Policy' before agreeing to the terms and conditions there is a link called 'Read Privacy Policy' underneath the checkbox. This will open in a new tab so as preserving the users content in the orginal page.
         
-    2. As a Frequent Visitor, I would like read back over one of my recently added short stories.
+    2. As a Frequent Visitor, I would like edit one of my short stories.
 
-        1. The user in this case can be either logged in or not. From here they can browse the caterogries and find their story, or if they do login they cna view their work from within the profile.
+        1. The user first needs a valid logon. Once logged in they can go to their profile page and choose the 'Edit An Existing Story' button. Here they are presented with all the stories the user has published. On each story the user has the abilty to edit. 1. The Title. 2. The Plot 3. The Story Content. Once happy with the changes the user just needs to 'Check the Box to Confirm' and click the yellow button 'Update Story' to complete the changes. Should the user change their mind before saving, they can select the large green button labelled 'Cancel and Return to Profile' to exit the current task.
 
-    3. As a Frequent Visitor, I would like edit one of my recently added short stories.
+    3. As a Frequent Visitor, I would like remove one of my short stories.
 
-        1. The user will need to be logged in for this task also, once logged in they can go to their profile page, locate the peice of work that there interested in changing and choose the edit function, once happy with the changes they can click the 'Submit' button.
-    
-    4. As a Frequent Visitor, I would like remove one of my recently added short stories.
-
-        1. The user again will need to be logged in for this task. From here they can go to their profile page, locate the peice of work that there interested in and choose the delete button to remove it.
+        1. The user will need to be logged in for this task also. From the profile page they need to choose the link 'Delete Existing Story'. This bring them to a page which lists all the short stories that the current logged in user has created. To delete a story the user needs to click on the 'Delete Story' button, in case the user clicks on it by accident, there is a check box that prevents this. The story can then be removed once the 'Check Box to Confirm' is ticked. Alternatively if the user gets cold feet and does not want to remove his content, placed above each 'Delete Story' is a larger green button labelled 'Cancel and Return to Profile'.
+      
+    4. As a Frequent Visitor, I would like read back over one of my recently added short stories.
         
+        1. For this task the user has 2 options. 1. They can be logged out and just navigate to the specific genre and find their story. 2. The user can be logged in and from their profile page they can just click the link that says 'Continue on Reading'. Alternatively they can click the specific genre on right hand side naigation menu and browse to their story.
+
 ### Further Testing
 
 -   The Website was tested on Google Chrome, Opera, Internet Explorer 11, Microsoft Edge and Firefox browsers.
