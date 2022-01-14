@@ -7,10 +7,15 @@ Genre
 {% block aside %}
 <!-- News content -->
 <section>
-  <aside class="navigation-aside">
+  <aside class="news-navigation-aside">
     <h2 class="news-heading" title="News Content" aria-label="News content">Latest News</h2>
     <ul>
       {% for new in news %}
+      <li>
+        <p>Check here for the latest news on our ever expanding list of Genres, 
+          Authors and stories</p>
+        </li>
+        <hr class="news-hr">
       <li>
         <p>We would like to give a Warm Welcome to our newest Author <span
             class="news-text">{{ new.author|title }}</span>.</p>
@@ -33,97 +38,38 @@ Genre
       </li>
       {% endfor %}
     </ul>
-    <!-- aside navigation-->
-    <h3 class="aside-genre-heading">Explore Genres</h3>
-    <div class="container text-center genre-aside-card">
-      <div class="row">
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/fiction.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for fiction" aria-label="image for fiction" />
-          <h5 class="card-title">Fiction</h5>
-          <a href="{{ url_for('fiction') }}" class="stretched-link"></a>
-        </div>
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/fantasy.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for fantasy" aria-label="image for fantasy" />
-          <h5 class="card-title">Fantasy</h5>
-          <a href="{{ url_for('fantasy') }}" class="stretched-link"></a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/horror.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for horror" aria-label="image for horror" />
-          <h5 class="card-title">Horror</h5>
-          <a href="{{ url_for('horror') }}" class="stretched-link"></a>
-        </div>
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/history.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for history" aria-label="image for history" />
-          <h5 class="card-title">History</h5>
-          <a href="{{ url_for('history') }}" class="stretched-link"></a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/thriller.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for thriller" aria-label="image for thriller" />
-          <h5 class="card-title">Thriller</h5>
-          <a href="{{ url_for('thriller') }}" class="stretched-link"></a>
-        </div>
-        <div class="col-sm card aside-genre-card">
-          <img src="static/images/crime.jpg" onerror="this.src='static/images/default.jpg';"
-            class="genre-aside-thumbnails" alt="image for crime" aria-label="image for crime" />
-          <h5 class="card-title">Crime</h5>
-          <a href="{{ url_for('crime') }}" class="stretched-link"></a>
-        </div>
-      </div>
-    </div>
   </aside>
 </section>
 {% endblock%}
 
 {% block content %}
 <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <div class="introduction">
-            <h2 class="desktop-category-heading">Browse Our Genres........</h2>
-            <h2 class="mobile-category-heading text-center">Browse Our Genres</h2>
-          </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="introduction">
+        <h2 class="desktop-category-heading">Browse Our Genres........</h2>
+        <h2 class="mobile-category-heading text-center">Browse Our Genres</h2>
       </div>
     </div>
   </div>
- 
-
-  <div class="container genre-cards">
-    <div class="row">
-
-        {%- for gen in genre -%}
-        
-        {% set picExtension = '.jpg' %}
-        
-        
-        <div class="col d-flex justify-content-center col-lg-4">
-            <div class="card">
-                <img src="static/images/{{ gen.genre_name|lower+picExtension }}" onerror="this.src='static/images/default.jpg';"
-                    class="card-img-top" alt=" {{ gen.genre_name }} Image" aria-label="{{ gen.genre_name }} Image" />
-                <div class="card-body">
-                    <h5 class="card-title">{{ gen.genre_name }}</h5>
-                    <p class="card-text">{{gen.genre_description}}</p>
-                    <a href="{{ url_for(gen.genre_name|lower) }}" class="btn btn-outline-success genre-button stretched-link">Explore {{ gen.genre_name }}</a>
-                    
-                </div>
-            </div>
+</div>
+<div class="container genre-cards">
+  <div class="row">
+    {%- for gen in genre -%}
+    {% set picExtension = '.jpg' %}
+    <div class="col d-flex justify-content-center col-lg-4">
+      <div class="card">
+        <img src="static/images/{{ gen.genre_name|lower+picExtension }}" onerror="this.src='static/images/default.jpg';"
+          class="card-img-top" alt=" {{ gen.genre_name }} Image" aria-label="{{ gen.genre_name }} Image" />
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ gen.genre_name }}</h5>
+          <p class="card-text">{{gen.genre_description}}</p>
+          <a href="{{ url_for(gen.genre_name|lower) }}"
+            class="btn btn-outline-success genre-button stretched-link">Explore {{ gen.genre_name }}</a>
         </div>
-        
-        {%- endfor -%}
-        </div>
-        </div>
-        
-        
+      </div>
+    </div>
+    {%- endfor -%}
+  </div>
+</div>
 {% endblock %}
-
-
-
-
