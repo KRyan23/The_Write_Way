@@ -168,8 +168,8 @@ def resetpassword():
             mongo.db.user_accounts.update_one(username, newpassword)
             message_success = Markup("The password for " +"<br>" + pen_name.title() + " was reset!")
             flash(message_success)
-               
-            return render_template('resetpassword.html', title="Reset Password" )
+            return redirect(url_for("signin", news=news, title="Reset Password"))   
+            #return render_template('resetpassword.html', title="Reset Password" )
         else:
             message_failure = Markup("Please Check Your<br>'pen name' and 'password' ")
             flash(message_failure)

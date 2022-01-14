@@ -187,9 +187,12 @@ ul {
 
 .genre-hr {
     margin: 0 0 1em 0;
-   
     color: #198754;
     opacity: 0.9;
+}
+
+.create-privacypolicy-hr {
+    color: #198754;
 }
 
 .genre-aside-text {

@@ -122,12 +122,14 @@
                   aria-label="Terms and Conditions"
                   class="form-input-box-text form-check-input profile-checkbox-spacing" required>
                 <label for="terms" class="form-input-box-text text-wrap profile-checkbox-text-spacing">
-                  I agree to the T's & C's
+                  I agree to the T's & C's 
+                  <hr class="create-privacypolicy-hr"><a href="{{ url_for('policy') }}" class="policy-link" target = "_blank">Read Privacy Policy</a>
                 </label>
                 <div class="invalid-feedback">
                   Check the Box to Confirm
                 </div>
               </div>
+              
               <br>
               <button class="btn btn-success text-center form-input-button-text col-12" type="submit" id="publish-story"
                 title="Publish Story" name="submit" aria-label="Publish Story">Publish Story</button>
