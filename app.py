@@ -28,6 +28,7 @@ def handle_context():
 @myapp.route("/genre")
 
 def genre():
+    
     genre = mongo.db.genre.find()
     news = mongo.db.news.find()
     return render_template("genre.html", genre=genre, news=news)
@@ -94,12 +95,10 @@ def thriller():
 def join():
     news = mongo.db.news.find()
     if request.method == "POST":
-        
-#check if username exists in database
         existing_user = mongo.db.user_accounts.find_one(
             {"pen_name": request.form.get("pen_name").lower()})
         pen = request.form.get('pen_name')
-        message_failure = Markup("Were sorry but the Pen Name<br> '"+ "<span class='paragraph-styling'>" + pen.title() + "</span>" + "'<br> is already in use by another Author")
+        message_failure = Markup("Were sorry but the Pen Name<br> '"+ pen.title() + "'<br> is already in use by another Author")
         if existing_user:
 	        flash(message_failure)
 	        return redirect(url_for("join"))
@@ -113,14 +112,17 @@ def join():
             "email_name": request.form.get("email_name").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
+
         mongo.db.user_accounts.insert_one(join)
         
-        message_success = Markup("Congratulations<br> '"
-        + "<span class='paragraph-styling'>" + pen.title() + "'</span><br>" + "Registration Was Successful!"+"<p></p>"+
-        "<h5 id='success-message-signin'></h5>")
+
+        
+
+
+        message_success = Markup("Congratulations<br> '"+ pen.title() + "'<br>" + "Registration Was Successful!")
         session["user"] = request.form.get("pen_name").lower()
         flash(message_success)
-        
+        return redirect(url_for("signin"))
         
         
     return render_template("join.html", title="Join Us", news=news)
@@ -143,7 +145,7 @@ def signin():
                 flash(message_failure)
                 return redirect(url_for('signin'))
             
-            return render_template('profilePage.html', title=pen, news=news)
+            return render_template('profilepage.html', title=pen, news=news)
             
         else:
                 message_failure = Markup("Were sorry but the Pen Name<br> '"+ "<span class='paragraph-styling'>" + pen.title() + "</span>" + "'<br> Does not exist on our system")
@@ -153,9 +155,10 @@ def signin():
     return render_template("signin.html", title="Sign In", news=news)
 
 
-@myapp.route("/resetPassword", methods=["GET", "POST"])
+@myapp.route("/resetpassword", methods=["GET", "POST"])
 
-def resetPassword():
+def resetpassword():
+    news = mongo.db.news.find()
     if request.method == "POST":
         signin = mongo.db.user_accounts.find_one({"pen_name": request.form.get("pen_name").lower()})
         pen_name = request.form.get('pen_name')
@@ -166,17 +169,17 @@ def resetPassword():
             message_success = Markup("The password for " +"<br>" + pen_name.title() + " was reset!")
             flash(message_success)
                
-            return render_template('resetPassword.html', title="Reset Password" )
+            return render_template('resetpassword.html', title="Reset Password" )
         else:
             message_failure = Markup("Please Check Your<br>'pen name' and 'password' ")
             flash(message_failure)
-    return render_template("resetPassword.html", title="Reset Password")
+    return render_template("resetpassword.html", title="Reset Password", news=news)
 
 
 
-@myapp.route("/profilePage/<pen_name>",  methods=["GET", "POST"])
+@myapp.route("/profilepage/<pen_name>",  methods=["GET", "POST"])
 
-def profilePage(pen_name):
+def profilepage(pen_name):
     
     pen_name = mongo.db.user_accounts.find_one(
         {"pen_name": session["user"]})["pen_name"]
@@ -184,7 +187,7 @@ def profilePage(pen_name):
     
     if session["user"]:
         news = mongo.db.news.find()
-        return render_template("profilePage.html", pen_name=pen_name, title=title, news=news)
+        return render_template("profilepage.html", pen_name=pen_name, title=title, news=news)
     return redirect(url_for("signin", news=news))
 
 
@@ -195,7 +198,7 @@ def backtoprofile():
     if session.get('user'):
         if session['user']:
                 pen_name, title = session["user"], session["user"]
-                return redirect(url_for('profilePage', pen_name=pen_name, news=news ))
+                return redirect(url_for('profilepage', pen_name=pen_name, news=news ))
     else:
         flash("You are not Logged in")
         return redirect(url_for("signin", news=news))
@@ -230,15 +233,15 @@ def create():
                 "popularity": 1,}          
                     mongo.db.shortStories.insert_one(addstory)
                     flash("Well Done for getting your story published")
-                    return redirect(url_for('profilePage', pen_name=pen_name))
+                    return redirect(url_for('profilepage', pen_name=pen_name))
             else:
                 flash("Invalid action for user profile")
             return render_template("create.html", create=create, title=pen_name, news=news)   
        
 # This is the main function for edit story
-@myapp.route("/editStory", methods=["GET", "POST"])
+@myapp.route("/editstory", methods=["GET", "POST"])
 
-def editStory(): 
+def editstory(): 
     news = mongo.db.news.find()
     #story = mongo.db.shortStories.find_one({"_id": ObjectId(story_id)})
     #name = mongo.db.shortStories.name.find().sort("name", 1)
@@ -246,40 +249,40 @@ def editStory():
             if session['user']:
                 pen_name = session["user"]
                 stories = mongo.db.shortStories.find()
-    return render_template("editStory.html", stories=stories, pen_name=pen_name, news=news)
+    return render_template("editstory.html", stories=stories, pen_name=pen_name, news=news)
     
 
-@myapp.route("/updateStory/<story_id>")
+@myapp.route("/updatestory/<story_id>")
 
-def updateStory(story_id):
+def updatestory(story_id):
                 #mongo.db.shortStories.remove({"_id": ObjectId(story_id)})
                 flash("Congratulations The Story Was Updated")
-                return redirect(url_for("editStory.html"))
+                return redirect(url_for("editstory.html"))
                
 
-@myapp.route("/deleteStory/<story_id>")
+@myapp.route("/deletestory/<story_id>")
 
-def deleteStory(story_id):
+def deletestory(story_id):
                 mongo.db.shortStories.remove({"_id": ObjectId(story_id)})
                 flash("Congratulations The Story Was Deleted")
-                return redirect(url_for("removeStory"))
+                return redirect(url_for("removestory"))
                
 
 
-@myapp.route("/removeStory", methods=["GET", "POST"])
+@myapp.route("/removestory", methods=["GET", "POST"])
 
-def removeStory():
+def removestory():
     news = mongo.db.news.find()
     if session.get('user'):
             if session['user']:
                 pen_name = session["user"]
                 stories = mongo.db.shortStories.find()
-    return render_template("removeStory.html", stories=stories, pen_name=pen_name, news=news)
+    return render_template("removestory.html", stories=stories, pen_name=pen_name, news=news)
 
 
-@myapp.route("/updatePopularity/<genre>", methods=["GET", "POST"])
+@myapp.route("/updatepopularity/<genre>", methods=["GET", "POST"])
 
-def updatePopularity(genre):
+def updatepopularity(genre):
                     if session.get('user'):
                         if request.method == "POST":
                             name = { "name": request.form.get('name') }
@@ -300,7 +303,10 @@ def search():
     print("")
 
 
+
 if __name__ == "__main__":
     myapp.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
+
+

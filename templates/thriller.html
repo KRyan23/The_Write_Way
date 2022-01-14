@@ -92,7 +92,7 @@
                             {{ thril.content|striptags|capitalize }}
                         </div>
                         <div class="like-story-button">
-                            <form method="POST" class="text-center" name="feedback-form" action="{{ url_for('updatePopularity', genre=popularity) }}">
+                            <form method="POST" class="text-center" name="feedback-form" action="{{ url_for('updatepopularity', genre=popularity) }}">
                                 <label for="name" class="form-label form-label-spacing form-input-box-text"></label>
                                 <input type="text" id="name" class="form-control form-input-box-text" name="name" value="{{ thril.name|lower }}" hidden>
                                 <button class="btn btn-success text-center " type="submit" title="Submit" name="submit" aria-label="Submit Form">Like this Story</button>
