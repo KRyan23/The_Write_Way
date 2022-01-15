@@ -239,26 +239,36 @@ def create():
             return render_template("create.html", create=create, title=pen_name, news=news)   
        
 # This is the main function for edit story
-@myapp.route("/editstory", methods=["GET", "POST"])
+@myapp.route("/editstory")
 
 def editstory(): 
     news = mongo.db.news.find()
-    #story = mongo.db.shortStories.find_one({"_id": ObjectId(story_id)})
-    #name = mongo.db.shortStories.name.find().sort("name", 1)
+    
     if session.get('user'):
             if session['user']:
                 pen_name = session["user"]
                 stories = mongo.db.shortStories.find()
     return render_template("editstory.html", stories=stories, pen_name=pen_name, news=news)
-    
+               
 
-@myapp.route("/updatestory/<story_id>")
+@myapp.route("/updatestory/<story_id>", methods=["GET", "POST"])
 
 def updatestory(story_id):
-                #mongo.db.shortStories.remove({"_id": ObjectId(story_id)})
-                flash("Congratulations The Story Was Updated")
-                return redirect(url_for("editstory.html"))
-               
+    pen_name = session["user"]
+    if request.method == "POST":
+        changestory = {
+                "genre": request.form.get("genre").lower(),
+                "author": pen_name,
+                "name": request.form.get("name").lower(),
+                "plot": request.form.get("plot").lower(),
+                "content": request.form.get("content").lower(),
+                "popularity": 1,
+                "updated": True,}
+                 
+        mongo.db.shortStories.update({"_id": ObjectId(story_id)}, changestory)
+        flash("The Story Has Been Updated")
+    return redirect(url_for("editstory", pen_name=pen_name))
+
 
 @myapp.route("/deletestory/<story_id>")
 
@@ -284,10 +294,12 @@ def removestory():
 
 def updatepopularity(genre):
                     if session.get('user'):
+                        
                         if request.method == "POST":
                             name = { "name": request.form.get('name') }
                             popularity = { "$inc": { "popularity": 1 }}
                             mongo.db.shortStories.update_one(name, popularity)
+                            
                         return redirect(url_for(genre))
                     else:
                         message_failure = Markup("You Need To Be Signed In<br>to 'Like' A Story")

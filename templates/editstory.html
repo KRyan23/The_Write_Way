@@ -12,10 +12,10 @@
     <ul>
       {% for new in news %}
       <li>
-        <p>Check here for the latest news on our ever expanding list of Genres, 
+        <p>Check here for the latest news on our ever expanding list of Genres,
           Authors and stories</p>
-        </li>
-        <hr class="news-hr">
+      </li>
+      <hr class="news-hr">
       <li>
         <p>We would like to give a Warm Welcome to our newest Author <span
             class="news-text">{{ new.author|title }}</span>.</p>
@@ -51,7 +51,8 @@
           <div class="row d-flex justify-content-around ">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10">
               <h2 class="text-center" aria-label="Form Title">Edit a {{ pen_name|title }} Story </h2>
-              <hr>
+              <hr class="hr-editstory">
+
               <div class="container genre-cards">
                 <div class="row">
                   {% set updateButtonText = "Update Story" %}
@@ -61,75 +62,147 @@
                   {% for story in stories %}
                   {% if pen_name == story.author %}
                   {% set TheId.value = TheId.value + 1 %}
-                  <div class="container story-styling">
-                    <div class="row active-story">
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-6"></div>
-                      <div class="list-group">
-                        <div class="list-group-item list-group-item-action" aria-current="true">
-                          <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1"><span class="story-title">Title: </span></h4><small>Author:
-                              <span class="paragraph-styling author-styling">{{ story.author|title }}</span></small>
+                  <form class="needs-validation form-intro" method="POST"
+                    action="{{ url_for('updatestory', story_id=story._id) }}" novalidate>
+
+                    <div class="container story-styling">
+                      <div class="row active-story">
+                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-6"></div>
+                        <div class="text-center story-heading-editstory">
+                          "{{ story.name|title }}"</div>
+                        <div class="list-group">
+                          <div class="list-group-item list-group-item-action" aria-current="true">
+                            <div class="d-flex w-100 justify-content-between">
+                              <div class="mb-3">
+                                <label for="genre" class="form-label form-label-spacing form-input-box-text">
+                                  <h4 class="mb-1"><span class="story-title">Genre: </span></h4>
+                                </label>
+                                <select name="genre" class="form-select form-input-box-text" id="genre"
+                                  title="Select Genre" aria-label="Select Genre" required>
+                                  <option value="{{ story.genre }}" required>{{ story.genre|title }}
+                                  </option>
+                                  {% if story.genre == 'fiction' %}
+                                  <option value="crime">Crime</option>
+                                  <option value="fantasy">Fantasy</option>
+                                  <option value="history">History</option>
+                                  <option value="horror">Horror</option>
+                                  <option value="thriller">Thriller</option>
+                                  {% elif story.genre == 'fantasy' %}
+                                  <option value="crime">Crime</option>
+                                  <option value="fiction">Fiction</option>
+                                  <option value="history">History</option>
+                                  <option value="horror">Horror</option>
+                                  <option value="thriller">Thriller</option>
+                                  {% elif story.genre == 'crime' %}
+                                  <option value="fantasy">Fantasy</option>
+                                  <option value="fiction">Fiction</option>
+                                  <option value="history">History</option>
+                                  <option value="horror">Horror</option>
+                                  <option value="thriller">Thriller</option>
+                                  {% elif story.genre == 'history' %}
+                                  <option value="fantasy">Fantasy</option>
+                                  <option value="fiction">Fiction</option>
+                                  <option value="crime">Crime</option>
+                                  <option value="horror">Horror</option>
+                                  <option value="thriller">Thriller</option>
+                                  {% elif story.genre == 'horror' %}
+                                  <option value="fantasy">Fantasy</option>
+                                  <option value="fiction">Fiction</option>
+                                  <option value="history">History</option>
+                                  <option value="crime">Crime</option>
+                                  <option value="thriller">Thriller</option>
+                                  {% else %}
+                                  <option value="fantasy">Fantasy</option>
+                                  <option value="fiction">Fiction</option>
+                                  <option value="history">History</option>
+                                  <option value="crime">Crime</option>
+                                  <option value="horror">Horror</option>
+                                  {% endif %}
+                                </select>
+                                <div class="valid-feedback">
+                                  Your all set!
+                                </div>
+                                <div class="invalid-feedback">
+                                  Please Select a Genre
+                                </div>
+                              </div>
+                            </div>
+                            <h4 class="mb-1"><span class="story-title">Title: </span></h4>
+                            <br>
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                              <input type="text" id="name" name="name" class="form-control form-input-box-text"
+                                placeholder="Enter Story Title" title="Story Name" minlength="5" maxlength="40"
+                                value="{{ story.name|title }}" required>
+                              <label for="name" class="form-label form-input-box-text"></label>
+                            </div>
+                            <h4 class="mb-1"><span class="story-title">Plot: </span></h4>
+                            <label for="story-plot" class="form-label  form-input-box-text"></label>
+                            <textarea id="story-plot" name="plot" title="Story Plot" aria-label="Story Plot"
+                              class="form-control form-input-box-text" minlength="12" maxlength="165" rows="3"
+                              required>{{ story.plot|capitalize }}</textarea>
+                            <div class="mb-3">
+                              <label for="story-content" class="form-label form-label-spacing form-input-box-text">
+                                <h4 class="mb-1"><span class="story-title">Content:</span></h4>
+                              </label>
+                              <textarea id="story-content"
+                                placeholder="Now Pen your masterpeice! Because these are short stories please try and keep the word count to between 600 - 650 words"
+                                minlength="250" name="content" title="Story Content" aria-label="Story Content"
+                                class="form-control form-input-box-text" maxlength="3650" rows="8"
+                                required>{{ story.content|capitalize }}</textarea>
+                              <div class="valid-feedback">
+                                Your all set!
+                              </div>
+                              <div class="invalid-feedback">
+                                Minimum Length 250 Characters (about 60 words )
+                              </div>
+                            </div>
                           </div>
-                          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <input type="text" id="name" name="name" class="form-control form-input-box-text"
-                              placeholder="Enter Story Title" title="Story Name" minlength="5" maxlength="40"
-                              value="{{ story.name|title }}" required>
-                            <label for="name" class="form-label form-label-spacing form-input-box-text"></label>
+                          <div class="text-center profile-button-spacing">
+                            <a href="{{ url_for('backtoprofile') }}"><button type="button"
+                                class="btn btn-outline-success text-center col-10 change-text" aria-expanded="false"
+                                aria-controls="collapsed story">
+                                <span><strong>{{ backToProfileText }}</strong></span></button></a>
                           </div>
-                          <h4 class="mb-1"><span class="story-title">Plot: </span></h4>
-                          <label for="story-plot" class="form-label form-label-spacing form-input-box-text"></label>
-                          <textarea id="story-plot" name="plot" title="Story Plot" aria-label="Story Plot"
-                            class="form-control form-input-box-text" minlength="12" maxlength="165" rows="3"
-                            required>{{ story.plot|capitalize }}</textarea>
-                        </div>
-                        <div class="text-center profile-button-spacing">
-                          <a href="{{ url_for('backtoprofile') }}"><button type="button"
-                              class="btn btn-outline-success text-center col-10 change-text" aria-expanded="false"
-                              aria-controls="collapsed story">
-                              <span><strong>{{ backToProfileText }}</strong></span></button></a>
-                        </div>
-                        <form class="needs-validation form-intro"
-                          action="{{ url_for('updatestory', story_id=story._id) }}" novalidate>
                           <div class="text-center profile-button-spacing">
                             <button type="submit" data-bs-toggle="collapse"
                               class="btn btn-warning text-center text-wrap col-sm-1 col-md-8 col-lg-8 col-xl-6"
                               aria-expanded="false" aria-controls="collapsed story">
                               <span>{{ updateButtonText }}</span><br><strong>"{{ story.name|title }}"</strong></button>
                           </div>
-                          <input type="checkbox" id="story-content-{{ TheId.value }}" name="remove-story"
-                            title="Remove Story Checkbox" aria-label="Remove Story Checkbox"
-                            class="form-input-box-text form-check-input profile-checkbox-spacing" required>
-                          <label for="story-content-{{ TheId.value }}"
-                            class="form-input-box-text text-wrap profile-checkbox-text-spacing">{{ confirmDeletion }}
-                          </label>
-                          <div class="valid-feedback">
-                            Your all set!
+                          <div class="text-center">
+                            <input type="checkbox" id="story-content-{{ TheId.value }}" name="remove-story"
+                              title="Remove Story Checkbox" aria-label="Remove Story Checkbox"
+                              class="form-input-box-text form-check-input profile-checkbox-spacing" required>
+                            <label for="story-content-{{ TheId.value }}"
+                              class="text-wrap profile-checkbox-text-spacing">{{ confirmDeletion }}</label>
+                            <div class="invalid-feedback text-spacing">
+                              Please check the box
+                            </div>
                           </div>
-                          <div class="invalid-feedback ">
-                            <strong>Please check the box</strong>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {% endif %}
-                {% endfor %}
-                <div class="container">
-                  <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
-                      <a href="#top-of-page"><button type="button" class="btn btn-outline-success btn-lg">
-                          <h5><i class="far fa-arrow-alt-circle-up fa-lg"></i><span class="back-to-top">Back to
-                              Top</span><i class="far fa-arrow-alt-circle-up fa-lg"></i></h5>
-                        </button></a>
-                    </div>
-                  </div>
+
+                                            </form>
+                  <hr class="hr-editstory">
                 </div>
               </div>
             </div>
           </div>
-      </fieldset>
+          {% endif %}
+          {% endfor %}
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                <a href="#top-of-page"><button type="button" class="btn btn-outline-success btn-lg">
+                    <h5><i class="far fa-arrow-alt-circle-up fa-lg"></i><span class="back-to-top">Back to
+                        Top</span><i class="far fa-arrow-alt-circle-up fa-lg"></i></h5>
+                  </button></a>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
+  </fieldset>
+</div>
+</div>
 </div>
 {% endblock %}

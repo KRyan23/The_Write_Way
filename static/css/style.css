@@ -99,7 +99,7 @@ a {
 }
 
 .introduction {
-    padding:  3em 0 0 2em;
+    padding:  3em 0 0 1em;
 }
 
 .back-to-profile-button {
@@ -116,6 +116,10 @@ h2 {
     margin: 1em 0 1em 0;
 }
 
+.text-spacing {
+    /* to replace the <p></p> 8 spacing we used */
+    margin: 0 0 2em 0;
+}
 .card {
     width: 18em;
     margin-bottom: 1em;
@@ -189,6 +193,17 @@ ul {
     margin: 0 0 1em 0;
     color: #198754;
     opacity: 0.9;
+}
+
+.hr-editstory {
+    margin: 1em 0 2.25em 0;
+}
+
+.story-heading-editstory{
+    font-family: pacifico;
+    font-size: larger;
+    margin-bottom: 1em;
+
 }
 
 .create-privacypolicy-hr {
@@ -346,7 +361,10 @@ ul {
 }
 
 .profile-checkbox-text-spacing {
-    padding: 1.25em 0 0em 0.25em;
+    padding: 1.45em 0 0 0.25em;
+    font-size:medium;
+    font-weight: 600;
+    margin: 0 0 0 0;
 }
 
 .profile-button-spacing {
@@ -358,7 +376,7 @@ ul {
 }
 
 .invalid-feedback {
-    font-weight: 400;
+    font-weight: 600;
     font-size: 1.1em;
 }
 
