@@ -79,7 +79,7 @@
                                 </label>
                                 <select name="genre" class="form-select form-input-box-text" id="genre"
                                   title="Select Genre" aria-label="Select Genre" required>
-                                  <option value="{{ story.genre|unique|title }}" required>{{ story.genre|title }}
+                                  <option value="{{ story.genre }}" required>{{ story.genre|title }}
                                   </option>
                                   {% if story.genre == 'fiction' %}
                                   <option value="crime">Crime</option>
@@ -174,12 +174,13 @@
                               title="Remove Story Checkbox" aria-label="Remove Story Checkbox"
                               class="form-input-box-text form-check-input profile-checkbox-spacing" required>
                             <label for="story-content-{{ TheId.value }}"
-                              class="text-wrap profile-checkbox-text-spacing">{{- confirmDeletion -}}</label>
+                              class="text-wrap profile-checkbox-text-spacing">{{ confirmDeletion }}</label>
                             <div class="invalid-feedback text-spacing">
                               Please check the box
                             </div>
                           </div>
-                  </form>
+
+                                            </form>
                   <hr class="hr-editstory">
                 </div>
               </div>

@@ -51,14 +51,14 @@
 <div class="container genre-cards">
   <div class="row">
     {% set TheId = namespace(value=0) %}
-    <!-- generates unique ids for each story -->
     {%- for hor in horror|sort(attribute='popularity', reverse = True) -%}
-    <!-- loops thorugh the genre and sorts stories by popularity rating -->
+    <!-- loops through the genre and sorts stories by popularity rating -->
     {% set TheId.value = TheId.value + 1 %}
-    <!-- passes the function back the genre you were in so it returns to the same page -->
+    <!-- generates unique ids for each story -->
     {% set popularity = "horror" %}
+    <!-- passes the function back the genre you were in so it returns to the same page -->
     {% if hor.genre == "horror" %}
-    <div class="container story-styling">
+    <div class="container story-styling card-padding">
       <div class="row active-story">
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-6"></div>
         <div class="list-group">

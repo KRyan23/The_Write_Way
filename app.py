@@ -256,17 +256,18 @@ def editstory():
 def updatestory(story_id):
     pen_name = session["user"]
     if request.method == "POST":
-    
-        changestory = { #Need to add in all the key values to update ie Author, Content, Genre
-                "genre": request.form.get("genre"),
+        changestory = {
+                "genre": request.form.get("genre").lower(),
                 "author": pen_name,
-                "name": request.form.get("name"),
-                "plot": request.form.get("plot"),
-                "content": request.form.get("content"),
-                "popularity": 1,}          
+                "name": request.form.get("name").lower(),
+                "plot": request.form.get("plot").lower(),
+                "content": request.form.get("content").lower(),
+                "popularity": 1,
+                "updated": True,}
+                 
         mongo.db.shortStories.update({"_id": ObjectId(story_id)}, changestory)
-        flash("blasgh")
-    return redirect(url_for("profilepage", pen_name=pen_name))
+        flash("The Story Has Been Updated")
+    return redirect(url_for("editstory", pen_name=pen_name))
 
 
 @myapp.route("/deletestory/<story_id>")
@@ -293,10 +294,12 @@ def removestory():
 
 def updatepopularity(genre):
                     if session.get('user'):
+                        
                         if request.method == "POST":
                             name = { "name": request.form.get('name') }
                             popularity = { "$inc": { "popularity": 1 }}
                             mongo.db.shortStories.update_one(name, popularity)
+                            
                         return redirect(url_for(genre))
                     else:
                         message_failure = Markup("You Need To Be Signed In<br>to 'Like' A Story")
