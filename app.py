@@ -239,26 +239,35 @@ def create():
             return render_template("create.html", create=create, title=pen_name, news=news)   
        
 # This is the main function for edit story
-@myapp.route("/editstory", methods=["GET", "POST"])
+@myapp.route("/editstory")
 
 def editstory(): 
     news = mongo.db.news.find()
-    #story = mongo.db.shortStories.find_one({"_id": ObjectId(story_id)})
-    #name = mongo.db.shortStories.name.find().sort("name", 1)
+    
     if session.get('user'):
             if session['user']:
                 pen_name = session["user"]
                 stories = mongo.db.shortStories.find()
     return render_template("editstory.html", stories=stories, pen_name=pen_name, news=news)
-    
+               
 
-@myapp.route("/updatestory/<story_id>")
+@myapp.route("/updatestory/<story_id>", methods=["GET", "POST"])
 
 def updatestory(story_id):
-                #mongo.db.shortStories.remove({"_id": ObjectId(story_id)})
-                flash("Congratulations The Story Was Updated")
-                return redirect(url_for("editstory.html"))
-               
+    pen_name = session["user"]
+    if request.method == "POST":
+    
+        changestory = { #Need to add in all the key values to update ie Author, Content, Genre
+                "genre": request.form.get("genre"),
+                "author": pen_name,
+                "name": request.form.get("name"),
+                "plot": request.form.get("plot"),
+                "content": request.form.get("content"),
+                "popularity": 1,}          
+        mongo.db.shortStories.update({"_id": ObjectId(story_id)}, changestory)
+        flash("blasgh")
+    return redirect(url_for("profilepage", pen_name=pen_name))
+
 
 @myapp.route("/deletestory/<story_id>")
 
