@@ -15,6 +15,7 @@
   <title>
     {% block title %}
     {% endblock %}
+    
   </title>
 </head>
 <body>
@@ -50,9 +51,9 @@
             </li>
             {% endif %}
           </ul>
-          <form class="d-flex" action="{{ url_for('search') }}">
-            <label for="query"> </label>
-            <input class="form-control me-auto input-box search-input-box" type="search" name="search" id="query" 
+          <form class="d-flex" action="{{ url_for('search') }}" method="POST">
+            <label for="searchquery"> </label>
+            <input class="form-control me-auto input-box search-input-box validate" type="search" name="searchquery" id="searchquery" 
             placeholder="Search Stories.." title="Search Box" aria-label="Search" required>
             <button class="btn btn-outline-success search-box" type="submit">Search</button>
           </form>

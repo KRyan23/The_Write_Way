@@ -1,13 +1,11 @@
 import os
 
-from flask import (Flask, flash, render_template,
-    redirect, request, session, url_for, Markup)
+from flask import (Flask, flash, render_template, redirect, request, session, url_for, Markup)
 from flask_pymongo import PyMongo, MongoClient
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
-
 
 
 myapp = Flask(__name__)
@@ -22,13 +20,27 @@ client = MongoClient()
 @myapp.context_processor
 def handle_context():
     return dict(os=os)
-    
+
+JOIN_MESSAGE_FAILURE = Markup(" is already<br> registered as a 'Pen Name'")
+JOIN_MESSAGE_SUCCESS = Markup("<br>'Your Registration Was Successful!'")
+PASSWORD_MESSAGE_FAILURE = Markup("Please Check Your Username and Password")
+PASSWORD_MESSAGE_SUCCESS = Markup(" Your Password Was reset!")
+SIGNIN_MESSAGE_FAILURE = "You are not Logged in"
+SIGNOUT_FAILURE = "You are not Signed In"
+SIGNOUT_SUCCESS = "Sign Out Was Successful!"
+CREATE_SUCCESS = "Well Done for getting your story published"
+EDIT_FAILURE = CREATE_FAILURE = "Invalid action for user profile"
+UPDATE_SUCCESS = "The Story Has Been Updated"
+DELETE_SUCCESS = "Congratulations The Story Was Deleted"
+POPULARITY_FAILURE = Markup("You Need To Be Signed In<br>to 'Like' A Story")
+
+
 @myapp.route("/")
 
 @myapp.route("/genre")
 
 def genre():
-    
+    """Loads the template for the 'genres' on the home page."""
     genre = mongo.db.genre.find()
     news = mongo.db.news.find()
     return render_template("genre.html", genre=genre, news=news)
@@ -37,6 +49,7 @@ def genre():
 @myapp.route("/policy")
 
 def policy():
+    """Loads the template for the 'policy' page."""
     policy = mongo.db.policy.find()
     news = mongo.db.news.find()
     return render_template("policy.html", policy=policy, news=news)
@@ -45,22 +58,25 @@ def policy():
 @myapp.route("/crime")
 
 def crime():
-    crime = mongo.db.shortStories.find()
+    """Loads the template for the 'crime' genre."""
+    crime = mongo.db.shortstories.find()
     news = mongo.db.news.find()
     return render_template("crime.html", crime=crime, title="Crime", news=news)
 
 @myapp.route("/fantasy")
 
 def fantasy():
-    fantasy = mongo.db.shortStories.find()
+    """Loads the template for the 'fantasy' genre."""
+    fantasy = mongo.db.shortstories.find()
     news = mongo.db.news.find()
     return render_template("fantasy.html", fantasy=fantasy, title="Fantasy", news=news)
 
 
 @myapp.route("/fiction")
-    
-def fiction():    
-    fiction = mongo.db.shortStories.find()
+
+def fiction():
+    """Loads the template for the 'fiction' genre."""
+    fiction = mongo.db.shortstories.find()
     news = mongo.db.news.find()
     return render_template("fiction.html", fiction=fiction, title="Fiction", news=news)
 
@@ -68,7 +84,8 @@ def fiction():
 @myapp.route("/history")
 
 def history():
-    history = mongo.db.shortStories.find()
+    """Loads the template for the 'history' genre."""
+    history = mongo.db.shortstories.find()
     news = mongo.db.news.find()
     return render_template("history.html", history=history, title="History", news=news)
 
@@ -76,7 +93,8 @@ def history():
 @myapp.route("/horror")
 
 def horror():
-    horror = mongo.db.shortStories.find()
+    """Loads the template for the 'horror' genre."""
+    horror = mongo.db.shortstories.find()
     news = mongo.db.news.find()
     return render_template("horror.html", horror=horror, title="Horror", news=news)
 
@@ -84,26 +102,30 @@ def horror():
 @myapp.route("/thriller")
 
 def thriller():
-    thriller = mongo.db.shortStories.find()
+    """Loads the template for the 'thriller' genre."""
+    thriller = mongo.db.shortstories.find()
     news = mongo.db.news.find()
     return render_template("thriller.html", thriller=thriller, title="Thriller", news=news)
 
 
 @myapp.route("/join", methods=["GET", "POST"])
 
-
 def join():
+    """
+    Handles the the signup of a new user.
+
+    Redirects them to the signin page afterwards.
+
+    """
     news = mongo.db.news.find()
     if request.method == "POST":
         existing_user = mongo.db.user_accounts.find_one(
-            {"pen_name": request.form.get("pen_name").lower()})
+        {"pen_name": request.form.get("pen_name").lower()})
         pen = request.form.get('pen_name')
-        message_failure = Markup("Were sorry but the Pen Name<br> '"+ pen.title() + "'<br> is already in use by another Author")
-        if existing_user:
-	        flash(message_failure)
-	        return redirect(url_for("join"))
-
-        join = {
+    if existing_user:
+	    flash(pen+JOIN_MESSAGE_FAILURE)
+	    return redirect(url_for("join"))
+    join = {
             "first_name": request.form.get("first_name").lower(),
             "last_name": request.form.get("last_name").lower(),
             "pen_name": request.form.get("pen_name").lower(),
@@ -112,25 +134,26 @@ def join():
             "email_name": request.form.get("email_name").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
+    mongo.db.user_accounts.insert_one(join)
+    session["user"] = request.form.get("pen_name").lower()
+    flash(pen+JOIN_MESSAGE_SUCCESS)
+    return redirect(url_for("signin"))
 
-        mongo.db.user_accounts.insert_one(join)
-        
-
-        
-
-
-        message_success = Markup("Congratulations<br> '"+ pen.title() + "'<br>" + "Registration Was Successful!")
-        session["user"] = request.form.get("pen_name").lower()
-        flash(message_success)
-        return redirect(url_for("signin"))
-        
-        
     return render_template("join.html", title="Join Us", news=news)
 
 
 @myapp.route("/signin", methods=["GET", "POST"])
 
 def signin():
+    """
+    Handles the signin for registered users.
+
+    Loads the profile page after signin.
+
+    redirects invalid credentails back to signin.
+
+    """
+
     news = mongo.db.news.find()
     if request.method == "POST":
         signin = mongo.db.user_accounts.find_one(
@@ -139,18 +162,13 @@ def signin():
         if signin:
             if check_password_hash(signin["password"], request.form.get("password")):
                 session["user"] = request.form.get("pen_name").lower()
-                
             else:
-                message_failure = Markup("Were sorry but the password was incorrect")
-                flash(message_failure)
+                flash(PASSWORD_MESSAGE_FAILURE)
                 return redirect(url_for('signin'))
-            
             return render_template('profilepage.html', title=pen, news=news)
-            
         else:
-                message_failure = Markup("Were sorry but the Pen Name<br> '"+ "<span class='paragraph-styling'>" + pen.title() + "</span>" + "'<br> Does not exist on our system")
-                flash(message_failure)
-                return redirect(url_for('signin', news=news))
+            flash(PASSWORD_MESSAGE_FAILURE)
+            return redirect(url_for('signin', news=news))
 
     return render_template("signin.html", title="Sign In", news=news)
 
@@ -158,6 +176,7 @@ def signin():
 @myapp.route("/resetpassword", methods=["GET", "POST"])
 
 def resetpassword():
+    """Resets the password for a registered user."""
     news = mongo.db.news.find()
     if request.method == "POST":
         signin = mongo.db.user_accounts.find_one({"pen_name": request.form.get("pen_name").lower()})
@@ -166,25 +185,20 @@ def resetpassword():
             username = { "pen_name": request.form.get('pen_name') }
             newpassword = { "$set": { "password": generate_password_hash(request.form.get("password"))}}
             mongo.db.user_accounts.update_one(username, newpassword)
-            message_success = Markup("The password for " +"<br>" + pen_name.title() + " was reset!")
-            flash(message_success)
-            return redirect(url_for("signin", news=news, title="Reset Password"))   
-            #return render_template('resetpassword.html', title="Reset Password" )
+            flash(pen_name + PASSWORD_MESSAGE_SUCCESS)
+            return redirect(url_for("signin", news=news, title="Reset Password"))
         else:
-            message_failure = Markup("Please Check Your<br>'pen name' and 'password' ")
-            flash(message_failure)
+            flash(PASSWORD_MESSAGE_FAILURE)
     return render_template("resetpassword.html", title="Reset Password", news=news)
-
 
 
 @myapp.route("/profilepage/<pen_name>",  methods=["GET", "POST"])
 
 def profilepage(pen_name):
-    
+    """Loads the profile page if signin was successful."""
     pen_name = mongo.db.user_accounts.find_one(
         {"pen_name": session["user"]})["pen_name"]
     title = pen_name
-    
     if session["user"]:
         news = mongo.db.news.find()
         return render_template("profilepage.html", pen_name=pen_name, title=title, news=news)
@@ -194,31 +208,39 @@ def profilepage(pen_name):
 @myapp.route("/backtoprofile")
 
 def backtoprofile():
+    """Brings the user back to the main profile page."""
     news = mongo.db.news.find()
     if session.get('user'):
         if session['user']:
-                pen_name, title = session["user"], session["user"]
-                return redirect(url_for('profilepage', pen_name=pen_name, news=news ))
+            pen_name, title = session["user"], session["user"]
+            return redirect(url_for('profilepage', pen_name=pen_name, news=news))
     else:
-        flash("You are not Logged in")
+        flash(SIGNIN_MESSAGE_FAILURE)
         return redirect(url_for("signin", news=news))
 
 
 @myapp.route("/signout")
 
 def signout():
+    """Signs all active users out of their profile"""
     news = mongo.db.news.find()
     if session:
         session.clear()
-        flash("Sign Out Was Successful!")
+        flash(SIGNOUT_SUCCESS)
     else:
-        flash("You are not Signed In")
+        flash(SIGNOUT_FAILURE)
     return redirect(url_for("signin", news=news))
 
 
 @myapp.route("/create", methods=["GET", "POST"])
 
 def create():
+        """
+        Loads the create story template for a user.
+     
+        Creates the various key pairs for a users story.
+
+        """
         news = mongo.db.news.find()
         if session.get('user'):
             if session['user']:
@@ -230,30 +252,40 @@ def create():
                 "name": request.form.get("name").lower(),
                 "plot": request.form.get("plot").lower(),
                 "content": request.form.get("content").lower(),
-                "popularity": 1,}          
-                    mongo.db.shortStories.insert_one(addstory)
-                    flash("Well Done for getting your story published")
+                "popularity": 1,}
+                    mongo.db.shortstories.insert_one(addstory)
+                    flash(CREATE_SUCCESS)
                     return redirect(url_for('profilepage', pen_name=pen_name))
             else:
-                flash("Invalid action for user profile")
+                flash(CREATE_FAILURE)
             return render_template("create.html", create=create, title=pen_name, news=news)   
        
-# This is the main function for edit story
+
 @myapp.route("/editstory")
 
-def editstory(): 
+def editstory():
+    """Loads the edit story template for a user."""
+
     news = mongo.db.news.find()
-    
     if session.get('user'):
             if session['user']:
                 pen_name = session["user"]
-                stories = mongo.db.shortStories.find()
+                stories = mongo.db.shortstories.find()
+    else:
+        flash(EDIT_FAILURE)
     return render_template("editstory.html", stories=stories, pen_name=pen_name, news=news)
                
 
 @myapp.route("/updatestory/<story_id>", methods=["GET", "POST"])
 
 def updatestory(story_id):
+    """
+    For editing an existing users story.
+
+    Edits the various key pairs for a users story.
+
+    """
+
     pen_name = session["user"]
     if request.method == "POST":
         changestory = {
@@ -264,61 +296,62 @@ def updatestory(story_id):
                 "content": request.form.get("content").lower(),
                 "popularity": 1,
                 "updated": True,}
-                 
-        mongo.db.shortStories.update({"_id": ObjectId(story_id)}, changestory)
-        flash("The Story Has Been Updated")
+        mongo.db.shortstories.update({"_id": ObjectId(story_id)}, changestory)
+        flash(UPDATE_SUCCESS)
     return redirect(url_for("editstory", pen_name=pen_name))
 
 
 @myapp.route("/deletestory/<story_id>")
 
 def deletestory(story_id):
-                mongo.db.shortStories.remove({"_id": ObjectId(story_id)})
-                flash("Congratulations The Story Was Deleted")
-                return redirect(url_for("removestory"))
-               
+                """Performs the deletion of a story."""
+                mongo.db.shortstories.remove({"_id": ObjectId(story_id)})
+                flash(DELETE_SUCCESS)
+                return redirect(url_for("removestory"))               
 
 
 @myapp.route("/removestory", methods=["GET", "POST"])
 
 def removestory():
+    """Loads the remove story template for a user."""
     news = mongo.db.news.find()
     if session.get('user'):
             if session['user']:
                 pen_name = session["user"]
-                stories = mongo.db.shortStories.find()
+                stories = mongo.db.shortstories.find()
     return render_template("removestory.html", stories=stories, pen_name=pen_name, news=news)
 
 
 @myapp.route("/updatepopularity/<genre>", methods=["GET", "POST"])
 
 def updatepopularity(genre):
-                    if session.get('user'):
-                        
-                        if request.method == "POST":
-                            name = { "name": request.form.get('name') }
-                            popularity = { "$inc": { "popularity": 1 }}
-                            mongo.db.shortStories.update_one(name, popularity)
-                            
-                        return redirect(url_for(genre))
-                    else:
-                        message_failure = Markup("You Need To Be Signed In<br>to 'Like' A Story")
-                        flash(message_failure)
-                    return redirect(url_for("signin"))
-               
+    """
+    Increments the popularity rating on a story.
+                    
+    Brings user back to the same page after updating
+                    
+    """
+
+    if session.get('user'):
+        if request.method == "POST":
+            name = { "name": request.form.get('name') }
+            popularity = { "$inc": { "popularity": 1 }}
+            mongo.db.shortstories.update_one(name, popularity)    
+        return redirect(url_for(genre))
+                    
+    flash(POPULARITY_FAILURE)
+    return redirect(url_for("signin"))            
 
 @myapp.route("/search", methods=["GET", "POST"])
 
 def search():
-    #query = request.form.get("query")
-    #stories = list(mongo.db.shortStories.find({"$text":{"$search": query}}))
-    print("")
-
+    """Performs a search query."""
+    searchquery = request.form.get("searchquery")
+    stories = list(mongo.db.shortstories.find({"$text":{"$search": searchquery}}))
+    return render_template("search.html", stories=stories, searchquery=searchquery)
 
 
 if __name__ == "__main__":
     myapp.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
-
-

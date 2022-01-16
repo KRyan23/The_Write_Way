@@ -52,11 +52,10 @@
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10">
               <h2 class="text-center" aria-label="Form Title">Edit a {{ pen_name|title }} Story </h2>
               <hr class="hr-editstory">
-
               <div class="container genre-cards">
                 <div class="row">
-                  {% set updateButtonText = "Update Story" %}
                   {% set backToProfileText = "Cancel and Return to Profile" %}
+                  {% set updateButtonText = "Update Story" %}
                   {% set confirmDeletion = "Check the Box to Confirm" %}
                   {% set TheId = namespace(value=0) %}
                   {% for story in stories %}
@@ -64,7 +63,6 @@
                   {% set TheId.value = TheId.value + 1 %}
                   <form class="needs-validation form-intro" method="POST"
                     action="{{ url_for('updatestory', story_id=story._id) }}" novalidate>
-
                     <div class="container story-styling">
                       <div class="row active-story">
                         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-6"></div>
@@ -179,8 +177,7 @@
                               Please check the box
                             </div>
                           </div>
-
-                                            </form>
+                  </form>
                   <hr class="hr-editstory">
                 </div>
               </div>
