@@ -19,6 +19,7 @@ mongo = PyMongo(myapp)
 client = MongoClient()
 @myapp.context_processor
 def handle_context():
+    """Get the list of user's environment variables."""
     return dict(os=os)
 
 JOIN_MESSAGE_FAILURE = Markup(" is already<br> registered as a 'Pen Name'")
@@ -29,7 +30,7 @@ SIGNIN_MESSAGE_FAILURE = "You are not Logged in"
 SIGNOUT_FAILURE = "You are not Signed In"
 SIGNOUT_SUCCESS = "Sign Out Was Successful!"
 CREATE_SUCCESS = "Well Done for getting your story published"
-EDIT_FAILURE = CREATE_FAILURE = "Invalid action for user profile"
+EDIT_FAILURE = "Invalid action for user profile"
 UPDATE_SUCCESS = "The Story Has Been Updated"
 DELETE_SUCCESS = "Congratulations The Story Was Deleted"
 POPULARITY_FAILURE = Markup("You Need To Be Signed In<br>to 'Like' A Story")
@@ -37,9 +38,9 @@ POPULARITY_FAILURE = Markup("You Need To Be Signed In<br>to 'Like' A Story")
 
 @myapp.route("/")
 
-@myapp.route("/genre")
+@myapp.route("/get_genre")
 
-def genre():
+def get_genre():
     """Loads the template for the 'genres' on the home page."""
     genre = mongo.db.genre.find()
     news = mongo.db.news.find()
@@ -123,9 +124,9 @@ def join():
         {"pen_name": request.form.get("pen_name").lower()})
         pen = request.form.get('pen_name')
     if existing_user:
-	    flash(pen+JOIN_MESSAGE_FAILURE)
-	    return redirect(url_for("join"))
-    join = {
+        flash(pen+JOIN_MESSAGE_FAILURE)
+        return redirect(url_for("join"))
+        join = {
             "first_name": request.form.get("first_name").lower(),
             "last_name": request.form.get("last_name").lower(),
             "pen_name": request.form.get("pen_name").lower(),
@@ -155,6 +156,7 @@ def signin():
     """
 
     news = mongo.db.news.find()
+
     if request.method == "POST":
         signin = mongo.db.user_accounts.find_one(
             {"pen_name": request.form.get("pen_name").lower()})
@@ -162,13 +164,9 @@ def signin():
         if signin:
             if check_password_hash(signin["password"], request.form.get("password")):
                 session["user"] = request.form.get("pen_name").lower()
-            else:
-                flash(PASSWORD_MESSAGE_FAILURE)
-                return redirect(url_for('signin'))
-            return render_template('profilepage.html', title=pen, news=news)
-        else:
-            flash(PASSWORD_MESSAGE_FAILURE)
-            return redirect(url_for('signin', news=news))
+                return render_template('profilepage.html', title=pen, news=news)
+        flash(PASSWORD_MESSAGE_FAILURE)
+        return redirect(url_for('signin'))
 
     return render_template("signin.html", title="Sign In", news=news)
 
@@ -183,12 +181,13 @@ def resetpassword():
         pen_name = request.form.get('pen_name')
         if signin:
             username = { "pen_name": request.form.get('pen_name') }
-            newpassword = { "$set": { "password": generate_password_hash(request.form.get("password"))}}
+            newpassword = {
+                "$set": { "password": generate_password_hash(request.form.get("password"))}}
             mongo.db.user_accounts.update_one(username, newpassword)
             flash(pen_name + PASSWORD_MESSAGE_SUCCESS)
             return redirect(url_for("signin", news=news, title="Reset Password"))
-        else:
-            flash(PASSWORD_MESSAGE_FAILURE)
+
+        flash(PASSWORD_MESSAGE_FAILURE)
     return render_template("resetpassword.html", title="Reset Password", news=news)
 
 
@@ -213,11 +212,8 @@ def backtoprofile():
     if session.get('user'):
         if session['user']:
             pen_name, title = session["user"], session["user"]
-            return redirect(url_for('profilepage', pen_name=pen_name, news=news))
-    else:
-        flash(SIGNIN_MESSAGE_FAILURE)
-        return redirect(url_for("signin", news=news))
-
+    return redirect(url_for('profilepage', pen_name=pen_name, news=news))
+    
 
 @myapp.route("/signout")
 
@@ -235,31 +231,30 @@ def signout():
 @myapp.route("/create", methods=["GET", "POST"])
 
 def create():
-        """
-        Loads the create story template for a user.
-     
-        Creates the various key pairs for a users story.
+    """
+    Loads the create story template for a user.
 
-        """
-        news = mongo.db.news.find()
-        if session.get('user'):
-            if session['user']:
-                pen_name = session["user"]
-                if request.method == "POST":
-                    addstory = {
+    Creates the various key pairs for a users story.
+
+    """
+    news = mongo.db.news.find()
+    if session.get('user'):
+        if session['user']:
+            pen_name = session["user"]
+            if request.method == "POST":
+                addstory = {
                 "author": pen_name.lower(),
                 "genre": request.form.get("genre").lower(),
                 "name": request.form.get("name").lower(),
                 "plot": request.form.get("plot").lower(),
                 "content": request.form.get("content").lower(),
-                "popularity": 1,}
-                    mongo.db.shortstories.insert_one(addstory)
-                    flash(CREATE_SUCCESS)
-                    return redirect(url_for('profilepage', pen_name=pen_name))
-            else:
-                flash(CREATE_FAILURE)
-            return render_template("create.html", create=create, title=pen_name, news=news)   
-       
+            "popularity": 1,}
+                mongo.db.shortstories.insert_one(addstory)
+                flash(CREATE_SUCCESS)
+                return redirect(url_for('profilepage', pen_name=pen_name))
+
+    return render_template("create.html", create=create, title=pen_name, news=news)
+
 
 @myapp.route("/editstory")
 
@@ -268,13 +263,13 @@ def editstory():
 
     news = mongo.db.news.find()
     if session.get('user'):
-            if session['user']:
-                pen_name = session["user"]
-                stories = mongo.db.shortstories.find()
+        if session['user']:
+            pen_name = session["user"]
+            stories = mongo.db.shortstories.find()
     else:
         flash(EDIT_FAILURE)
     return render_template("editstory.html", stories=stories, pen_name=pen_name, news=news)
-               
+
 
 @myapp.route("/updatestory/<story_id>", methods=["GET", "POST"])
 
@@ -304,10 +299,10 @@ def updatestory(story_id):
 @myapp.route("/deletestory/<story_id>")
 
 def deletestory(story_id):
-                """Performs the deletion of a story."""
-                mongo.db.shortstories.remove({"_id": ObjectId(story_id)})
-                flash(DELETE_SUCCESS)
-                return redirect(url_for("removestory"))               
+    """Performs the deletion of a story."""
+    mongo.db.shortstories.remove({"_id": ObjectId(story_id)})
+    flash(DELETE_SUCCESS)
+    return redirect(url_for("removestory"))
 
 
 @myapp.route("/removestory", methods=["GET", "POST"])
@@ -316,9 +311,9 @@ def removestory():
     """Loads the remove story template for a user."""
     news = mongo.db.news.find()
     if session.get('user'):
-            if session['user']:
-                pen_name = session["user"]
-                stories = mongo.db.shortstories.find()
+        if session['user']:
+            pen_name = session["user"]
+            stories = mongo.db.shortstories.find()
     return render_template("removestory.html", stories=stories, pen_name=pen_name, news=news)
 
 
@@ -327,20 +322,20 @@ def removestory():
 def updatepopularity(genre):
     """
     Increments the popularity rating on a story.
-                    
+
     Brings user back to the same page after updating
-                    
+
     """
 
     if session.get('user'):
         if request.method == "POST":
             name = { "name": request.form.get('name') }
             popularity = { "$inc": { "popularity": 1 }}
-            mongo.db.shortstories.update_one(name, popularity)    
+            mongo.db.shortstories.update_one(name, popularity)
         return redirect(url_for(genre))
-                    
+
     flash(POPULARITY_FAILURE)
-    return redirect(url_for("signin"))            
+    return redirect(url_for("signin"))
 
 @myapp.route("/search", methods=["GET", "POST"])
 
