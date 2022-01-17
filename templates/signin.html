@@ -46,7 +46,7 @@
 <div class="container">
   <div class="row d-flex justify-content-around">
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-      <form id="signin-form" method="POST" class="needs-validation" novalidate action="{{ url_for('signin') }}"
+      <form id="signin-form" method="POST" class="needs-validation" novalidate action="{{ url_for('get_signin') }}"
         onsubmit="return isRecapchaValid()">
         <fieldset class="background-theme">
           <div class="row d-flex justify-content-around">
@@ -84,7 +84,7 @@
               </div>
               <div class="row text-center justify-content-between">
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 login-options">
-                  <a href="/join">
+                  <a href="{{ url_for('get_join') }}">
                     <div class="btn-sm btn-outline-success text-center col-12 change-text-color" title="Create Account"
                       aria-label="Create Account">No Account ?</div>
                   </a>

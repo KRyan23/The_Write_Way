@@ -112,12 +112,10 @@ h2 {
 }
 
 .text-header-spacing {
-    /* to replace the <p></p> 8 spacing we used */
     margin: 1em 0 1em 0;
 }
 
 .text-spacing {
-    /* to replace the <p></p> 8 spacing we used */
     margin: 0 0 2em 0;
 }
 .card {
@@ -165,7 +163,6 @@ ul {
     background-color: #f8f9fa;
     text-align: center;
 }
-
 
 .news-heading {
     padding-left: 2.5em;
@@ -379,7 +376,7 @@ ul {
     font-weight: 600;
     font-size: 1.1em;
 }
-
+/* Rules for the genre thumnails on the R/H aside */
 .crime-background-story-image {
     background-image: url('/static/images/crime.jpg');
     width: auto;
@@ -619,7 +616,7 @@ ul {
           width: 14em;
       }
 
-      .mobile-category-heading {
+      .desktop-category-heading {
           display: none;
       }
 
@@ -629,6 +626,7 @@ ul {
      h5 {
          font-size: 95%;
      }
+
   }
   
   /*- 992px - 1023px -*/
@@ -722,5 +720,4 @@ ul {
     .navbar-collapse {
          flex-grow: 0.55; 
     }
-
 }

@@ -121,9 +121,11 @@
 
 The W3C Mark-up Validator and W3C CSS Jigsaw Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
 
--   [W3C Mark-up Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](/assets/docs/Html-Css-results.pdf)
--   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](/assets/docs/Html-Css-results.pdf)
--   [JSHint ](https://jshint.com/) - [Results](/assets/docs/JSHint.pdf)
+-   [W3C Html Mark-up Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](/assets/docs/testing-and-troubleshooting/)
+-   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](/assets/docs/testing-and-troubleshooting/css-results.pdf)
+-   [JSHint ](https://jshint.com/) - [Results](/assets/docs/testing-and-troubleshooting)
+-   [pylint ](https://pylint.org/) - [Results](/assets/docs/testing-and-troubleshooting/pylint-results.pdf)
+-    Code Refactoring  - [Results](/assets/docs/testing-and-troubleshooting/code-refactoring.pdf)
 
 
 ### Testing User Stories from User Experience Section

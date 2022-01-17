@@ -15,21 +15,22 @@
   <title>
     {% block title %}
     {% endblock %}
+    
   </title>
 </head>
-<body>
+<body class="bg-light">
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url_for('genre') }}" id="top-of-page"><img src={{ url_for('static', filename='images/pen.png')}} title="Image of pen" aria-label="Image of pen" alt="Image of pen" class="logo"></a>
-       <a href="{{ url_for('genre') }}" class="main-heading-link"><h1 class="main-heading" title="Site Heading" aria-label="Site Heading">The Write Way</h1></a> 
+        <a class="navbar-brand" href="{{ url_for('get_genre') }}" id="top-of-page"><img src={{ url_for('static', filename='images/pen.png')}} title="Image of pen" aria-label="Image of pen" alt="Image of pen" class="logo"></a>
+       <a href="{{ url_for('get_genre') }}" class="main-heading-link"><h1 class="main-heading" title="Site Heading" aria-label="Site Heading">The Write Way</h1></a> 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Mobile Nfromavigation">
           <span class="navbar-toggler-icon"></span>
         </button><div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 navigation-styling">
             <li class="nav-item">
-              <a class="nav-link active" title="Home" aria-label="Home Page" href="{{ url_for('genre') }}"><span
+              <a class="nav-link active" title="Home" aria-label="Home Page" href="{{ url_for('get_genre') }}"><span
                   class="text-menu-style">Home</span></a>
             </li>
             {% if session.user|lower %}
@@ -43,16 +44,16 @@
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link active nav-link" aria-label="Join Us" href="{{ url_for('join') }}"><span class="text-menu-style">Join Us</span></a>
+              <a class="nav-link active nav-link" aria-label="Join Us" href="{{ url_for('get_join') }}"><span class="text-menu-style">Join Us</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active nav-link" aria-label="Sign In" href="{{ url_for('signin') }}"><span class="text-menu-style">Sign In</span></a>
+              <a class="nav-link active nav-link" aria-label="Sign In" href="{{ url_for('get_signin') }}"><span class="text-menu-style">Sign In</span></a>
             </li>
             {% endif %}
           </ul>
-          <form class="d-flex" action="{{ url_for('search') }}">
-            <label for="query"> </label>
-            <input class="form-control me-auto input-box search-input-box" type="search" name="search" id="query" 
+          <form class="d-flex" action="{{ url_for('search') }}" method="POST">
+            <label for="searchquery"> </label>
+            <input class="form-control me-auto input-box search-input-box validate" type="search" name="searchquery" id="searchquery" 
             placeholder="Search Stories.." title="Search Box" aria-label="Search" required>
             <button class="btn btn-outline-success search-box" type="submit">Search</button>
           </form>
@@ -204,10 +205,10 @@
         <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://instagram.com/?lang=en/" target="_blank"
           rel="noopener" aria-label="instagram" title="instagram" role="button">
           <i class="fab fa-instagram social-media fa-lg"></i></a>
-    </div> 
-    <div class="text-center text-dark p-1 copyright-styling">
+    </div>
+       <div class="text-center bg-light copyright-styling">
       <p title="Privacy Policy">The Write Way © 2021 | All rights reserved. The terms under which this service is provided to you is outlined
-        in the <a href="{{ url_for('policy') }}" class="paragraph-styling policy-link">Privacy Policy.</a></p>
+        in the <a href="{{ url_for('get_policy') }}" class="paragraph-styling policy-link">Privacy Policy.</a></p>
     </div>
   </footer>
 
