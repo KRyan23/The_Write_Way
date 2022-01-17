@@ -57,7 +57,7 @@
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
       <form id="signup-form" method="POST" class="needs-validation form-intro" novalidate name="the-write-way"
-        action="{{ url_for('join') }}" onsubmit="return isRecapchaValid()">
+        action="{{ url_for('get_join') }}" onsubmit="return isRecapchaValid()">
         <fieldset class="background-theme">
           <div class="row d-flex justify-content-around">
             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
@@ -430,7 +430,7 @@
           <br>
           <div class="row text-center justify-content-around">
             <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 login-options">
-              <a href="/signin">
+              <a href="{{ url_for('get_signin') }}">
                 <div class="btn-sm btn-outline-success text-center col-12 change-text-color" title="Create Account"
                   aria-label="Create Account">Already Registered?</div>
               </a>

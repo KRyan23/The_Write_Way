@@ -24,8 +24,8 @@ def handle_context():
 
 JOIN_MESSAGE_FAILURE = Markup(" is already<br> registered as a 'Pen Name'")
 JOIN_MESSAGE_SUCCESS = Markup("<br>'Your Registration Was Successful!'")
-PASSWORD_MESSAGE_FAILURE = Markup("Please Check Your Username and Password")
-PASSWORD_MESSAGE_SUCCESS = Markup(" Your Password Was reset!")
+PASSWORD_MESSAGE_FAILURE = "Please Check Your Username and Password"
+PASSWORD_MESSAGE_SUCCESS = "Your Password Was reset!"
 SIGNIN_MESSAGE_FAILURE = "You are not Logged in"
 SIGNOUT_FAILURE = "You are not Signed In"
 SIGNOUT_SUCCESS = "Sign Out Was Successful!"
@@ -47,9 +47,9 @@ def get_genre():
     return render_template("genre.html", genre=genre, news=news)
 
 
-@myapp.route("/policy")
+@myapp.route("/get_policy")
 
-def policy():
+def get_policy():
     """Loads the template for the 'policy' page."""
     policy = mongo.db.policy.find()
     news = mongo.db.news.find()
@@ -109,9 +109,9 @@ def thriller():
     return render_template("thriller.html", thriller=thriller, title="Thriller", news=news)
 
 
-@myapp.route("/join", methods=["GET", "POST"])
+@myapp.route("/get_join", methods=["GET", "POST"])
 
-def join():
+def get_join():
     """
     Handles the the signup of a new user.
 
@@ -121,11 +121,10 @@ def join():
     news = mongo.db.news.find()
     if request.method == "POST":
         existing_user = mongo.db.user_accounts.find_one(
-        {"pen_name": request.form.get("pen_name").lower()})
-        pen = request.form.get('pen_name')
-    if existing_user:
-        flash(pen+JOIN_MESSAGE_FAILURE)
-        return redirect(url_for("join"))
+            {"pen_name": request.form.get("pen_name").lower()})
+        if existing_user:
+            flash(JOIN_MESSAGE_FAILURE)
+            return redirect(url_for("join"))
         join = {
             "first_name": request.form.get("first_name").lower(),
             "last_name": request.form.get("last_name").lower(),
@@ -135,17 +134,19 @@ def join():
             "email_name": request.form.get("email_name").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
-    mongo.db.user_accounts.insert_one(join)
-    session["user"] = request.form.get("pen_name").lower()
-    flash(pen+JOIN_MESSAGE_SUCCESS)
-    return redirect(url_for("signin"))
+
+        mongo.db.user_accounts.insert_one(join)
+
+        session["user"] = request.form.get("pen_name").lower()
+        flash(JOIN_MESSAGE_SUCCESS)
+        return redirect(url_for("get_signin"))
 
     return render_template("join.html", title="Join Us", news=news)
 
 
-@myapp.route("/signin", methods=["GET", "POST"])
+@myapp.route("/get_signin", methods=["GET", "POST"])
 
-def signin():
+def get_signin():
     """
     Handles the signin for registered users.
 
@@ -166,7 +167,7 @@ def signin():
                 session["user"] = request.form.get("pen_name").lower()
                 return render_template('profilepage.html', title=pen, news=news)
         flash(PASSWORD_MESSAGE_FAILURE)
-        return redirect(url_for('signin'))
+        return redirect(url_for('get_signin'))
 
     return render_template("signin.html", title="Sign In", news=news)
 
@@ -185,7 +186,7 @@ def resetpassword():
                 "$set": { "password": generate_password_hash(request.form.get("password"))}}
             mongo.db.user_accounts.update_one(username, newpassword)
             flash(pen_name + PASSWORD_MESSAGE_SUCCESS)
-            return redirect(url_for("signin", news=news, title="Reset Password"))
+            return redirect(url_for("get_signin", news=news, title="Reset Password"))
 
         flash(PASSWORD_MESSAGE_FAILURE)
     return render_template("resetpassword.html", title="Reset Password", news=news)
@@ -201,7 +202,7 @@ def profilepage(pen_name):
     if session["user"]:
         news = mongo.db.news.find()
         return render_template("profilepage.html", pen_name=pen_name, title=title, news=news)
-    return redirect(url_for("signin", news=news))
+    return redirect(url_for("get_signin", news=news))
 
 
 @myapp.route("/backtoprofile")
@@ -211,9 +212,9 @@ def backtoprofile():
     news = mongo.db.news.find()
     if session.get('user'):
         if session['user']:
-            pen_name, title = session["user"], session["user"]
+            pen_name = session["user"]
     return redirect(url_for('profilepage', pen_name=pen_name, news=news))
-    
+
 
 @myapp.route("/signout")
 
@@ -225,7 +226,7 @@ def signout():
         flash(SIGNOUT_SUCCESS)
     else:
         flash(SIGNOUT_FAILURE)
-    return redirect(url_for("signin", news=news))
+    return redirect(url_for("get_signin", news=news))
 
 
 @myapp.route("/create", methods=["GET", "POST"])
@@ -335,7 +336,7 @@ def updatepopularity(genre):
         return redirect(url_for(genre))
 
     flash(POPULARITY_FAILURE)
-    return redirect(url_for("signin"))
+    return redirect(url_for("get_signin"))
 
 @myapp.route("/search", methods=["GET", "POST"])
 

@@ -44,10 +44,10 @@
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link active nav-link" aria-label="Join Us" href="{{ url_for('join') }}"><span class="text-menu-style">Join Us</span></a>
+              <a class="nav-link active nav-link" aria-label="Join Us" href="{{ url_for('get_join') }}"><span class="text-menu-style">Join Us</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active nav-link" aria-label="Sign In" href="{{ url_for('signin') }}"><span class="text-menu-style">Sign In</span></a>
+              <a class="nav-link active nav-link" aria-label="Sign In" href="{{ url_for('get_signin') }}"><span class="text-menu-style">Sign In</span></a>
             </li>
             {% endif %}
           </ul>
@@ -206,12 +206,9 @@
           rel="noopener" aria-label="instagram" title="instagram" role="button">
           <i class="fab fa-instagram social-media fa-lg"></i></a>
     </div>
-    <div class="">
-
-    </div> 
-    <div class="text-center bg-light copyright-styling">
+       <div class="text-center bg-light copyright-styling">
       <p title="Privacy Policy">The Write Way © 2021 | All rights reserved. The terms under which this service is provided to you is outlined
-        in the <a href="{{ url_for('policy') }}" class="paragraph-styling policy-link">Privacy Policy.</a></p>
+        in the <a href="{{ url_for('get_policy') }}" class="paragraph-styling policy-link">Privacy Policy.</a></p>
     </div>
   </footer>
 
