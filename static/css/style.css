@@ -44,6 +44,10 @@ a {
     font-weight: 200;
 }
 
+.policy-link{
+    margin-left: 1.25em;
+}
+
 .policy-link:hover {
     color: #198754;
 }
@@ -358,7 +362,7 @@ ul {
 }
 
 .profile-checkbox-text-spacing {
-    padding: 1.45em 0 0 0.25em;
+    padding: 1.45em 0 0 0;
     font-size:medium;
     font-weight: 600;
     margin: 0 0 0 0;
