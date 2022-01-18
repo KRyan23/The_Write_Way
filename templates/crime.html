@@ -71,14 +71,13 @@
             <h4 class="mb-1"><span class="story-title">Plot: </span><span class="story-plot">{{
                         cri.plot|striptags|capitalize}}</span></h4>
             <div class="d-flex w-100 justify-content-between">
-              <h4 class="mb-1"></h4><small><br>Popularity: <span class="badge bg-success rounded-pill">{{
+              <span class="mb-1"></span><small><br>Popularity: <span class="badge bg-success rounded-pill">{{
                         cri.popularity }}</span></small>
             </div>
-            <a href="#opening"><button type="button" data-bs-toggle="collapse"
-                data-bs-target="#the-id-of-{{ TheId.value }}"
-                class="btn btn-outline-success text-center col-12 change-text" aria-expanded="false"
-                aria-controls="collapsed story">
-                <span>Read</span><span class="hidden">Hide</span> {{ cri.name|striptags|title }} </button></a>
+            <a href="#opening" data-bs-toggle="collapse" data-bs-target="#the-id-of-{{ TheId.value }}"
+              class="btn btn-outline-success text-center col-12 change-text" aria-expanded="false"
+              aria-controls="the-id-of-{{ TheId.value }}">
+              <span>Read</span><span class="hidden">Hide</span> {{ cri.name|striptags|title }}</a>
             <div class="collapse" id="the-id-of-{{ TheId.value }}">
               <br>
               <div class="card card-story card w-100 mt-2 ">
@@ -88,8 +87,9 @@
                 <div class="like-story-button">
                   <form method="POST" class="text-center" name="feedback-form"
                     action="{{ url_for('updatepopularity', genre=popularity) }}">
-                    <label for="name" class="form-label form-label-spacing form-input-box-text"></label>
-                    <input type="text" id="name" class="form-control form-input-box-text" name="name"
+                    <label for="name-{{ TheId.value }}"
+                      class="form-label form-label-spacing form-input-box-text"></label>
+                    <input type="text" id="name-{{ TheId.value }}" class="form-control form-input-box-text" name="name"
                       value="{{ cri.name|lower }}" hidden>
                     <button class="btn btn-success text-center " type="submit" title="Submit" name="submit"
                       aria-label="Submit Form">Like this Story</button>
@@ -103,14 +103,16 @@
     </div>
     {% endif %}
     {% endfor %}
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
-          <a href="#top-of-page"><button type="button" class="btn btn-outline-success btn-lg">
-              <h5><i class="far fa-arrow-alt-circle-up fa-lg"></i><span class="back-to-top">Back to Top</span><i
-                  class="far fa-arrow-alt-circle-up fa-lg"></i></h5>
-            </button></a>
-        </div>
-      </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+      <a href="#top-of-page" class="btn btn-outline-success btn-lg">
+        <h5><i class="far fa-arrow-alt-circle-up fa-lg"></i><span class="back-to-top">Back to Top</span><i
+            class="far fa-arrow-alt-circle-up fa-lg"></i></h5>
+      </a>
     </div>
-    {% endblock %}
+  </div>
+</div>
+{% endblock %}
