@@ -53,7 +53,7 @@ def get_policy():
     """Loads the template for the 'policy' page."""
     policy = mongo.db.policy.find()
     news = mongo.db.news.find()
-    return render_template("policy.html", policy=policy, news=news)
+    return render_template("policy.html", policy=policy, news=news, title="Policy Page")
 
 
 @myapp.route("/crime")
@@ -213,7 +213,7 @@ def backtoprofile():
     if session.get('user'):
         if session['user']:
             pen_name = session["user"]
-    return redirect(url_for('profilepage', pen_name=pen_name, news=news))
+    return redirect(url_for('profilepage', pen_name=pen_name, news=news, title="Profile Page"))
 
 
 @myapp.route("/signout")
@@ -269,7 +269,8 @@ def editstory():
             stories = mongo.db.shortstories.find()
     else:
         flash(EDIT_FAILURE)
-    return render_template("editstory.html", stories=stories, pen_name=pen_name, news=news)
+    return render_template("editstory.html", stories=stories, pen_name=pen_name,
+    news=news, title="Edit Story")
 
 
 @myapp.route("/updatestory/<story_id>", methods=["GET", "POST"])
@@ -284,6 +285,7 @@ def updatestory(story_id):
 
     pen_name = session["user"]
     if request.method == "POST":
+        request.form.get("name").lower()
         changestory = {
                 "genre": request.form.get("genre").lower(),
                 "author": pen_name,
@@ -315,7 +317,7 @@ def removestory():
         if session['user']:
             pen_name = session["user"]
             stories = mongo.db.shortstories.find()
-    return render_template("removestory.html", stories=stories, pen_name=pen_name, news=news)
+    return render_template("removestory.html", stories=stories, pen_name=pen_name, news=news, title="Remove Story")
 
 
 @myapp.route("/updatepopularity/<genre>", methods=["GET", "POST"])

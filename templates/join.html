@@ -12,26 +12,26 @@
     <ul>
       {% for new in news %}
       <li>
-        <p>Check here for the latest news on our ever expanding list of Genres, 
+        <p>Check here for the latest news on our ever expanding list of Genres,
           Authors and stories</p>
-        </li>
         <hr class="news-hr">
+      </li>
       <li>
         <p>We would like to give a Warm Welcome to our newest Author <span
             class="news-text">{{ new.author|title }}</span>.</p>
+        <hr class="news-hr">
       </li>
-      <hr class="news-hr">
       <li>
         <p><span class="news-text"> {{ new.author|title }}</span> is sharing his writing with us all the way from <span
             class="news-text">{{ new.city_name|title }}</span>, <span
             class="news-text">{{ new.country_name|title }}</span>.</p>
+        <hr class="news-hr">
       </li>
-      <hr class="news-hr">
       <li>
         <p>The latest addition to our <span class="news-text">{{ new.genre|title }}</span> genre is the short story
           "<span class="news-text">{{ new.name|title }}</span>", why not head over there and check it out.</p>
+        <hr class="news-hr">
       </li>
-      <hr class="news-hr">
       <li>
         <p>Our <span class="news-text">{{ new.genre|title }}</span> genre just recently had some short stories added...
         </p>
@@ -137,9 +137,9 @@
             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-8">
               <!-- The list of countries are from this post https://gist.github.com/danrovito/977bcb97c9c2dfd3398a -->
               <label for="country-name" class="form-label form-label-spacing form-input-box-text">Country</label>
-              <select type="text" id="country-name" name="country_name" class="form-select form-input-box-text"
+              <select id="country-name" name="country_name" class="form-select form-input-box-text"
                 aria-label="Country Name" title="Select Country" required>
-                <option value="disabled"></option>
+                <option value="">Select a Country</option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
                 <option value="Albania">Albania</option>
@@ -431,11 +431,11 @@
           <div class="row text-center justify-content-around">
             <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 login-options">
               <a href="{{ url_for('get_signin') }}">
-                <div class="btn-sm btn-outline-success text-center col-12 change-text-color" title="Create Account"
-                  aria-label="Create Account">Already Registered?</div>
+                <div class="btn-sm btn-outline-success text-center col-12 change-text-color" title="already registered">
+                  Already Registered?</div>
               </a>
             </div>
-            </div>          
+          </div>
         </fieldset>
       </form>
     </div>

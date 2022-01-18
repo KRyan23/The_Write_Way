@@ -121,9 +121,9 @@
 
 The W3C Mark-up Validator and W3C CSS Jigsaw Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
 
--   [W3C Html Mark-up Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](/assets/docs/testing-and-troubleshooting/)
+-   [W3C Html Mark-up Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](/assets/docs/testing-and-troubleshooting/html-validation.pdf)
 -   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](/assets/docs/testing-and-troubleshooting/css-results.pdf)
--   [JSHint ](https://jshint.com/) - [Results](/assets/docs/testing-and-troubleshooting)
+- [JSHint ](https://jshint.com/) - [Results](/assets/docs/testing-and-troubleshooting)**Not done
 -   [pylint ](https://pylint.org/) - [Results](/assets/docs/testing-and-troubleshooting/pylint-results.pdf)
 -    Code Refactoring  - [Results](/assets/docs/testing-and-troubleshooting/code-refactoring.pdf)
 
@@ -222,13 +222,16 @@ The project was deployed using the steps below.
 
 [Steps to deploy to Heroku](assets/docs/setup-and-deployment/deploying_to_heroku.pdf)
 
+### Recapcha
 
+[Steps to setup Recapcha](assets/docs/setup-and-deployment/recapcha.pdf)
 
 ## Credits
 
 ### Code
 
-- All code written by myself except for .....
+- All code was written by myself except for that is explicitly listed in the project files
+- The Recapcha code used was from google and is listed above in the deployment section.
 
 
 ### Content
