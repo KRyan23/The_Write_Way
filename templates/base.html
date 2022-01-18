@@ -59,12 +59,6 @@
             </li>
             {% endif %}
           </ul>
-          <form class="d-flex" action="{{ url_for('search') }}" method="POST">
-            <label for="searchquery"> </label>
-            <input class="form-control me-auto input-box search-input-box validate" type="search" name="searchquery"
-              id="searchquery" placeholder="Search Stories.." title="Search Box" aria-label="Search" required>
-            <button class="btn btn-outline-success search-box" type="submit">Search</button>
-          </form>
         </div>
       </div>
     </nav>
@@ -237,15 +231,7 @@
   </script>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script>
-    window.onload = function () {
-      var recaptcha = document.forms["myForm"]["g-recaptcha-response"];
-      recaptcha.required = true;
-      recaptcha.oninvalid = function (e) {
-        alert("Please complete the captcha");
-      }
-    }
-  </script>
+  
 </body>
 
 </html>

@@ -340,14 +340,6 @@ def updatepopularity(genre):
     flash(POPULARITY_FAILURE)
     return redirect(url_for("get_signin"))
 
-@myapp.route("/search", methods=["GET", "POST"])
-
-def search():
-    """Performs a search query."""
-    searchquery = request.form.get("searchquery")
-    stories = list(mongo.db.shortstories.find({"$text":{"$search": searchquery}}))
-    return render_template("search.html", stories=stories, searchquery=searchquery)
-
 
 if __name__ == "__main__":
     myapp.run(host=os.environ.get("IP"),
