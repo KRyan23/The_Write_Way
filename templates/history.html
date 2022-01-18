@@ -13,25 +13,21 @@
       {% for new in news %}
       <li>
         <p>Check here for the latest news on our ever expanding list of Genres, 
-          Authors and stories</p>
+          Authors and stories</p><hr class="news-hr">
         </li>
-        <hr class="news-hr">
       <li>
         <p>We would like to give a Warm Welcome to our newest Author <span
-            class="news-text">{{ new.author|title }}</span>.</p>
+            class="news-text">{{ new.author|title }}</span>.</p><hr class="news-hr">
       </li>
-      <hr class="news-hr">
       <li>
         <p><span class="news-text"> {{ new.author|title }}</span> is sharing his writing with us all the way from <span
             class="news-text">{{ new.city_name|title }}</span>, <span
-            class="news-text">{{ new.country_name|title }}</span>.</p>
+            class="news-text">{{ new.country_name|title }}</span>.</p><hr class="news-hr">
       </li>
-      <hr class="news-hr">
       <li>
         <p>The latest addition to our <span class="news-text">{{ new.genre|title }}</span> genre is the short story
-          "<span class="news-text">{{ new.name|title }}</span>", why not head over there and check it out.</p>
+          "<span class="news-text">{{ new.name|title }}</span>", why not head over there and check it out.</p><hr class="news-hr">
       </li>
-      <hr class="news-hr">
       <li>
         <p>Our <span class="news-text">{{ new.genre|title }}</span> genre just recently had some short stories added...
         </p>
@@ -75,14 +71,14 @@
             <h4 class="mb-1"><span class="story-title">Plot: </span><span class="story-plot">{{
                     his.plot|striptags|capitalize}}</span></h4>
             <div class="d-flex w-100 justify-content-between">
-              <h4 class="mb-1"></h4><small>Popularity: <span class="badge bg-success rounded-pill">{{
+              <span class="mb-1"></span><small>Popularity: <span class="badge bg-success rounded-pill">{{
                         his.popularity }}</span></small>
             </div>
-            <a href="#opening"><button type="button" data-bs-toggle="collapse"
+            <a href="#opening" data-bs-toggle="collapse"
                 data-bs-target="#the-id-of-{{ TheId.value }}"
                 class="btn btn-outline-success text-center col-12 change-text" aria-expanded="false"
-                aria-controls="collapsed story">
-                <span>Read</span><span class="hidden">Hide</span> {{ his.name|striptags|title }} </button></a>
+                aria-controls="the-id-of-{{ TheId.value }}">
+                <span>Read</span><span class="hidden">Hide</span> {{ his.name|striptags|title }}</a>
             <div class="collapse" id="the-id-of-{{ TheId.value }}">
               <br>
               <div class="card card-story card w-100 mt-2">
@@ -92,8 +88,8 @@
                 <div class="like-story-button">
                   <form method="POST" class="text-center" name="feedback-form"
                     action="{{ url_for('updatepopularity', genre=popularity) }}">
-                    <label for="name" class="form-label form-label-spacing form-input-box-text"></label>
-                    <input type="text" id="name" class="form-control form-input-box-text" name="name"
+                    <label for="name-{{ TheId.value }}" class="form-label form-label-spacing form-input-box-text"></label>
+                    <input type="text" id="name-{{ TheId.value }}" class="form-control form-input-box-text" name="name"
                       value="{{ his.name|lower }}" hidden>
                     <button class="btn btn-success text-center " type="submit" title="Submit" name="submit"
                       aria-label="Submit Form">Like this Story</button>
@@ -107,13 +103,15 @@
     </div>
     {% endif %}
     {% endfor %}
+  </div>
+</div>
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
-          <a href="#top-of-page"><button type="button" class="btn btn-outline-success btn-lg">
+          <a href="#top-of-page" class="btn btn-outline-success btn-lg">
               <h5><i class="far fa-arrow-alt-circle-up fa-lg"></i><span class="back-to-top">Back to Top</span><i
                   class="far fa-arrow-alt-circle-up fa-lg"></i></h5>
-            </button></a>
+            </a>
         </div>
       </div>
     </div>

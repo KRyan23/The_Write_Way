@@ -44,6 +44,10 @@ a {
     font-weight: 200;
 }
 
+.policy-link{
+    margin-left: 1.25em;
+}
+
 .policy-link:hover {
     color: #198754;
 }
@@ -219,7 +223,7 @@ ul {
     padding: 0 0 2em 0;
 }
 
-.message-container h4 {
+.message-container, h4 {
     padding: 1em 0 1em 0;
 }
 
@@ -286,7 +290,6 @@ ul {
     border-style: solid;
     border-radius: 5px 5px 5px 5px;
     opacity: 0.95;
-
 }
 
 .form-intro {
@@ -358,7 +361,7 @@ ul {
 }
 
 .profile-checkbox-text-spacing {
-    padding: 1.45em 0 0 0.25em;
+    padding: 1.45em 0 0 0;
     font-size:medium;
     font-weight: 600;
     margin: 0 0 0 0;
@@ -453,11 +456,13 @@ ul {
     
 }
 
-.card-thumbnails-body {
+.card-thumbnails-body, .removestory-heading {
     padding: 1em 0 0.5em 0;
 }
 
-
+.editpage-content {
+    font-size:larger;
+}
 /* ------------------------- Media queries ----------------------------- */
 /*- < 250px-*/
 @media only screen and (max-width: 249px) {
