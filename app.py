@@ -119,8 +119,6 @@ def get_join():
 
     """
     news = mongo.db.news.find()
-    #mongo.db.news.genre.find()
-    #mongo.db.news.name.find()
     print(news)
     if request.method == "POST":
         existing_user = mongo.db.user_accounts.find_one(
@@ -138,13 +136,13 @@ def get_join():
             "password": generate_password_hash(request.form.get("password"))
         }
 
-        updatenews = {
+        updatenewsauthor = {
             "author": request.form.get("pen_name").lower(),
             "city_name": request.form.get("city_name").lower(),
             "country_name": request.form.get("country_name").lower()
         }
         mongo.db.user_accounts.insert_one(join)
-        mongo.db.news.update({"_id": ObjectId('61d70a54cd4d9eb92f31340a')},updatenews)
+        mongo.db.news.update({"_id": ObjectId('61d70a54cd4d9eb92f31340a')},updatenewsauthor)
         session["user"] = request.form.get("pen_name").lower()
         flash(JOIN_MESSAGE_SUCCESS)
         return redirect(url_for("get_signin"))
@@ -257,7 +255,8 @@ def create():
                 "name": request.form.get("name").lower(),
                 "plot": request.form.get("plot").lower(),
                 "content": request.form.get("content").lower(),
-            "popularity": 1,}
+                "popularity": 1,}
+
                 mongo.db.shortstories.insert_one(addstory)
                 flash(CREATE_SUCCESS)
                 return redirect(url_for('profilepage', pen_name=pen_name))
@@ -353,4 +352,4 @@ def updatepopularity(genre):
 if __name__ == "__main__":
     myapp.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)

@@ -148,7 +148,7 @@ ul {
 
 .news-navigation-aside {
     padding: 2em 0.9375em 0 0.125em;
-    width: 22vw;
+    width: 18vw;
     height: 165vh;
     margin-right: 15px;
     float: left;
@@ -160,7 +160,7 @@ ul {
 .genre-navigation-aside {
    
     padding: 2em 0.9375em 0 0.9375em;
-    width: 22vw;
+    width: 18vw;
     height: 165vh;
     float: right;
     font-style: italic;
@@ -453,7 +453,6 @@ ul {
 .genre-aside-thumbnails {
     height: 60px;
     width: auto;
-    
 }
 
 .card-thumbnails-body, .removestory-heading {
@@ -463,6 +462,11 @@ ul {
 .editpage-content {
     font-size:larger;
 }
+
+.joinus-left-aside {
+    margin: 2em 0 1em 0; 
+}
+
 /* ------------------------- Media queries ----------------------------- */
 /*- < 250px-*/
 @media only screen and (max-width: 249px) {

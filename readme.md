@@ -201,6 +201,7 @@ JSHint was used for the javascript linter, and pylint for the python linter.
 - The website was checked on a variety of emulated devices under Chromes Developer tools, these included Desktop, Moto4, GalaxyS5, Pixel, IPhones5,6,7,8,X, IPad/Pro and the newer Nest Hub and Nest Hub Max.
 -   Internal and external linking were tested throughout the project to ensure functionality.
 -   Family members were asked to review the site and to give their initial thoughts and feedback. Their input was used to make small design changes to parts of the site.
+- [Site Testing](/assets/docs/testing-and-troubleshooting/site-testing.pdf)
 
 ### Known Bugs
 

@@ -12,29 +12,32 @@
     <ul>
       {% for new in news %}
       <li>
-        <p>Check here for the latest news on our ever expanding list of Genres,
-          Authors and stories</p>
+        <p>Here at The Write Way we are allways adding to our list of short stories, be sure to check regularly for
+          newly added content.</p>
         <hr class="news-hr">
       </li>
       <li>
-        <p>We would like to give a Warm Welcome to our newest Author <span
+        <p>Explore your favourite genres, some of our our most popular are Fiction, Fantasy, Crime and Thriller.
+          We look forward to adding more for your reading pleasure over the comming months.</p>
+        <hr class="news-hr">
+      </li>
+      <li>
+        <p>Our Authors are people just like you and come from all walks of life.
+          We would like to give a Warm Welcome to our newest Author <span
             class="news-text">{{ new.author|title }}</span>.</p>
         <hr class="news-hr">
       </li>
       <li>
-        <p><span class="news-text"> {{ new.author|title }}</span> is sharing his writing with us all the way from <span
+        <p>Our Authors come from all over the world sharing their writing skills for your enjoyment,<span
+            class="news-text"> {{ new.author|title }}</span> is sharing with us all the way from <span
             class="news-text">{{ new.city_name|title }}</span>, <span
-            class="news-text">{{ new.country_name|title }}</span>.</p>
+            class="news-text">{{ new.country_name|title }}</span>.</p> Why not start writing your first story today, its
+        easy just head over and join using the link below it only takes a few minutes.
         <hr class="news-hr">
-      </li>
-      <li>
-        <p>The latest addition to our <span class="news-text">{{ new.genre|title }}</span> genre is the short story
-          "<span class="news-text">{{ new.name|title }}</span>", why not head over there and check it out.</p>
-        <hr class="news-hr">
-      </li>
-      <li>
-        <p>Our <span class="news-text">{{ new.genre|title }}</span> genre just recently had some short stories added...
-        </p>
+        <div class="joinus-left-aside text-center">
+          <a class="btn btn-outline-success genre-button" aria-label="Join Us" href="{{ url_for('get_join') }}"><span
+              class="text-menu-style">Join Us</span></a>
+        </div>
       </li>
       {% endfor %}
     </ul>
@@ -105,6 +108,11 @@
               </div>
               {% endif %}
               {% endfor %}
+              <div class="text-center back-to-profile-button">
+                <a class="btn btn-sm btn-outline-success text-center form-input-button-text col-8"
+                  aria-label="Back To Profile" title="Back to Profile" href="{{ url_for('backtoprofile') }}">
+                  Back to Profile</a>
+              </div>
               <div class="container">
                 <div class="row">
                   <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">

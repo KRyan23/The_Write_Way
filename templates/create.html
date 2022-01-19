@@ -12,29 +12,32 @@
     <ul>
       {% for new in news %}
       <li>
-        <p>Check here for the latest news on our ever expanding list of Genres,
-          Authors and stories</p>
+        <p>Here at The Write Way we are allways adding to our list of short stories, be sure to check regularly for
+          newly added content.</p>
         <hr class="news-hr">
       </li>
       <li>
-        <p>We would like to give a Warm Welcome to our newest Author <span
+        <p>Explore your favourite genres, some of our our most popular are Fiction, Fantasy, Crime and Thriller.
+          We look forward to adding more for your reading pleasure over the comming months.</p>
+        <hr class="news-hr">
+      </li>
+      <li>
+        <p>Our Authors are people just like you and come from all walks of life.
+          We would like to give a Warm Welcome to our newest Author <span
             class="news-text">{{ new.author|title }}</span>.</p>
         <hr class="news-hr">
       </li>
       <li>
-        <p><span class="news-text"> {{ new.author|title }}</span> is sharing his writing with us all the way from <span
+        <p>Our Authors come from all over the world sharing their writing skills for your enjoyment,<span
+            class="news-text"> {{ new.author|title }}</span> is sharing with us all the way from <span
             class="news-text">{{ new.city_name|title }}</span>, <span
-            class="news-text">{{ new.country_name|title }}</span>.</p>
+            class="news-text">{{ new.country_name|title }}</span>.</p> Why not start writing your first story today, its
+        easy just head over and join using the link below it only takes a few minutes.
         <hr class="news-hr">
-      </li>
-      <li>
-        <p>The latest addition to our <span class="news-text">{{ new.genre|title }}</span> genre is the short story
-          "<span class="news-text">{{ new.name|title }}</span>", why not head over there and check it out.</p>
-        <hr class="news-hr">
-      </li>
-      <li>
-        <p>Our <span class="news-text">{{ new.genre|title }}</span> genre just recently had some short stories added...
-        </p>
+        <div class="joinus-left-aside text-center">
+          <a class="btn btn-outline-success genre-button" aria-label="Join Us" href="{{ url_for('get_join') }}"><span
+              class="text-menu-style">Join Us</span></a>
+        </div>
       </li>
       {% endfor %}
     </ul>
@@ -54,7 +57,7 @@
               <br>
               <h2 class="text-center" title="Form Title" aria-label="Form Title"><span
                   class="text-header-spacing">Create Your Story</span><br>
-                  {{+ title|title }}
+                {{+ title|title }}
               </h2>
               <hr class="form-hr">
               <div class="mb-3">
@@ -79,8 +82,9 @@
               <div class="mb-3">
                 <label for="name" class="form-label form-label-spacing form-input-box-text">2. Choose a Story
                   Title</label>
-                <input type="text" id="name" class="form-control form-input-box-text" placeholder="Enter Story Title min 5 letters"
-                  name="name" title="Story Name" aria-label="Story Name" minlength="5" maxlength="40" required>
+                <input type="text" id="name" class="form-control form-input-box-text"
+                  placeholder="Enter Story Title min 5 letters" name="name" title="Story Name" aria-label="Story Name"
+                  minlength="5" maxlength="40" required>
                 <div class="valid-feedback">
                   Your all set!
                 </div>
@@ -120,23 +124,26 @@
                 <input type="checkbox" id="terms" name="terms" title="Agree to terms and conditions"
                   aria-label="Terms and Conditions"
                   class="form-input-box-text form-check-input profile-checkbox-spacing" required>
-                <label for="terms" class="form-input-box-text text-wrap profile-checkbox-text-spacing col-md-6 col-lg-8 col-xl-10">
+                <label for="terms"
+                  class="form-input-box-text text-wrap profile-checkbox-text-spacing col-md-6 col-lg-8 col-xl-10">
                   I agree to the T's & C's
                 </label>
                 <div class="mb-3">
-                <a href="{{ url_for('get_policy') }}" class="policy-link" target = "_blank">Read Privacy Policy</a>
-                <hr class="create-privacypolicy-hr">
-              </div>
+                  <a href="{{ url_for('get_policy') }}" class="policy-link" target="_blank">Read Privacy Policy</a>
+                  <hr class="create-privacypolicy-hr">
+                </div>
                 <div class="invalid-feedback">
                   Check the Box to Confirm
                 </div>
               </div>
               <br>
-              <button class="btn btn-success text-center form-input-button-text col-12" type="submit" id="publish-story" title="Publish Story" name="submit" aria-label="Publish Story">Publish Story</button>
+              <button class="btn btn-success text-center form-input-button-text col-12" type="submit" id="publish-story"
+                title="Publish Story" name="submit" aria-label="Publish Story">Publish Story</button>
               <p></p>
               <div class="text-center back-to-profile-button">
-                <a class="btn btn-sm btn-outline-success text-center form-input-button-text col-8" aria-label="Back To Profile" title="Back to Profile" href="{{ url_for('backtoprofile') }}">
-                Back to Profile</a>
+                <a class="btn btn-sm btn-outline-success text-center form-input-button-text col-8"
+                  aria-label="Back To Profile" title="Back to Profile" href="{{ url_for('backtoprofile') }}">
+                  Back to Profile</a>
               </div>
             </div>
           </div>
