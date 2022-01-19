@@ -45,12 +45,15 @@
 -   ### Design
     -   #### Colour Scheme
         -   The colour palette used for the site is listed below.
-            - ![#59A52C](https://via.placeholder.com/15/59A52C/000000?text=+) `Green Transistion`
+            - ![#e5e5e5](https://via.placeholder.com/15/e5e5e5/000000?text=+) `Lighter Grey`
+            - ![#f0f0f0](https://via.placeholder.com/15/f0f0f0/000000?text=+) `Light Grey`
             - ![#0F0F0F](https://via.placeholder.com/15/0F0F0F/000000?text=+) `Black Transistion`
             - ![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+) `White`
-            - ![#6FCA3A](https://via.placeholder.com/15/6FCA3A/000000?text=+) `Light Green Transistion`
-            - ![#437D21](https://via.placeholder.com/15/437D21/000000?text=+) `Dark Green Transistion`
+            - ![#FAFAFA](https://via.placeholder.com/15/FAFAFA/000000?text=+) `Off White`
+            - ![#198754](https://via.placeholder.com/15/198754/000000?text=+) `Dark Green Transistion`
             - ![#282828](https://via.placeholder.com/15/282828/000000?text=+) `Charcoal Transistion`
+            - ![#FF0000](https://via.placeholder.com/15/FF0000/000000?text=+) `Red`
+            
             
     -   #### Typography
         -   The Pacifico font was used in places around the site to give its overall signature and feel. Not only is it an attractive font but it also looks handwritten to fit in with the overall theme. 
@@ -80,6 +83,8 @@
 
 -   CRUD functionality for valid users
 
+-   Showcase the flexibility of non relational DB's.
+
 ## Technologies Used
 
 ### Languages Used
@@ -101,15 +106,15 @@
 
 ### Frameworks, Libraries & Programs Used
 
-1. [Materialize:](https://materializecss.com/)
-    - Materialize instead of Bootstrap was used on this project to assist with the responsiveness and styling of the website.
+1. [Bootstrap:](https://getbootstrap.com/)
+    - Bootstrap instead of Materialize was used on this project to assist with the responsiveness and styling of the website.
 2. [JQuery:](https://code.jquery.com/)
     - Some JQuery was used to simplify frontend deployment.  
 3. [Google Fonts:](https://fonts.google.com/)
-    - Google fonts were used to import the "Saria Stencil One" font into the style.css file which is used on all pages throughout the site.
+    - Google fonts were used to import "Pacifico" and "Roboto" fonts into the style.css file which is used on all pages throughout the site, sans-serif was the backup font.
 4. [Font Awesome v5.15.4:](https://fontawesome.com/)
     - Font Awesome was used on all pages throughout the website to add icons for aesthetic and UX purposes.
-5. [GitPod](https://www.gitpod.io/)
+5. [GitPod:](https://www.gitpod.io/)
     - GitPod was used as the main development platform, this was linked to my GitHub repository.
 6. [Paint.net:](https://www.getpaint.net/doc/latest/index.html)
     - Paint.net was used for resizing images and editing photos for the website.
@@ -120,10 +125,11 @@
 ## Testing
 
 The W3C Mark-up Validator and W3C CSS Jigsaw Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
+JSHint was used for the javascript linter, and pylint for the python linter.
 
 -   [W3C Html Mark-up Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](/assets/docs/testing-and-troubleshooting/html-validation.pdf)
 -   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](/assets/docs/testing-and-troubleshooting/css-results.pdf)
-- [JSHint ](https://jshint.com/) - [Results](/assets/docs/testing-and-troubleshooting)**Not done
+- [JSHint ](https://jshint.com/) - [Results](/assets/docs/testing-and-troubleshooting/jshintresults.pdf)
 -   [pylint ](https://pylint.org/) - [Results](/assets/docs/testing-and-troubleshooting/pylint-results.pdf)
 -    Code Refactoring  - [Results](/assets/docs/testing-and-troubleshooting/code-refactoring.pdf)
 
@@ -195,6 +201,7 @@ The W3C Mark-up Validator and W3C CSS Jigsaw Validator Services were used to val
 - The website was checked on a variety of emulated devices under Chromes Developer tools, these included Desktop, Moto4, GalaxyS5, Pixel, IPhones5,6,7,8,X, IPad/Pro and the newer Nest Hub and Nest Hub Max.
 -   Internal and external linking were tested throughout the project to ensure functionality.
 -   Family members were asked to review the site and to give their initial thoughts and feedback. Their input was used to make small design changes to parts of the site.
+- [Site Testing](/assets/docs/testing-and-troubleshooting/site-testing.pdf)
 
 ### Known Bugs
 

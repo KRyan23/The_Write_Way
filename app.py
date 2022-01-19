@@ -119,12 +119,13 @@ def get_join():
 
     """
     news = mongo.db.news.find()
+    print(news)
     if request.method == "POST":
         existing_user = mongo.db.user_accounts.find_one(
             {"pen_name": request.form.get("pen_name").lower()})
         if existing_user:
             flash(JOIN_MESSAGE_FAILURE)
-            return redirect(url_for("join"))
+            return redirect(url_for("get_join"))
         join = {
             "first_name": request.form.get("first_name").lower(),
             "last_name": request.form.get("last_name").lower(),
@@ -135,8 +136,13 @@ def get_join():
             "password": generate_password_hash(request.form.get("password"))
         }
 
+        updatenewsauthor = {
+            "author": request.form.get("pen_name").lower(),
+            "city_name": request.form.get("city_name").lower(),
+            "country_name": request.form.get("country_name").lower()
+        }
         mongo.db.user_accounts.insert_one(join)
-
+        mongo.db.news.update({"_id": ObjectId('61d70a54cd4d9eb92f31340a')},updatenewsauthor)
         session["user"] = request.form.get("pen_name").lower()
         flash(JOIN_MESSAGE_SUCCESS)
         return redirect(url_for("get_signin"))
@@ -249,7 +255,8 @@ def create():
                 "name": request.form.get("name").lower(),
                 "plot": request.form.get("plot").lower(),
                 "content": request.form.get("content").lower(),
-            "popularity": 1,}
+                "popularity": 1,}
+
                 mongo.db.shortstories.insert_one(addstory)
                 flash(CREATE_SUCCESS)
                 return redirect(url_for('profilepage', pen_name=pen_name))
@@ -317,7 +324,8 @@ def removestory():
         if session['user']:
             pen_name = session["user"]
             stories = mongo.db.shortstories.find()
-    return render_template("removestory.html", stories=stories, pen_name=pen_name, news=news, title="Remove Story")
+    return render_template(
+        "removestory.html", stories=stories, pen_name=pen_name, news=news, title="Remove Story")
 
 
 @myapp.route("/updatepopularity/<genre>", methods=["GET", "POST"])
@@ -340,16 +348,8 @@ def updatepopularity(genre):
     flash(POPULARITY_FAILURE)
     return redirect(url_for("get_signin"))
 
-@myapp.route("/search", methods=["GET", "POST"])
-
-def search():
-    """Performs a search query."""
-    searchquery = request.form.get("searchquery")
-    stories = list(mongo.db.shortstories.find({"$text":{"$search": searchquery}}))
-    return render_template("search.html", stories=stories, searchquery=searchquery)
-
 
 if __name__ == "__main__":
     myapp.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)
